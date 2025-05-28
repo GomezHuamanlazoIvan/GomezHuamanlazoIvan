@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proyectos Semanales</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #0f172a;
+      color: #f1f5f9;
+      margin: 0;
+      padding: 0;
+    }
+
+    header, footer {
+      background-color: #1e293b;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    h1 {
+      color: #38bdf8;
+    }
+
+    .semana {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 1rem;
+      background-color: #1e293b;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .semana img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      color: #38bdf8;
+    }
+
+    a {
+      color: #38bdf8;
+    }
+
+    pre {
+      background-color: #1e293b;
+      padding: 1rem;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+
+    code {
+      color: #f1f5f9;
+      font-family: monospace;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Proyectos por Semana</h1>
+  </header>
+
+  <main>
+    <!-- Semana 1 -->
+    <section class="semana">
+      <img src="imagenes/semana1.png" alt="Semana 1">
+      <h2>Semana 1: Fundamentos de las Tecnologías Web</h2>
+      <p><strong>Definición:</strong> Esta semana se centró en entender los pilares básicos de la web. Un sistema web es una colección de páginas interconectadas accesibles a través de Internet. Una aplicación web es un programa que los usuarios pueden utilizar accediendo a un servidor web. Un sitio web es un conjunto de páginas web relacionadas, y una página web es un documento individual en la web. Las tecnologías web como HTML, CSS, JS y XML son esenciales para crear y estructurar contenido en la web. El DNS traduce nombres de dominio a direcciones IP, el protocolo TCP/IP permite la comunicación entre dispositivos, y el protocolo HTTP es utilizado para transferir datos en la web.</p>
+      <p><strong>Ejemplo:</strong> Creación de un archivo HTML básico y navegación local.</p>
+      <pre><code>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;Mi Primera Página&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Hola Mundo&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+      </code></pre>
+      <p><strong>Reflexión:</strong> Aprendí la arquitectura básica del internet, el propósito de los protocolos y cómo usar eficientemente VSCode. Esta semana fue crucial para entender cómo se estructuran y despliegan las páginas web.</p>
+    </section>
+
+    <!-- Semana 2 -->
+    <section class="semana">
+      <img src="imagenes/semana2.png" alt="Semana 2">
+      <h2>Semana 2: HTML y CSS</h2>
+      <p><strong>Definición:</strong> HTML (HyperText Markup Language) es el lenguaje estándar para crear páginas web. Define la estructura y el contenido de una página web utilizando etiquetas. XML (eXtensible Markup Language) es similar a HTML pero se utiliza para almacenar y transportar datos. CSS (Cascading Style Sheets) se utiliza para describir la presentación de un documento escrito en HTML. Permite aplicar estilos visuales a los elementos HTML, como colores, fuentes y diseños. Flexbox y Grid son modelos de diseño en CSS que permiten crear diseños complejos y responsivos con facilidad. Media queries permiten aplicar estilos específicos dependiendo del dispositivo.</p>
+      <p><strong>Definición de Emmet:</strong> Emmet es un plugin para editores de texto que permite a los desarrolladores escribir código HTML y CSS de manera más rápida y eficiente. Utiliza abreviaturas que se expanden en bloques de código completos, lo que acelera el proceso de escritura y reduce la necesidad de escribir etiquetas y atributos manualmente.</p>
+      <p><strong>Ejemplo de Emmet:</strong> Aquí se tiene algunos ejemplos practicos que se desarrollo y se explica cómo usar Emmet para generar código HTML rápidamente:</p>
+      <pre><code>
+<h1>Ejercicio 01</h1>
+nav.nav>ul>li*4>a[href=page$@-.html]{Link$@-}
+      </code></pre>
+      <p>Este código Emmet se expande a:</p>
+      <pre><code>
+<nav class="nav">
+  <ul>
+    <li><a href="page1.html">Link1</a></li>
+    <li><a href="page2.html">Link2</a></li>
+    <li><a href="page3.html">Link3</a></li>
+    <li><a href="page4.html">Link4</a></li>
+  </ul>
+</nav>
+      </code></pre>
+      <pre><code>
+<h1>Ejercicio 02</h1>
+table.table>(thead>tr>(th[scope=col]{-#-}+th[scope=col]{First}+th[scope=col]{Second}+th[scope=col]{Three}))+(tbody>(tr>th[scope=row]{$}+td{Mark}+td{Otto}+td{jhonson})*3)
+      </code></pre>
+      <p>Este código Emmet se expande a:</p>
+      <pre><code>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">-#-</th>
+      <th scope="col">First</th>
+      <th scope="col">Second</th>
+      <th scope="col">Three</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>jhonson</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>jhonson</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>jhonson</td>
+    </tr>
+  </tbody>
+</table>
+      </code></pre>
+      <pre><code>
+<h1>Ejercicio 03</h1>
+div.container>(header#header{Header}+nav#nav{Navigation}+main#main{Main Content}+aside#aside{Aside}+footer#footer{Footer})
+      </code></pre>
+      <p>Este código Emmet se expande a:</p>
+      <pre><code>
+<div class="container">
+  <header id="header">Header</header>
+  <nav id="nav">Navigation</nav>
+  <main id="main">Main Content</main>
+  <aside id="aside">Aside</aside>
+  <footer id="footer">Footer</footer>
+</div>
+      </code></pre>
+      <pre><code>
+<h1>Ejercicio 04</h1>
+table>(thead>tr>th{id}+th{nombres}+th{apellidos}+th{dirección})+(tbody>tr*20>td{$}+td{Nombre $}+td{Apellido $}+td{Dirección $})
+      </code></pre>
+      <p>Este código Emmet se expande a:</p>
+      <pre><code>
+<table>
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>nombres</th>
+      <th>apellidos</th>
+      <th>dirección</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>Nombre 1</td>
+      <td>Apellido 1</td>
+      <td>Dirección 1</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Nombre 2</td>
+      <td>Apellido 2</td>
+      <td>Dirección 2</td>
+    </tr>
+    <!-- ... hasta 20 filas -->
+  </tbody>
+</table>
+      </code></pre>
+      <pre><code>
+<h1>Ejercicio 05</h1>
+table>tr*20>td{Fila $}+td#fila${Fila $@-}
+      </code></pre>
+      <p>Este código Emmet se expande a:</p>
+      <pre><code>
+<table>
+  <tr>
+    <td>Fila 1</td>
+    <td id="fila1">Fila 1</td>
+  </tr>
+  <tr>
+    <td>Fila 2</td>
+    <td id="fila2">Fila 2</td>
+  </tr>
+  <!-- ... hasta 20 filas -->
+</table>
+      </code></pre>
+      <pre><code>
+<h1>Ejercicio 06</h1>
+form.survey>h2{Encuesta de Satisfacción}+fieldset>legend{Datos Personales}+div.form-group*3>label+input[type="text"]^fieldset>legend{Valoración}+div.rating>p{Por favor califique su experiencia:}+div>input[type="radio"][name="rating"][value="$"]*5+label[for="rating$"]{$}^^div.form-group>label{Comentarios:}+textarea[rows="4"][cols="50"]^button[type="submit"]{Enviar Encuesta}
+      </code></pre>
+      <p>Este código Emmet se expande a:</p>
+      <pre><code>
+<form class="survey">
+  <h2>Encuesta de Satisfacción</h2>
+  <fieldset>
+    <legend>Datos Personales</legend>
+    <div class="form-group">
+      <label></label>
+      <input type="text">
+    </div>
+    <div class="form-group">
+      <label></label>
+      <input type="text">
+    </div>
+    <div class="form-group">
+      <label></label>
+      <input type="text">
+    </div>
+  </fieldset>
+  <fieldset>
+    <legend>Valoración</legend>
+    <div class="rating">
+      <p>Por favor califique su experiencia:</p>
+      <div>
+        <input type="radio" name="rating" value="1" id="rating1">
+        <label for="rating1">1</label>
+        <input type="radio" name="rating" value="2" id="rating2">
+        <label for="rating2">2</label>
+        <input type="radio" name="rating" value="3" id="rating3">
+        <label for="rating3">3</label>
+        <input type="radio" name="rating" value="4" id="rating4">
+        <label for="rating4">4</label>
+        <input type="radio" name="rating" value="5" id="rating5">
+        <label for="rating5">5</label>
+      </div>
+    </div>
+  </fieldset>
+  <div class="form-group">
+    <label>Comentarios:</label>
+    <textarea rows="4" cols="50"></textarea>
+  </div>
+  <button type="submit">Enviar Encuesta</button>
+</form>
+      </code></pre>
+      <p><strong>Ejemplo:</strong> Página HTML con estilo responsive usando flexbox y media queries.</p>
+      <pre><code>
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+@media (max-width: 600px) {
+  body {
+    flex-direction: column;
+  }
+}
+      </code></pre>
+      <p><strong>Reflexión:</strong> Comprendí cómo separar contenido y presentación para lograr páginas limpias y adaptables. Aprendí la importancia de un diseño responsive y cómo implementarlo.</p>
+    </section>
+
+    <!-- Semana 3 -->
+    <section class="semana">
+      <img src="imagenes/semana3.png" alt="Semana 3">
+      <h2>Semana 3: CSS Frameworks (Bootstrap y Tailwind)</h2>
+      <p><strong>Definición:</strong> Bootstrap es un framework de CSS que proporciona componentes de diseño predefinidos para crear sitios web responsivos rápidamente. Incluye un sistema de grid, componentes de interfaz de usuario, y utilidades para tipografía y diseño. Tailwind CSS es un framework de utilidades que permite construir diseños personalizados directamente en el HTML. Proporciona clases de utilidad para aplicar estilos sin tener que escribir CSS personalizado. Ambos frameworks facilitan la creación de diseños consistentes y responsivos.</p>
+      <p><strong>Ejemplo:</strong> Sitio web usando Tailwind con diseño limpio y elementos reutilizables.</p>
+      <pre><code>
+&lt;div class="container mx-auto px-4"&gt;
+  &lt;button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"&gt;
+    Botón
+  &lt;/button&gt;
+&lt;/div&gt;
+      </code></pre>
+      <p><strong>Reflexión:</strong> Aprendí a usar herramientas modernas para acelerar el desarrollo y mantener consistencia visual. Tailwind me permitió crear diseños personalizados rápidamente.</p>
+    </section>
+
+    <!-- Semana 4 -->
+    <section class="semana">
+      <img src="imagenes/semana4.png" alt="Semana 4">
+      <h2>Semana 4: JavaScript y TypeScript</h2>
+      <p><strong>Definición:</strong> JavaScript es un lenguaje de programación que permite implementar funciones complejas en páginas web. Se utiliza para crear contenido dinámico, controlar multimedia, animar imágenes, y mucho más. TypeScript es un superset de JavaScript que añade tipos estáticos. Esto permite detectar errores durante el desarrollo y hace que el código sea más fácil de mantener. El DOM (Document Object Model) es una interfaz de programación para documentos HTML y XML. Permite a los programas cambiar la estructura, estilo y contenido de un documento. Canvas es una API de HTML5 que permite dibujar gráficos mediante scripting, generalmente JavaScript.</p>
+      <p><strong>Ejemplo:</strong> Animación con JavaScript y dibujo con Canvas.</p>
+      <pre><code>
+const canvas = document.getElementById('myCanvas');
+const ctx = canvas.getContext('2d');
+ctx.fillStyle = 'blue';
+ctx.fillRect(10, 10, 100, 100);
+      </code></pre>
+      <p><strong>Reflexión:</strong> Fortalecí mi lógica de programación y la interacción directa con elementos HTML. Aprendí a crear animaciones y gráficos dinámicos.</p>
+    </section>
+
+    <!-- Semana 5 -->
+    <section class="semana">
+      <img src="imagenes/semana5.png" alt="Semana 5">
+      <h2>Semana 5: Framework JS (React)</h2>
+      <p><strong>Definición:</strong> React es una biblioteca de JavaScript para construir interfaces de usuario. Utiliza un modelo de componentes, lo que permite dividir la interfaz en partes independientes y reutilizables. JSX es una extensión de sintaxis para JavaScript recomendada para usar con React. Permite escribir estructuras similares a HTML en el mismo archivo que contiene el código JavaScript. Los props (propiedades) son una forma de pasar datos de un componente padre a un componente hijo. El estado en React permite a los componentes mantener y gestionar datos que cambian con el tiempo.</p>
+      <p><strong>Ejemplo:</strong> Componentes funcionales con props para mostrar datos dinámicos.</p>
+      <pre><code>
+function Welcome(props) {
+  return &lt;h1&gt;Hello, {props.name}&lt;/h1&gt;;
+}
+
+const element = &lt;Welcome name="Sara" /&gt;
+      </code></pre>
+      <p><strong>Reflexión:</strong> Aprendí el modelo de componentes y la eficiencia de React para crear interfaces. La reutilización de componentes me permitió escribir código más limpio y mantenible.</p>
+    </section>
+
+    <!-- Semana 6 -->
+    <section class="semana">
+      <img src="imagenes/semana6.png" alt="Semana 6">
+      <h2>Semana 6: Eventos y APIs en React</h2>
+      <p><strong>Definición:</strong> Los eventos en React permiten manejar interacciones del usuario, como clics, envíos de formularios, y más. Las APIs (Application Programming Interfaces) permiten a los desarrolladores interactuar con servicios externos para obtener o enviar datos. Axios es una biblioteca popular para hacer solicitudes HTTP desde el navegador. Las promesas y async/await son patrones en JavaScript para manejar operaciones asincrónicas, permitiendo escribir código que se ejecuta de manera no bloqueante. Esto es crucial para interactuar con APIs y manejar respuestas de manera eficiente.</p>
+      <p><strong>Ejemplo:</strong> Formulario que consulta una API pública y muestra resultados.</p>
+      <pre><code>
+async function fetchData() {
+  const response = await axios.get('https://api.example.com/data');
+  console.log(response.data);
+}
+      </code></pre>
+      <p><strong>Reflexión:</strong> Aprendí la conexión entre frontend y servicios externos, manejo de datos asincrónicos. La manipulación de datos desde una API fue un gran avance en mi aprendizaje.</p>
+    </section>
+
+    <!-- Semana 7 -->
+    <section class="semana">
+      <img src="imagenes/semana7.png" alt="Semana 7">
+      <h2>Semana 7: Hooks en React</h2>
+      <p><strong>Definición:</strong> Los hooks en React son funciones que permiten usar estado y otras características de React en componentes funcionales. useState permite añadir estado a componentes funcionales. useEffect permite realizar efectos secundarios en componentes funcionales, como operaciones de datos, suscripciones, y cambios manuales en el DOM. useContext permite acceder al contexto de React, useRef permite referenciar valores que no son necesarios para el renderizado, useReducer es una alternativa a useState para manejar estados complejos, useCallback y useMemo permiten optimizar el rendimiento.</p>
+      <p><strong>Ejemplo:</strong> Componente con estados múltiples y efectos secundarios.</p>
+      <pre><code>
+import React, { useState, useEffect } from 'react';
+
+function Example() {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    document.title = `You clicked ${count} times`;
+  });
+
+  return (
+    &lt;div&gt;
+      &lt;p&gt;You clicked {count} times&lt;/p&gt;
+      &lt;button onClick={() => setCount(count + 1)}&gt;
+        Click me
+      &lt;/button&gt;
+    &lt;/div&gt;
+  );
+}
+      </code></pre>
+      <p><strong>Reflexión:</strong> Comprendí cómo manejar estados y ciclos de vida con elegancia usando hooks. Esto me permitió crear componentes más dinámicos y eficientes.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Gomez Huamanlazo - Proyectos Semanales</p>
+  </footer>
+</body>
+</html>
+
+
+

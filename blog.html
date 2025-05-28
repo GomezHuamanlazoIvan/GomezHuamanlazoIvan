@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog - Gomez Ivan</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    :root {
+      --primary-color: #0f172a;
+      --secondary-color: #1e293b;
+      --accent-color: #38bdf8;
+      --text-color: #f1f5f9;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      background-color: var(--primary-color);
+      color: var(--text-color);
+    }
+
+    header {
+      background-color: var(--secondary-color);
+      padding: 2rem;
+      text-align: center;
+    }
+
+    header img.perfil {
+      width: 120px;
+      border-radius: 50%;
+      margin-bottom: 1rem;
+      border: 3px solid var(--accent-color);
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      background-color: var(--secondary-color);
+      padding: 1rem 0;
+    }
+
+    nav a {
+      color: var(--text-color);
+      text-decoration: none;
+      margin: 0 1rem;
+      padding: 0.5rem 1rem;
+      background-color: var(--accent-color);
+      border-radius: 6px;
+      transition: background-color 0.3s ease;
+    }
+
+    nav a:hover {
+      background-color: #0ea5e9;
+    }
+
+    section {
+      padding: 2rem;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    footer {
+      text-align: center;
+      background-color: var(--secondary-color);
+      padding: 1rem;
+    }
+
+    h1, h2 {
+      color: var(--accent-color);
+    }
+
+    .blog-post {
+      margin-bottom: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--accent-color);
+    }
+
+    .blog-post img {
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="imagenes/perfil.png" alt="Foto de perfil" class="perfil">
+    <h1>Gomez Huamanlazo Ivan Paul</h1>
+    <p>Desarrollador Web Frontend & Backend</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="proyectos.html">Proyectos</a>
+    <a href="blog.html">Blog</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+
+  <section id="blog">
+    <h2>Blog</h2>
+
+    <div class="blog-post">
+      <h3>Reflexión Final: Aprendizaje y Tecnologías en el Blog</h3>
+      <p><em>Publicado el: May 20, 2025</em></p>
+      <img src="imagenes/post-1.png" alt="Wavy lines">
+      <p>Este blog es el resultado de un proceso de aprendizaje continuo, donde he explorado y aplicado diversas tecnologías web, desde los fundamentos hasta herramientas y frameworks modernos. Cada semana representó un avance en mis habilidades y una oportunidad para integrar nuevos conocimientos en proyectos reales.</p>
+      <h4>Reflexión sobre el Aprendizaje y las Tecnologías Utilizadas en el Blog</h4>
+      <p>A lo largo de estas semanas, he tenido la oportunidad de explorar y aplicar diversas tecnologías web en el desarrollo de este blog y en cada uno de los proyectos semanales. Empecé con los fundamentos de la web, comprendiendo la importancia de HTML, CSS y JavaScript como pilares esenciales para cualquier desarrollador.</p>
+      <h4>Extracto y la Importancia</h4>
+      <p>Este recorrido no solo me permitió adquirir habilidades técnicas, sino también comprender la importancia de la integración y el uso adecuado de cada tecnología en el desarrollo web moderno.</p>
+    </div>
+
+    <div class="blog-post">
+      <h3>Bibliografía y Recursos</h3>
+      <p><em>Publicado el: May 10, 2025</em></p>
+      <img src="imagenes/post-2.png" alt="Wavy lines">
+      <p>A continuación, comparto un listado de enlaces a recursos, herramientas y tecnologías que he utilizado en el desarrollo de este portafolio y en las actividades de cada semana:</p>
+      <ul>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/HTML">HTML5 - Documentación MDN</a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS">CSS3 - Documentación MDN</a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/JavaScript">JavaScript - Documentación MDN</a></li>
+        <li><a href="https://react.dev/">React - Sitio Oficial</a></li>
+        <li><a href="https://getbootstrap.com/">Bootstrap - Sitio Oficial</a></li>
+        <li><a href="https://tailwindcss.com/">Tailwind CSS - Sitio Oficial</a></li>
+        <li><a href="https://nodejs.org/">Node.js - Sitio Oficial</a></li>
+        <li><a href="https://www.typescriptlang.org/">TypeScript - Sitio Oficial</a></li>
+        <li><a href="https://www.mongodb.com/">MongoDB - Sitio Oficial</a></li>
+        <li><a href="https://github.com/axios/axios">Axios - GitHub</a></li>
+        <li><a href="https://vitejs.dev/">Vite - Sitio Oficial</a></li>
+        <li><a href="https://create-react-app.dev/">Create React App - Documentación</a></li>
+        <li><a href="https://developer.mozilla.org/">MDN Web Docs</a></li>
+        <li><a href="https://caniuse.com/">Can I use - Compatibilidad de tecnologías web</a></li>
+        <li><a href="https://fonts.google.com/">Google Fonts</a></li>
+        <li><a href="https://unsplash.com/">Unsplash - Imágenes libres</a></li>
+        <li><a href="https://github.com/">GitHub</a></li>
+      </ul>
+      <p>Estos recursos han sido fundamentales para aprender, practicar y desarrollar cada uno de los proyectos y contenidos presentados en este portafolio.</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Gomez Huamanlazo - Todos los derechos reservados</p>
+  </footer>
+</body>
+</html>
