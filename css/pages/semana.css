@@ -18,6 +18,9 @@
   border-radius: 15px;
   margin-bottom: 2rem;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .semana-header h1 {
