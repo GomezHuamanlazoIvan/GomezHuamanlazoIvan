@@ -1,0 +1,130 @@
+# 🚀 Guía de Instalación - Sistema Inteligente de Análisis de Datos
+
+## 📋 Requisitos Previos
+- Python 3.8 o superior
+- Node.js 14 o superior  
+- MySQL 8.0 o superior
+- Git (opcional)
+
+## ⚡ Instalación Rápida (5 pasos)
+
+### 1. 📁 Extraer el Proyecto
+```bash
+# Extraer el archivo ZIP en una carpeta
+# Navegar a la carpeta del proyecto
+cd Proyecto
+```
+
+### 2. 🗄️ Configurar Base de Datos
+```bash
+# Abrir MySQL y ejecutar:
+mysql -u root -p < SETUP_DATABASE.sql
+
+# O manualmente:
+# 1. Abrir MySQL Workbench/phpMyAdmin
+# 2. Ejecutar el contenido de SETUP_DATABASE.sql
+```
+
+### 3. 🐍 Configurar Backend
+```bash
+cd backend
+
+# Crear entorno virtual (recomendado)
+python -m venv venv
+venv\Scripts\activate  # Windows
+# source venv/bin/activate  # Linux/Mac
+
+# Instalar dependencias
+pip install -r requirements.txt
+
+# Entrenar modelos de IA (primera vez)
+python save_model.py
+```
+
+### 4. ⚛️ Configurar Frontend
+```bash
+cd frontend
+npm install
+```
+
+### 5. 🎯 Configurar APIs (Opcional)
+```bash
+# Editar backend/config_new.py
+# - Cambiar puerto MySQL si es necesario (3307 → 3306)
+# - Agregar API key de Google Gemini para generador de texto
+```
+
+## 🚀 Ejecutar la Aplicación
+
+### Terminal 1 - Backend:
+```bash
+cd backend
+python app.py
+```
+**Servidor corriendo en: http://localhost:5000**
+
+### Terminal 2 - Frontend:
+```bash
+cd frontend
+npm start
+```
+**Aplicación corriendo en: http://localhost:3000**
+
+## 🧪 Verificar Funcionamiento
+
+### 1. Acceder a la Aplicación
+- Abrir navegador en: http://localhost:3000
+- Registrar nuevo usuario o usar credenciales de prueba
+
+### 2. Probar Funcionalidades
+- **Análisis de Sentimientos**: Ingresar texto y analizar
+- **Análisis de Datos**: Ejecutar demostración de reconstrucción
+- **Generador de Texto**: Probar generación (requiere API key)
+
+### 3. Verificar Modelos de IA
+```bash
+cd backend
+python -c "from app import load_models; print('Modelos OK:', load_models())"
+```
+
+## ❓ Solución de Problemas
+
+### Error de Base de Datos
+```bash
+# Verificar conexión MySQL
+mysql -u root -p -e "SHOW DATABASES;"
+
+# Cambiar puerto en backend/config_new.py si es necesario
+```
+
+### Error de Modelos
+```bash
+cd backend
+python save_model.py  # Reentrenar modelos
+```
+
+### Error de Dependencias
+```bash
+pip install --upgrade pip
+pip install -r backend/requirements.txt --force-reinstall
+```
+
+## 📊 Funcionalidades Principales
+
+1. **🔐 Autenticación**: Registro e inicio de sesión con JWT
+2. **💖 Análisis de Sentimientos**: Procesamiento de texto en español
+3. **📊 Análisis de Datos**: Reconstrucción con Autoencoder + Random Forest
+4. **✍️ Generador de Texto**: Integración con Google Gemini 1.5 Flash
+5. **📈 Dashboard**: Estadísticas y visualización de resultados
+
+## 🎯 Datos del Proyecto
+
+- **Dataset**: 447,915 muestras reales de tráfico de red
+- **Características**: 76 columnas de datos
+- **Modelo**: Autoencoder (150 épocas) + Random Forest (93.41% precisión)
+- **Tecnologías**: Flask, React, PyTorch, scikit-learn, MySQL
+
+---
+**¡Listo para usar!** 🎉
+
+Para soporte técnico, revisar los archivos README.md e INSTRUCCIONES.md

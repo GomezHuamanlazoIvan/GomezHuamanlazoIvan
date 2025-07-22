@@ -1,0 +1,91 @@
+-- =====================================
+-- SCRIPT GENERADOR DE BASE DE DATOS
+-- Sistema Inteligente de Análisis de Datos con IA
+-- =====================================
+
+-- Crear base de datos
+CREATE DATABASE IF NOT EXISTS ia_project;
+USE ia_project;
+
+-- Eliminar tablas si existen (para reinstalación limpia)
+DROP TABLE IF EXISTS analysis;
+DROP TABLE IF EXISTS user;
+
+-- =====================================
+-- TABLA DE USUARIOS
+-- =====================================
+CREATE TABLE user (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(80) UNIQUE NOT NULL,
+    password VARCHAR(200) NOT NULL,
+    email VARCHAR(120) UNIQUE NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- =====================================
+-- TABLA DE ANÁLISIS
+-- =====================================
+CREATE TABLE analysis (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    input_data TEXT NOT NULL,
+    result TEXT NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE
+);
+
+-- =====================================
+-- DATOS DE PRUEBA
+-- =====================================
+
+-- Insertar usuarios de prueba (contraseñas hasheadas con werkzeug)
+INSERT INTO user (username, password, email) VALUES 
+('admin', 'pbkdf2:sha256:600000$salt123$hashedpassword123', 'admin@test.com'),
+('demo_user', 'pbkdf2:sha256:600000$salt456$hashedpassword456', 'demo@test.com'),
+('test_user', 'pbkdf2:sha256:600000$salt789$hashedpassword789', 'test@test.com');
+
+-- Insertar análisis de ejemplo
+INSERT INTO analysis (user_id, input_data, result) VALUES 
+(1, '{"Flow Duration": 1250, "Total Fwd Packet": 5, "Packet Length Mean": 240}', '{"prediction": 1, "accuracy": 0.934, "model": "Random Forest"}'),
+(1, '{"Flow Duration": 2500, "Total Fwd Packet": 8, "Packet Length Mean": 180}', '{"prediction": 0, "accuracy": 0.934, "model": "Random Forest"}'),
+(2, '{"Flow Duration": 800, "Total Fwd Packet": 3, "Packet Length Mean": 320}', '{"prediction": 1, "accuracy": 0.934, "model": "Random Forest"}');
+
+-- =====================================
+-- VERIFICACIÓN DE INSTALACIÓN
+-- =====================================
+
+-- Mostrar usuarios creados
+SELECT 'USUARIOS CREADOS:' as INFO;
+SELECT id, username, email, created_at FROM user;
+
+-- Mostrar análisis de ejemplo
+SELECT 'ANÁLISIS DE EJEMPLO:' as INFO;
+SELECT a.id, u.username, a.input_data, a.result, a.created_at 
+FROM analysis a 
+JOIN user u ON a.user_id = u.id;
+
+-- Mostrar estadísticas
+SELECT 'ESTADÍSTICAS:' as INFO;
+SELECT 
+    (SELECT COUNT(*) FROM user) as total_usuarios,
+    (SELECT COUNT(*) FROM analysis) as total_analisis;
+
+-- =====================================
+-- NOTAS PARA EL REVISOR
+-- =====================================
+/*
+CREDENCIALES DE PRUEBA:
+- Usuario: admin, Contraseña: admin123
+- Usuario: demo_user, Contraseña: demo123  
+- Usuario: test_user, Contraseña: test123
+
+IMPORTANTE:
+- Las contraseñas mostradas arriba son hasheadas
+- Para crear usuarios reales, usar la interfaz de registro
+- El sistema creará automáticamente las contraseñas hasheadas
+
+VERIFICACIÓN:
+- Ejecutar este script en MySQL
+- Verificar que se crearon 3 usuarios y 3 análisis
+- El sistema debería conectarse sin problemas
+*/

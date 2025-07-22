@@ -1,0 +1,106 @@
+# 🚀 Instrucciones de Ejecución Rápida
+
+## ⚡ Inicio Rápido
+
+### 1. Instalar Dependencias del Backend
+```bash
+cd backend
+pip install -r requirements.txt
+```
+
+### 2. Instalar Dependencias del Frontend
+```bash
+cd frontend
+npm install
+```
+
+### 3. Ejecutar la Aplicación
+
+**Terminal 1 - Backend:**
+```bash
+cd backend
+python app.py
+```
+*Servidor corriendo en: http://localhost:5000*
+
+**Terminal 2 - Frontend:**
+```bash
+cd frontend
+npm start
+```
+*Aplicación corriendo en: http://localhost:3000*
+
+## 🔧 Configuración Inicial
+
+### Base de Datos MySQL
+```sql
+CREATE DATABASE ia_project;
+-- Ejecutar: backend/data/schema.sql
+```
+
+**⚠️ IMPORTANTE - Puerto de Base de Datos:**
+- El proyecto está configurado para usar el **puerto 3307** (no el estándar 3306)
+- Si tu MySQL usa puerto 3306, edita `backend/config_new.py`:
+```python
+DATABASE_CONFIG = {
+    'host': 'localhost',
+    'port': 3306,  # Cambiar de 3307 a 3306 si es necesario
+    'user': 'root',
+    'password': 'tu_password',
+    'database': 'ia_project'
+}
+```
+
+### API Key de Google Gemini (Para Generador de Texto)
+El generador de texto usa **Google Gemini 1.5 Flash**. Para probarlo:
+
+1. **Obtener API Key:**
+   - Ve a [Google AI Studio](https://makersuite.google.com/app/apikey)
+   - Crea una cuenta si no tienes
+   - Genera una nueva API Key
+
+2. **Configurar API Key:**
+   - Edita `backend/config_new.py`
+   - Reemplaza la API key existente:
+```python
+# Reemplazar con tu API key real
+GOOGLE_API_KEY = "tu_api_key_aqui"
+```
+
+**📝 Nota:** Sin API key válida, el generador de texto usará respuestas locales de respaldo.
+
+### Entrenar Modelos (Primera vez)
+```bash
+cd backend
+python save_model.py
+```
+
+### Verificar Modelos
+```bash
+cd backend
+python -c "from app import load_models; print('Modelos OK:', load_models())"
+```
+
+## 📁 Estructura de Carpetas
+
+- `backend/` - Código del servidor Flask
+- `frontend/` - Aplicación React
+- `models/` - Modelos de IA entrenados
+- `docs/` - Documentación completa
+
+## ❓ Problemas Comunes
+
+1. **Error de modelos**: Ejecutar `python save_model.py` en `/backend`
+2. **Error de DB**: Verificar MySQL y credenciales en `config_new.py`
+   - Revisar puerto (3307 vs 3306)
+   - Verificar usuario y contraseña
+3. **Puerto ocupado**: Cambiar puertos en archivos de configuración
+4. **Generador de texto no funciona**: 
+   - Verificar API key de Google Gemini en `config_new.py`
+   - Asegurar conexión a internet
+5. **Error "Los modelos no están disponibles"**: 
+   - Ejecutar `python save_model.py` desde `/backend`
+   - Verificar que existan archivos en `/models`
+
+---
+**¡Listo para usar! 🎉**
