@@ -52,6 +52,11 @@
   margin: 0 auto;
 }
 
+.seccion-contenido {
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
 /* Capturas container */
 .capturas-container {
   display: grid;
