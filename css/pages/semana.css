@@ -1,0 +1,111 @@
+/* Estilos comunes para todas las páginas de semanas */
+
+/* Header de semana */
+.semana-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background: rgba(45, 45, 45, 0.6);
+  border-radius: 20px;
+  border: 1px solid var(--border-color);
+}
+
+.semana-header img {
+  width: 100%;
+  max-width: 500px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 15px;
+  margin-bottom: 2rem;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+.semana-header h1 {
+  color: var(--accent-color);
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.semana-header .semana-numero {
+  background: linear-gradient(135deg, var(--accent-color), var(--accent-hover));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.semana-icon {
+  font-size: 4rem;
+  margin: 2rem 0;
+  display: block;
+  opacity: 0.8;
+}
+
+/* Contenido de semana */
+.contenido-semana {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Capturas container */
+.capturas-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.captura-item {
+  background: rgba(45, 45, 45, 0.6);
+  border-radius: 10px;
+  padding: 1.5rem;
+  border: 1px solid var(--border-color);
+}
+
+.captura-item h4 {
+  margin-bottom: 1rem;
+  color: var(--accent-color);
+}
+
+.captura-item img {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+/* Concepto item */
+.concepto-item {
+  background: rgba(45, 45, 45, 0.6);
+  border-radius: 15px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  border: 1px solid var(--border-color);
+}
+
+.concepto-item h4 {
+  color: var(--accent-color);
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.concepto-item:hover {
+  background: rgba(26, 26, 26, 0.8);
+  transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .semana-header h1 {
+    font-size: 2rem;
+  }
+  
+  .capturas-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .concepto-item {
+    padding: 1.5rem;
+  }
+}

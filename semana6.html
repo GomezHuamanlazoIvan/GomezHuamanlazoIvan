@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Semana 6 - Eventos y APIs en React</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/pages/semana6.css">
+</head>
+<body>
+  <header>
+    <img src="imagenes/perfil.png" alt="Foto de perfil" class="perfil">
+    <h1>Gomez Huamanlazo Ivan Paul</h1>
+    <p>Desarrollador Web Frontend & Backend</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="proyectos.html">Proyectos</a>
+    <a href="blog.html">Blog</a>
+    <a href="index.html#contacto">Contacto</a>
+  </nav>
+
+  <main class="semana-individual">
+    <div class="semana-header">
+      <div class="semana-numero">SEMANA 6</div>
+      <h1>Eventos y APIs en React</h1>
+      <img src="imagenes/semana6.png" alt="Semana 6 - Eventos y APIs">
+    </div>
+
+    <div class="contenido-semana">
+      <section class="seccion-contenido">
+        <h3>Manejo de Eventos en React</h3>
+        <p>Los <strong>eventos en React</strong> permiten manejar interacciones del usuario, como clics, envíos de formularios, y más. React utiliza SyntheticEvents para normalizar eventos entre diferentes navegadores.</p>
+        
+        <p>Las <strong>APIs (Application Programming Interfaces)</strong> permiten a los desarrolladores interactuar con servicios externos para obtener o enviar datos.</p>
+        
+        <p><strong>Axios</strong> es una biblioteca popular para hacer solicitudes HTTP desde el navegador, ofreciendo una interfaz más limpia que fetch nativo.</p>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>Programación Asincrónica</h3>
+        <p>Las <strong>promesas y async/await</strong> son patrones en JavaScript para manejar operaciones asincrónicas, permitiendo escribir código que se ejecuta de manera no bloqueante.</p>
+        
+        <h4>Ejemplo de consumo de API:</h4>
+        <pre><code>import axios from 'axios';
+import { useState, useEffect } from 'react';
+
+function UserList() {
+  const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    fetchUsers();
+  }, []);
+
+  const fetchUsers = async () => {
+    try {
+      setLoading(true);
+      const response = await axios.get('https://jsonplaceholder.typicode.com/users');
+      setUsers(response.data);
+    } catch (err) {
+      setError('Error al cargar usuarios');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  if (loading) return &lt;div&gt;Cargando...&lt;/div&gt;;
+  if (error) return &lt;div&gt;Error: {error}&lt;/div&gt;;
+
+  return (
+    &lt;div&gt;
+      {users.map(user =&gt; (
+        &lt;div key={user.id}&gt;
+          &lt;h3&gt;{user.name}&lt;/h3&gt;
+          &lt;p&gt;{user.email}&lt;/p&gt;
+        &lt;/div&gt;
+      ))}
+    &lt;/div&gt;
+  );
+}</code></pre>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>Formularios Interactivos</h3>
+        <pre><code>function ContactForm() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.post('/api/contact', formData);
+      alert('Mensaje enviado exitosamente');
+      setFormData({ name: '', email: '', message: '' });
+    } catch (error) {
+      alert('Error al enviar mensaje');
+    }
+  };
+
+  return (
+    &lt;form onSubmit={handleSubmit}&gt;
+      &lt;input
+        type="text"
+        name="name"
+        value={formData.name}
+        onChange={handleChange}
+        placeholder="Nombre"
+        required
+      /&gt;
+      &lt;button type="submit"&gt;Enviar&lt;/button&gt;
+    &lt;/form&gt;
+  );
+}</code></pre>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>Tecnologías Integradas</h3>
+        <ul>
+          <li><strong>React Events:</strong> onClick, onChange, onSubmit</li>
+          <li><strong>Axios:</strong> Cliente HTTP para APIs REST</li>
+          <li><strong>Async/Await:</strong> Manejo de operaciones asincrónicas</li>
+          <li><strong>Error Handling:</strong> Try/catch y estados de error</li>
+          <li><strong>Loading States:</strong> Indicadores de carga</li>
+        </ul>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>Reflexión Personal</h3>
+        <p>Aprendí la conexión entre frontend y servicios externos, manejo de datos asincrónicos. La manipulación de datos desde una API fue un gran avance en mi aprendizaje.</p>
+        
+        <p>El manejo de estados de carga y error me enseñó la importancia de crear interfaces que comuniquen claramente el estado de la aplicación al usuario.</p>
+      </section>
+    </div>
+
+    <div class="navegacion-semana">
+      <a href="semana5.html" class="nav-btn">
+        ← Semana 5
+      </a>
+      <a href="proyectos.html" class="volver-proyectos">Índice de Proyectos</a>
+      <a href="semana7.html" class="nav-btn">
+        Semana 7 →
+      </a>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Gomez Huamanlazo - Semana 6</p>
+  </footer>
+  
+  <script src="script.js"></script>
+</body>
+</html>

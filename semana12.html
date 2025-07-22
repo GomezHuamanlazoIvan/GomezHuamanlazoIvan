@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Semana 12 - API RESTful con Jakarta EE y Spring</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/pages/semana12.css">
+</head>
+
+<body>
+  <header>
+    <img src="imagenes/perfil.png" alt="Foto de perfil" class="perfil">
+    <h1>Gomez Huamanlazo Ivan Paul</h1>
+    <p>Desarrollador Web Frontend & Backend</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="proyectos.html">Proyectos</a>
+    <a href="blog.html">Blog</a>
+    <a href="index.html#contacto">Contacto</a>
+  </nav>
+
+  <main class="semana-individual">
+    <div class="semana-header">
+      <div class="semana-numero">SEMANA 12</div>
+      <h1>API RESTful con Jakarta EE y Spring</h1>
+      <div class="semana-icon">🚀☕</div>
+    </div>
+
+    <div class="contenido-semana">
+      <section class="seccion-contenido">
+        <h3>Proyecto: Sistema de Gestión de Docentes</h3>
+        <p>Esta semana desarrollé una <strong>API RESTful completa</strong> para la gestión de docentes utilizando
+          <strong>Jakarta EE</strong> y <strong>Spring Framework</strong>. La aplicación permite realizar operaciones
+          CRUD avanzadas sobre una entidad Docente, conectada a una base de datos MySQL.
+        </p>
+
+        <div class="project-overview">
+          <div class="overview-card">
+            <h4>🎯 Objetivo Principal</h4>
+            <p>Crear una API robusta que permita gestionar información de docentes con operaciones CRUD completas,
+              validaciones, paginación y funcionalidades avanzadas de consulta.</p>
+          </div>
+
+          <div class="overview-card">
+            <h4>🛠️ Stack Tecnológico</h4>
+            <ul>
+              <li><strong>Jakarta EE 24</strong> - Framework empresarial</li>
+              <li><strong>Spring Framework</strong> - Inyección de dependencias</li>
+              <li><strong>Spring Data JPA</strong> - Persistencia de datos</li>
+              <li><strong>MySQL</strong> - Base de datos relacional</li>
+              <li><strong>Swagger</strong> - Documentación de API</li>
+              <li><strong>Postman</strong> - Testing de endpoints</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>Entidad Docente - Modelo de Datos</h3>
+        <p>La entidad principal del sistema contiene la siguiente estructura de información:</p>
+
+        <div class="entity-structure">
+          <h4>📋 Campos de la Entidad Docente:</h4>
+          <div class="field-list">
+            <div class="field-item">
+              <h5>🆔 idDocente</h5>
+              <p>Identificador único del docente (Primary Key, Auto-increment)</p>
+            </div>
+
+            <div class="field-item">
+              <h5>👤 nomDocente</h5>
+              <p>Nombre completo del docente (String, requerido)</p>
+            </div>
+
+            <div class="field-item">
+              <h5>🏠 dirDocente</h5>
+              <p>Dirección de residencia del docente (String)</p>
+            </div>
+
+            <div class="field-item">
+              <h5>🏙️ ciuDocente</h5>
+              <p>Ciudad de residencia del docente (String, requerido)</p>
+            </div>
+
+            <div class="field-item">
+              <h5>📧 emailDocente</h5>
+              <p>Correo electrónico del docente (String, formato email válido)</p>
+            </div>
+
+            <div class="field-item">
+              <h5>📅 fecNacimiento</h5>
+              <p>Fecha de nacimiento del docente (Date, debe ser anterior a hoy)</p>
+            </div>
+
+            <div class="field-item">
+              <h5>⏱️ tiempoServicio</h5>
+              <p>Años de servicio del docente (Integer, no puede ser negativo)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="code-example">
+          <h4>Implementación de la Entidad:</h4>
+          <p>@Entity</p>
+          <p>@Table(name = "docentes")</p>
+          <p>public class Docente {</p>
+          <p> @Id</p>
+          <p> @GeneratedValue(strategy = GenerationType.IDENTITY)</p>
+          <p> private Long idDocente;</p>
+          <p> </p>
+          <p> @NotBlank(message = "El nombre del docente es requerido")</p>
+          <p> @Column(nullable = false)</p>
+          <p> private String nomDocente;</p>
+          <p> </p>
+          <p> private String dirDocente;</p>
+          <p> </p>
+          <p> @NotBlank(message = "La ciudad es requerida")</p>
+          <p> @Column(nullable = false)</p>
+          <p> private String ciuDocente;</p>
+          <p> </p>
+          <p> @Email(message = "El formato del email no es válido")</p>
+          <p> @NotBlank(message = "El email es requerido")</p>
+          <p> @Column(unique = true)</p>
+          <p> private String emailDocente;</p>
+          <p> </p>
+          <p> @Past(message = "La fecha de nacimiento debe ser anterior a hoy")</p>
+          <p> @NotNull(message = "La fecha de nacimiento es requerida")</p>
+          <p> private LocalDate fecNacimiento;</p>
+          <p> </p>
+          <p> @Min(value = 0, message = "El tiempo de servicio no puede ser negativo")</p>
+          <p> @NotNull(message = "El tiempo de servicio es requerido")</p>
+          <p> private Integer tiempoServicio;</p>
+          <p> </p>
+          <p> // Constructores, getters y setters</p>
+          <p>}</p>
+        </div>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>Operaciones CRUD Implementadas</h3>
+        <p>La API implementa todas las operaciones básicas y avanzadas para la gestión de docentes:</p>
+
+        <div class="crud-operations">
+          <div class="operation-group">
+            <h4>🔍 Operaciones de Consulta (READ)</h4>
+            <div class="endpoint-item">
+              <h5>GET /api/docentes</h5>
+              <p><strong>Descripción:</strong> Lista todos los docentes con soporte para paginación</p>
+              <p><strong>Parámetros:</strong> ?page=0&size=10 (opcional)</p>
+              <p><strong>Respuesta:</strong> Lista paginada de docentes</p>
+            </div>
+
+            <div class="endpoint-item">
+              <h5>GET /api/docentes/{id}</h5>
+              <p><strong>Descripción:</strong> Obtiene un docente específico por su ID</p>
+              <p><strong>Parámetros:</strong> id (Long) - ID del docente</p>
+              <p><strong>Respuesta:</strong> Datos completos del docente</p>
+            </div>
+
+            <div class="endpoint-item">
+              <h5>GET /api/docentes/ciudad/{ciudad}</h5>
+              <p><strong>Descripción:</strong> Lista docentes que residen en una ciudad específica</p>
+              <p><strong>Ejemplo:</strong> /api/docentes/ciudad/Cusco</p>
+              <p><strong>Puntos:</strong> 2 puntos</p>
+            </div>
+
+            <div class="endpoint-item">
+              <h5>GET /api/docentes/experiencia/{años}</h5>
+              <p><strong>Descripción:</strong> Lista docentes con al menos cierta cantidad de años de servicio</p>
+              <p><strong>Ejemplo:</strong> /api/docentes/experiencia/10</p>
+              <p><strong>Puntos:</strong> 2 puntos</p>
+            </div>
+
+            <div class="endpoint-item">
+              <h5>GET /api/docentes/edad-promedio</h5>
+              <p><strong>Descripción:</strong> Calcula y devuelve la edad promedio de todos los docentes</p>
+              <p><strong>Respuesta:</strong> Número decimal con la edad promedio</p>
+              <p><strong>Puntos:</strong> 2 puntos</p>
+            </div>
+          </div>
+
+          <div class="operation-group">
+            <h4>✏️ Operaciones de Modificación</h4>
+            <div class="endpoint-item">
+              <h5>POST /api/docentes</h5>
+              <p><strong>Descripción:</strong> Crea un nuevo docente</p>
+              <p><strong>Body:</strong> JSON con datos del docente</p>
+              <p><strong>Validaciones:</strong> Email válido, fecha anterior a hoy, tiempo servicio ≥ 0</p>
+            </div>
+
+            <div class="endpoint-item">
+              <h5>PUT /api/docentes/{id}</h5>
+              <p><strong>Descripción:</strong> Actualiza los datos completos de un docente</p>
+              <p><strong>Body:</strong> JSON con datos actualizados</p>
+            </div>
+
+            <div class="endpoint-item">
+              <h5>DELETE /api/docentes/{id}</h5>
+              <p><strong>Descripción:</strong> Elimina un docente por su ID</p>
+              <p><strong>Respuesta:</strong> Confirmación de eliminación</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>Implementación del Controlador REST</h3>
+        <p>El controlador principal maneja todas las operaciones de la API:</p>
+
+        <div class="code-example">
+          <p>@RestController</p>
+          <p>@RequestMapping("/api/docentes")</p>
+          <p>@CrossOrigin(origins = "*")</p>
+          <p>@Api(tags = "Gestión de Docentes")</p>
+          <p>public class DocenteController {</p>
+          <p> </p>
+          <p> @Autowired</p>
+          <p> private DocenteService docenteService;</p>
+          <p> </p>
+          <p> @GetMapping</p>
+          <p> @ApiOperation("Listar todos los docentes con paginación")</p>
+          <p> public ResponseEntity&lt;Page&lt;Docente&gt;&gt; getAllDocentes(</p>
+          <p> @RequestParam(defaultValue = "0") int page,</p>
+          <p> @RequestParam(defaultValue = "10") int size) {</p>
+          <p> </p>
+          <p> Pageable pageable = PageRequest.of(page, size);</p>
+          <p> Page&lt;Docente&gt; docentes = docenteService.findAll(pageable);</p>
+          <p> return ResponseEntity.ok(docentes);</p>
+          <p> }</p>
+          <p> </p>
+          <p> @GetMapping("/{id}")</p>
+          <p> @ApiOperation("Obtener docente por ID")</p>
+          <p> public ResponseEntity&lt;Docente&gt; getDocenteById(@PathVariable Long id) {</p>
+          <p> Optional&lt;Docente&gt; docente = docenteService.findById(id);</p>
+          <p> return docente.map(ResponseEntity::ok)</p>
+          <p> .orElse(ResponseEntity.notFound().build());</p>
+          <p> }</p>
+          <p> </p>
+          <p> @PostMapping</p>
+          <p> @ApiOperation("Crear nuevo docente")</p>
+          <p> public ResponseEntity&lt;Docente&gt; createDocente(</p>
+          <p> @Valid @RequestBody Docente docente) {</p>
+          <p> </p>
+          <p> Docente savedDocente = docenteService.save(docente);</p>
+          <p> return ResponseEntity.status(HttpStatus.CREATED).body(savedDocente);</p>
+          <p> }</p>
+          <p> </p>
+          <p> @GetMapping("/ciudad/{ciudad}")</p>
+          <p> @ApiOperation("Listar docentes por ciudad")</p>
+          <p> public ResponseEntity&lt;List&lt;Docente&gt;&gt; getDocentesByCiudad(</p>
+          <p> @PathVariable String ciudad) {</p>
+          <p> </p>
+          <p> List&lt;Docente&gt; docentes = docenteService.findByCiudad(ciudad);</p>
+          <p> return ResponseEntity.ok(docentes);</p>
+          <p> }</p>
+          <p> </p>
+          <p> @GetMapping("/experiencia/{años}")</p>
+          <p> @ApiOperation("Listar docentes con experiencia mínima")</p>
+          <p> public ResponseEntity&lt;List&lt;Docente&gt;&gt; getDocentesByExperiencia(</p>
+          <p> @PathVariable Integer años) {</p>
+          <p> </p>
+          <p> List&lt;Docente&gt; docentes = docenteService.findByTiempoServicioGreaterThanEqual(años);</p>
+          <p> return ResponseEntity.ok(docentes);</p>
+          <p> }</p>
+          <p> </p>
+          <p> @GetMapping("/edad-promedio")</p>
+          <p> @ApiOperation("Calcular edad promedio de docentes")</p>
+          <p> public ResponseEntity&lt;Double&gt; getEdadPromedio() {</p>
+          <p> Double edadPromedio = docenteService.calculateAverageAge();</p>
+          <p> return ResponseEntity.ok(edadPromedio);</p>
+          <p> }</p>
+          <p>}</p>
+        </div>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>Validaciones Implementadas</h3>
+        <p>El sistema incluye validaciones robustas para garantizar la integridad de los datos:</p>
+
+        <div class="validations-grid">
+          <div class="validation-item">
+            <h4>📧 Validación de Email (2 puntos)</h4>
+            <p><strong>Regla:</strong> El emailDocente debe tener formato de correo válido</p>
+            <p><strong>Implementación:</strong> @Email annotation + regex validation</p>
+            <div class="code-example">
+              <p>@Email(message = "El formato del email no es válido")</p>
+              <p>@NotBlank(message = "El email es requerido")</p>
+              <p>@Column(unique = true)</p>
+              <p>private String emailDocente;</p>
+            </div>
+          </div>
+
+          <div class="validation-item">
+            <h4>⏱️ Validación de Tiempo de Servicio (2 puntos)</h4>
+            <p><strong>Regla:</strong> El tiempoServicio no puede ser negativo</p>
+            <p><strong>Implementación:</strong> @Min(0) annotation</p>
+            <div class="code-example">
+              <p>@Min(value = 0, message = "El tiempo de servicio no puede ser negativo")</p>
+              <p>@NotNull(message = "El tiempo de servicio es requerido")</p>
+              <p>private Integer tiempoServicio;</p>
+            </div>
+          </div>
+
+          <div class="validation-item">
+            <h4>📅 Validación de Fecha de Nacimiento (2 puntos)</h4>
+            <p><strong>Regla:</strong> La fecNacimiento debe ser anterior a la fecha actual</p>
+            <p><strong>Implementación:</strong> @Past annotation</p>
+            <div class="code-example">
+              <p>@Past(message = "La fecha de nacimiento debe ser anterior a hoy")</p>
+              <p>@NotNull(message = "La fecha de nacimiento es requerida")</p>
+              <p>private LocalDate fecNacimiento;</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>Funcionalidades Avanzadas</h3>
+
+        <div class="advanced-features">
+          <div class="feature-item">
+            <h4>📖 Documentación Swagger (2 puntos)</h4>
+            <p>Implementación completa de documentación automática de la API usando Swagger/OpenAPI:</p>
+            <div class="code-example">
+              <p>@Configuration</p>
+              <p>@EnableSwagger2</p>
+              <p>public class SwaggerConfig {</p>
+              <p> </p>
+              <p> @Bean</p>
+              <p> public Docket api() {</p>
+              <p> return new Docket(DocumentationType.SWAGGER_2)</p>
+              <p> .select()</p>
+              <p> .apis(RequestHandlerSelectors.basePackage("com.docentes.controller"))</p>
+              <p> .paths(PathSelectors.any())</p>
+              <p> .build()</p>
+              <p> .apiInfo(apiInfo());</p>
+              <p> }</p>
+              <p> </p>
+              <p> private ApiInfo apiInfo() {</p>
+              <p> return new ApiInfoBuilder()</p>
+              <p> .title("API de Gestión de Docentes")</p>
+              <p> .description("API RESTful para gestionar información de docentes")</p>
+              <p> .version("1.0.0")</p>
+              <p> .build();</p>
+              <p> }</p>
+              <p>}</p>
+            </div>
+          </div>
+
+          <div class="feature-item">
+            <h4>🚨 Manejo de Excepciones Globales (2 puntos)</h4>
+            <p>Sistema centralizado de manejo de errores con respuestas consistentes:</p>
+            <div class="code-example">
+              <p>@ControllerAdvice</p>
+              <p>public class GlobalExceptionHandler {</p>
+              <p> </p>
+              <p> @ExceptionHandler(MethodArgumentNotValidException.class)</p>
+              <p> public ResponseEntity&lt;ErrorResponse&gt; handleValidationExceptions(</p>
+              <p> MethodArgumentNotValidException ex) {</p>
+              <p> </p>
+              <p> Map&lt;String, String&gt; errors = new HashMap&lt;&gt;();</p>
+              <p> ex.getBindingResult().getAllErrors().forEach((error) -&gt; {</p>
+              <p> String fieldName = ((FieldError) error).getField();</p>
+              <p> String errorMessage = error.getDefaultMessage();</p>
+              <p> errors.put(fieldName, errorMessage);</p>
+              <p> });</p>
+              <p> </p>
+              <p> ErrorResponse errorResponse = new ErrorResponse(</p>
+              <p> "Errores de validación", errors);</p>
+              <p> return ResponseEntity.badRequest().body(errorResponse);</p>
+              <p> }</p>
+              <p>}</p>
+            </div>
+          </div>
+
+          <div class="feature-item">
+            <h4>📄 Paginación Avanzada (8 puntos)</h4>
+            <p>Sistema completo de paginación para el listado de docentes:</p>
+            <div class="code-example">
+              <p>@GetMapping</p>
+              <p>public ResponseEntity&lt;Page&lt;Docente&gt;&gt; getAllDocentes(</p>
+              <p> @RequestParam(defaultValue = "0") int page,</p>
+              <p> @RequestParam(defaultValue = "10") int size,</p>
+              <p> @RequestParam(defaultValue = "idDocente") String sortBy,</p>
+              <p> @RequestParam(defaultValue = "asc") String sortDir) {</p>
+              <p> </p>
+              <p> Sort sort = sortDir.equalsIgnoreCase("desc") ? </p>
+              <p> Sort.by(sortBy).descending() : </p>
+              <p> Sort.by(sortBy).ascending();</p>
+              <p> </p>
+              <p> Pageable pageable = PageRequest.of(page, size, sort);</p>
+              <p> Page&lt;Docente&gt; docentes = docenteService.findAll(pageable);</p>
+              <p> </p>
+              <p> return ResponseEntity.ok(docentes);</p>
+              <p>}</p>
+            </div>
+            <p><strong>Ejemplo de uso:</strong> GET /api/docentes?page=0&size=10&sortBy=nomDocente&sortDir=asc</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>Testing con Postman</h3>
+        <p>Demostración completa de todos los endpoints usando Postman:</p>
+
+        <div class="testing-scenarios">
+          <div class="test-group">
+            <h4>🧪 Casos de Prueba Implementados</h4>
+
+            <div class="test-item">
+              <h5>1. Crear Docente (POST)</h5>
+              <div class="code-example">
+                <p>POST /api/docentes</p>
+                <p>Content-Type: application/json</p>
+                <p></p>
+                <p>{</p>
+                <p> "nomDocente": "Dr. Juan Pérez García",</p>
+                <p> "dirDocente": "Av. El Sol 123, San Blas",</p>
+                <p> "ciuDocente": "Cusco",</p>
+                <p> "emailDocente": "juan.perez@universidad.edu.pe",</p>
+                <p> "fecNacimiento": "1980-05-15",</p>
+                <p> "tiempoServicio": 12</p>
+                <p>}</p>
+              </div>
+            </div>
+
+            <div class="test-item">
+              <h5>2. Listar con Paginación (GET)</h5>
+              <div class="code-example">
+                <p>GET /api/docentes?page=0&size=5&sortBy=nomDocente&sortDir=asc</p>
+                <p></p>
+                <p>Respuesta esperada:</p>
+                <p>{</p>
+                <p> "content": [...],</p>
+                <p> "pageable": {</p>
+                <p> "pageNumber": 0,</p>
+                <p> "pageSize": 5</p>
+                <p> },</p>
+                <p> "totalElements": 25,</p>
+                <p> "totalPages": 5</p>
+                <p>}</p>
+              </div>
+            </div>
+
+            <div class="test-item">
+              <h5>3. Buscar por Ciudad (GET)</h5>
+              <div class="code-example">
+                <p>GET /api/docentes/ciudad/Cusco</p>
+                <p></p>
+                <p>Retorna todos los docentes que residen en Cusco</p>
+              </div>
+            </div>
+
+            <div class="test-item">
+              <h5>4. Filtrar por Experiencia (GET)</h5>
+              <div class="code-example">
+                <p>GET /api/docentes/experiencia/10</p>
+                <p></p>
+                <p>Retorna docentes con 10 o más años de servicio</p>
+              </div>
+            </div>
+
+            <div class="test-item">
+              <h5>5. Edad Promedio (GET)</h5>
+              <div class="code-example">
+                <p>GET /api/docentes/edad-promedio</p>
+                <p></p>
+                <p>Respuesta: 42.5</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>Tecnologías y Herramientas Utilizadas</h3>
+
+        <div class="tecnologias-grid">
+          <div class="tech-category">
+            <h4>Backend Framework:</h4>
+            <ul>
+              <li><strong>Jakarta EE 24</strong> - Plataforma empresarial</li>
+              <li><strong>Spring Framework 6.x</strong> - Inyección de dependencias</li>
+              <li><strong>Spring Boot 3.x</strong> - Configuración automática</li>
+              <li><strong>Spring Data JPA</strong> - Persistencia de datos</li>
+              <li><strong>Spring Web MVC</strong> - API REST</li>
+            </ul>
+          </div>
+
+          <div class="tech-category">
+            <h4>Base de Datos:</h4>
+            <ul>
+              <li><strong>MySQL 8.0</strong> - Base de datos relacional</li>
+              <li><strong>Hibernate</strong> - ORM (Object-Relational Mapping)</li>
+              <li><strong>JPA</strong> - Java Persistence API</li>
+            </ul>
+          </div>
+
+          <div class="tech-category">
+            <h4>Validación y Documentación:</h4>
+            <ul>
+              <li><strong>Bean Validation (JSR-303)</strong> - Validaciones</li>
+              <li><strong>Swagger/OpenAPI 3</strong> - Documentación API</li>
+              <li><strong>SpringDoc</strong> - Integración Swagger con Spring</li>
+            </ul>
+          </div>
+
+          <div class="tech-category">
+            <h4>Testing y Herramientas:</h4>
+            <ul>
+              <li><strong>Postman</strong> - Testing de API</li>
+              <li><strong>Maven</strong> - Gestión de dependencias</li>
+              <li><strong>IntelliJ IDEA</strong> - IDE de desarrollo</li>
+              <li><strong>MySQL Workbench</strong> - Administración BD</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>Ejemplos Prácticos y Capturas</h3>
+        <p>A continuación se muestran capturas del desarrollo y funcionamiento de la API RESTful con Jakarta EE y Spring:</p>
+
+        <div class="capturas-container">
+          <div class="captura-item">
+            <h4>📸 Captura 1: Estructura del proyecto Jakarta EE</h4>
+            <img src="imagenes/semana12-captura1.png" alt="Estructura proyecto Jakarta EE" onerror="this.style.display='none'">
+            <p>Organización del proyecto mostrando la arquitectura Jakarta EE con controladores, servicios y entidades</p>
+          </div>
+
+          <div class="captura-item">
+            <h4>📸 Captura 2: API REST endpoints funcionando</h4>
+            <img src="imagenes/semana12-captura2.png" alt="API REST endpoints" onerror="this.style.display='none'">
+            <p>Pruebas de los endpoints de la API RESTful mostrando operaciones CRUD con respuestas JSON</p>
+          </div>
+
+          <div class="captura-item">
+            <h4>📸 Captura 3: Integración Spring y base de datos</h4>
+            <img src="imagenes/semana12-captura3.png" alt="Integración Spring BD" onerror="this.style.display='none'">
+            <p>Configuración de Spring Data JPA y conexión exitosa con la base de datos mostrando persistencia de datos</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>Código Fuente y Recursos</h3>
+        <div class="codigo-fuente-container">
+          <div class="github-link-card">
+            <div class="github-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+              </svg>
+            </div>
+            <div class="github-content">
+              <h4>Ver Código Fuente Completo</h4>
+              <p>Accede al repositorio completo con la API RESTful desarrollada con Jakarta EE y Spring de la Semana 12.</p>
+              <div class="github-features">
+                <span class="feature-tag">🌐 API REST</span>
+                <span class="feature-tag">☕ Jakarta EE</span>
+                <span class="feature-tag">🍃 Spring</span>
+                <span class="feature-tag">📊 JSON</span>
+              </div>
+              <a href="https://github.com/GomezHuamanlazoIvan/GomezHuamanlazoIvan" target="_blank" rel="noopener noreferrer" class="btn-github">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                </svg>
+                Ver en GitHub
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+          
+          <div class="recursos-adicionales">
+            <h4>📁 Contenido del Repositorio</h4>
+            <ul class="recursos-lista">
+              <li>
+                <span class="recurso-icon">🌐</span>
+                <div>
+                  <strong>API RESTful Completa</strong>
+                  <p>Implementación completa de servicios web REST con CRUD</p>
+                </div>
+              </li>
+              <li>
+                <span class="recurso-icon">☕</span>
+                <div>
+                  <strong>Proyecto Jakarta EE</strong>
+                  <p>Aplicación empresarial con Jakarta EE y sus especificaciones</p>
+                </div>
+              </li>
+              <li>
+                <span class="recurso-icon">🍃</span>
+                <div>
+                  <strong>Integración Spring</strong>
+                  <p>Configuración y uso de Spring Framework con la API</p>
+                </div>
+              </li>
+              <li>
+                <span class="recurso-icon">🗄️</span>
+                <div>
+                  <strong>Persistencia de Datos</strong>
+                  <p>Manejo de bases de datos y operaciones CRUD</p>
+                </div>
+              </li>
+              <li>
+                <span class="recurso-icon">📚</span>
+                <div>
+                  <strong>Documentación API</strong>
+                  <p>Documentación completa de endpoints y ejemplos de uso</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>Reflexión Personal</h3>
+        <p>Esta semana representó un desafío técnico significativo que me permitió consolidar mis conocimientos en
+          desarrollo de APIs empresariales. La combinación de <strong>Jakarta EE</strong> y <strong>Spring
+            Framework</strong> me mostró el poder y la robustez de las tecnologías Java para aplicaciones de nivel
+          empresarial.</p>
+
+        <p>La implementación de <strong>validaciones complejas</strong> me enseñó la importancia de la integridad de
+          datos desde el nivel de aplicación. Usar anotaciones como @Email, @Past, y @Min no solo simplifica el código,
+          sino que garantiza consistencia en toda la aplicación.</p>
+
+        <p>El desarrollo de <strong>endpoints especializados</strong> como la búsqueda por ciudad, filtrado por
+          experiencia y cálculo de edad promedio me ayudó a entender cómo diseñar APIs que realmente resuelvan
+          necesidades de negocio específicas, no solo operaciones CRUD básicas.</p>
+
+        <p>La implementación de <strong>paginación avanzada</strong> fue particularmente educativa. Entender cómo
+          manejar grandes volúmenes de datos de manera eficiente es crucial para aplicaciones del mundo real. La
+          integración con Spring Data JPA hizo que esta funcionalidad compleja fuera sorprendentemente elegante.</p>
+
+        <p>El <strong>manejo global de excepciones</strong> me mostró la importancia de tener respuestas de error
+          consistentes y útiles. Un buen sistema de manejo de errores es tan importante como la funcionalidad principal
+          de la API.</p>
+
+        <p>La documentación automática con <strong>Swagger</strong> cambió mi perspectiva sobre la documentación de
+          APIs. No es solo una herramienta para otros desarrolladores, sino una forma de validar y mejorar el diseño de
+          la propia API durante el desarrollo.</p>
+
+        <p>Finalmente, las pruebas exhaustivas con <strong>Postman</strong> me enseñaron la importancia de testing
+          sistemático. Cada endpoint, cada validación, cada caso edge debe ser probado meticulosamente para garantizar
+          la calidad del software.</p>
+
+        <p>Esta experiencia me preparó para enfrentar proyectos de desarrollo backend de nivel empresarial con confianza
+          y mejores prácticas.</p>
+      </section>
+    </div>
+
+    <div class="navegacion-semana">
+      <a href="semana11.html" class="nav-btn">
+        ← Semana 11
+      </a>
+      <a href="proyectos.html" class="volver-proyectos">Índice de Proyectos</a>
+      <a href="semana13.html" class="nav-btn">
+        Semana 13 →
+      </a>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Gomez Huamanlazo - Semana 12</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

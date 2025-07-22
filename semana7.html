@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Semana 7 - React Hooks</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/pages/semana7.css">
+</head>
+<body>
+  <header>
+    <img src="imagenes/perfil.png" alt="Foto de perfil" class="perfil">
+    <h1>Gomez Huamanlazo Ivan Paul</h1>
+    <p>Desarrollador Web Frontend & Backend</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="proyectos.html">Proyectos</a>
+    <a href="blog.html">Blog</a>
+    <a href="index.html#contacto">Contacto</a>
+  </nav>
+
+  <main class="semana-individual">
+    <div class="semana-header">
+      <div class="semana-numero">SEMANA 7</div>
+      <h1>Hooks en React</h1>
+      <img src="imagenes/semana7.png" alt="Semana 7 - React Hooks">
+    </div>
+
+    <div class="contenido-semana">
+      <section class="seccion-contenido">
+        <h3>Introducción a los Hooks</h3>
+        <p>Los <strong>hooks en React</strong> son funciones que permiten usar estado y otras características de React en componentes funcionales. Fueron introducidos en React 16.8 y revolucionaron la forma de escribir componentes.</p>
+        
+        <p><strong>useState</strong> permite añadir estado a componentes funcionales. <strong>useEffect</strong> permite realizar efectos secundarios en componentes funcionales, como operaciones de datos, suscripciones, y cambios manuales en el DOM.</p>
+        
+        <p>Otros hooks importantes incluyen <strong>useContext</strong>, <strong>useRef</strong>, <strong>useReducer</strong>, <strong>useCallback</strong> y <strong>useMemo</strong>.</p>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>useState y useEffect en Acción</h3>
+        <p>Ejemplo de componente con estados múltiples y efectos secundarios:</p>
+        <pre><code>import React, { useState, useEffect } from 'react';
+
+function Counter() {
+  const [count, setCount] = useState(0);
+  const [name, setName] = useState('');
+  const [users, setUsers] = useState([]);
+
+  // Efecto que se ejecuta después de cada render
+  useEffect(() => {
+    document.title = `Contador: ${count}`;
+  });
+
+  // Efecto que se ejecuta solo una vez (componentDidMount)
+  useEffect(() => {
+    fetchUsers();
+  }, []);
+
+  // Efecto que se ejecuta cuando count cambia
+  useEffect(() => {
+    if (count > 10) {
+      console.log('¡Contador alto!');
+    }
+  }, [count]);
+
+  const fetchUsers = async () => {
+    try {
+      const response = await fetch('/api/users');
+      const data = await response.json();
+      setUsers(data);
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+
+  return (
+    &lt;div&gt;
+      &lt;h2&gt;Hola, {name || 'Anónimo'}&lt;/h2&gt;
+      &lt;input 
+        value={name}
+        onChange={(e) =&gt; setName(e.target.value)}
+        placeholder="Tu nombre"
+      /&gt;
+      
+      &lt;p&gt;Has hecho clic {count} veces&lt;/p&gt;
+      &lt;button onClick={() =&gt; setCount(count + 1)}&gt;
+        Incrementar
+      &lt;/button&gt;
+      
+      &lt;div&gt;
+        &lt;h3&gt;Usuarios ({users.length})&lt;/h3&gt;
+        {users.map(user =&gt; (
+          &lt;p key={user.id}&gt;{user.name}&lt;/p&gt;
+        ))}
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>Hooks Avanzados</h3>
+        <pre><code>import { useContext, useRef, useCallback, useMemo } from 'react';
+
+function AdvancedComponent({ items, onItemClick }) {
+  const inputRef = useRef(null);
+  const theme = useContext(ThemeContext);
+  
+  // useCallback para optimizar funciones
+  const handleClick = useCallback((item) => {
+    onItemClick(item);
+    inputRef.current?.focus();
+  }, [onItemClick]);
+  
+  // useMemo para optimizar cálculos costosos
+  const expensiveValue = useMemo(() => {
+    return items.reduce((sum, item) => sum + item.value, 0);
+  }, [items]);
+  
+  // useRef para referencias DOM
+  const focusInput = () => {
+    inputRef.current?.focus();
+  };
+
+  return (
+    &lt;div style={{ backgroundColor: theme.background }}&gt;
+      &lt;input ref={inputRef} placeholder="Buscar..." /&gt;
+      &lt;button onClick={focusInput}&gt;Enfocar Input&lt;/button&gt;
+      &lt;p&gt;Valor total: {expensiveValue}&lt;/p&gt;
+      
+      {items.map(item =&gt; (
+        &lt;button 
+          key={item.id}
+          onClick={() =&gt; handleClick(item)}
+        &gt;
+          {item.name}
+        &lt;/button&gt;
+      ))}
+    &lt;/div&gt;
+  );
+}</code></pre>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>Hooks Principales Dominados</h3>
+        <ul>
+          <li><strong>useState:</strong> Manejo de estado local en componentes</li>
+          <li><strong>useEffect:</strong> Efectos secundarios y ciclo de vida</li>
+          <li><strong>useContext:</strong> Consumo de contexto React</li>
+          <li><strong>useRef:</strong> Referencias a elementos DOM</li>
+          <li><strong>useCallback:</strong> Optimización de funciones</li>
+          <li><strong>useMemo:</strong> Optimización de cálculos costosos</li>
+          <li><strong>useReducer:</strong> Manejo de estado complejo</li>
+        </ul>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>Reflexión Personal</h3>
+        <p>Comprendí cómo manejar estados y ciclos de vida con elegancia usando hooks. Esto me permitió crear componentes más dinámicos y eficientes, eliminando la necesidad de componentes de clase en la mayoría de casos.</p>
+        
+        <p>Los hooks de optimización como useCallback y useMemo me enseñaron la importancia del rendimiento en aplicaciones React, especialmente cuando se manejan grandes cantidades de datos o componentes complejos.</p>
+        
+        <p>Esta semana consolidó mi comprensión de React moderno y me preparó para desarrollar aplicaciones más sofisticadas y performantes.</p>
+      </section>
+    </div>
+
+    <div class="navegacion-semana">
+      <a href="semana6.html" class="nav-btn">
+        ← Semana 6
+      </a>
+      <a href="proyectos.html" class="volver-proyectos">Índice de Proyectos</a>
+      <span class="nav-btn disabled">
+        Final del recorrido ✨
+      </span>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Gomez Huamanlazo - Semana 7</p>
+  </footer>
+  
+  <script src="script.js"></script>
+</body>
+</html>

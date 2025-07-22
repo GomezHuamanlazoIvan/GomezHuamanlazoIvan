@@ -1,0 +1,166 @@
+/* Estilos específicos para la semana 13 - PHP Laravel */
+
+/* Laravel concepts */
+.laravel-concepts {
+  display: grid;
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.concept-item {
+  background: rgba(58, 58, 58, 0.4);
+  padding: 2rem;
+  border-radius: 15px;
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.concept-item:hover {
+  background: rgba(58, 58, 58, 0.6);
+  border-color: var(--accent-color);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.1);
+}
+
+.concept-item h4 {
+  color: var(--accent-color);
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.concept-item h4::before {
+  content: '🐘';
+  font-size: 1.1rem;
+  margin-right: 0.5rem;
+}
+
+/* PHP concepts */
+.php-concepts {
+  display: grid;
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.php-item {
+  background: rgba(58, 58, 58, 0.4);
+  padding: 2rem;
+  border-radius: 15px;
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+}
+
+.php-item:hover {
+  background: rgba(58, 58, 58, 0.6);
+  border-color: var(--accent-color);
+  transform: translateY(-3px);
+}
+
+.php-item h4 {
+  color: var(--accent-color);
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.php-item h4::before {
+  content: '💻';
+  font-size: 1rem;
+  margin-right: 0.5rem;
+}
+
+/* Advanced concepts */
+.advanced-concepts {
+  display: grid;
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+/* Artisan commands */
+.artisan-commands {
+  background: rgba(30, 30, 30, 0.6);
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-top: 1.5rem;
+  border: 1px solid var(--border-color);
+}
+
+.artisan-commands h5 {
+  color: #ddd;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+/* Directory structure */
+.directory-structure {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.dir-item {
+  background: rgba(45, 45, 45, 0.6);
+  border-radius: 10px;
+  padding: 1.5rem;
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+}
+
+.dir-item:hover {
+  background: rgba(58, 58, 58, 0.6);
+  border-color: var(--accent-color);
+  transform: translateY(-2px);
+}
+
+.dir-item h4 {
+  color: var(--accent-color);
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+/* Code blocks */
+.laravel-concepts pre,
+.php-item pre {
+  background: rgba(26, 26, 26, 0.9);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  overflow-x: auto;
+  border: 1px solid var(--border-color);
+}
+
+.laravel-concepts code,
+.php-item code {
+  color: var(--accent-color);
+  font-family: 'Fira Code', 'Consolas', monospace;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .laravel-concepts,
+  .php-concepts,
+  .advanced-concepts {
+    gap: 1.5rem;
+  }
+  
+  .concept-item,
+  .php-item {
+    padding: 1.5rem;
+  }
+  
+  .directory-structure {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .laravel-concepts pre,
+  .php-item pre {
+    font-size: 0.8rem;
+    padding: 1rem;
+  }
+}

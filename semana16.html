@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Semana 16 - Sistema Inteligente de Análisis de Datos con IA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/pages/semana16.css">
+</head>
+<body>
+  <header>
+    <img src="imagenes/perfil.png" alt="Foto de perfil" class="perfil">
+    <h1>Gomez Huamanlazo Ivan Paul</h1>
+    <p>Desarrollador Web Frontend & Backend</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="proyectos.html">Proyectos</a>
+    <a href="blog.html">Blog</a>
+    <a href="index.html#contacto">Contacto</a>
+  </nav>
+
+  <main class="semana-individual">
+    <div class="semana-header">
+      <div class="semana-numero">SEMANA 16</div>
+      <h1>🤖 Sistema Inteligente de Análisis de Datos con IA</h1>
+      <img src="imagenes/semana16.png" alt="Semana 16 - Sistema Inteligente de Análisis de Datos" onerror="this.style.display='none'">
+    </div>
+
+    <div class="contenido-semana">
+      <section class="seccion-contenido">
+        <h3>Definición y Contexto</h3>
+        <p>Este proyecto es una <strong>aplicación web completa</strong> que implementa técnicas avanzadas de <strong>Inteligencia Artificial</strong> para el análisis de datos, replicando la metodología científica del paper <strong>"DeepLearning_Based_MissingData_Imputation (DMDI)"</strong> para la gestión de datos faltantes.</p>
+        <div class="concepto-item">
+          <h4>Sistema Inteligente de Análisis de Datos:</h4>
+          <p>Permite <strong>reconstruir datos faltantes</strong>, analizar sentimientos y generar texto, integrando modelos de IA en un flujo automatizado y accesible vía web.</p>
+          <div class="alcances-funcionales">
+            <h5>Alcances funcionales:</h5>
+            <ul>
+              <li><strong>Imputación de datos faltantes</strong> con autoencoders</li>
+              <li><strong>Análisis de sentimientos</strong> sobre textos</li>
+              <li><strong>Generación de texto</strong> con modelos LLM (Gemini)</li>
+            </ul>
+          </div>
+        </div>
+        <div class="ambitos-aplicacion">
+          <h4>Ámbitos de aplicación:</h4>
+          <div class="aplicaciones-grid">
+            <div class="aplicacion-item">
+              <h5>🏥 Salud</h5>
+              <p>Gestión de historiales clínicos incompletos</p>
+            </div>
+            <div class="aplicacion-item">
+              <h5>📊 Finanzas</h5>
+              <p>Reconstrucción de series temporales</p>
+            </div>
+            <div class="aplicacion-item">
+              <h5>🧬 Ciencia de datos</h5>
+              <p>Preprocesamiento de datasets para ML</p>
+            </div>
+            <div class="aplicacion-item">
+              <h5>📝 Encuestas</h5>
+              <p>Completar respuestas faltantes</p>
+            </div>
+            <div class="aplicacion-item">
+              <h5>💬 Opinión pública</h5>
+              <p>Análisis de sentimientos en redes sociales</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>Estructura del Proyecto</h3>
+        <pre><code>📁 Proyecto/
+├── 📁 backend/                 # Servidor Flask + API REST
+│   ├── app.py                  # Aplicación principal
+│   ├── config_new.py           # Configuración
+│   ├── text_analysis.py        # Análisis de sentimientos
+│   ├── save_model.py           # Entrenamiento de modelos
+│   ├── requirements.txt        # Dependencias Python
+│   └── 📁 data/               # Datos del proyecto
+│       ├── Data.csv           # Dataset (76 características)
+│       ├── Label.csv          # Etiquetas de clasificación
+│       └── schema.sql         # Esquema de base de datos
+├── 📁 frontend/               # Aplicación React
+│   ├── package.json           # Dependencias Node.js
+│   ├── 📁 src/               # Código fuente React
+│   └── 📁 public/            # Archivos públicos
+├── 📁 models/                 # Modelos entrenados de IA
+│   ├── autoencoder.pth        # Red neuronal (PyTorch)
+│   ├── classifier.pkl         # Random Forest
+│   └── scaler.pkl            # Normalizador de datos
+└── 📁 docs/                   # Documentación completa
+    └── README.md              # Documentación detallada
+</code></pre>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>Componentes y Arquitectura</h3>
+        <div class="arquitectura-componentes">
+          <div class="componente-item">
+            <h4>🔗 Backend (Flask):</h4>
+            <p>API RESTful para análisis, imputación y entrenamiento de modelos.</p>
+          </div>
+          <div class="componente-item">
+            <h4>⚛️ Frontend (React):</h4>
+            <p>Interfaz de usuario para cargar datos, visualizar resultados y consumir la API.</p>
+          </div>
+          <div class="componente-item">
+            <h4>🧠 Modelos de IA:</h4>
+            <p>Autoencoder (PyTorch), Random Forest (scikit-learn), integración con Gemini API.</p>
+          </div>
+          <div class="componente-item">
+            <h4>🗄️ Base de datos:</h4>
+            <p>MySQL para almacenamiento estructurado y persistencia de datos.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>Instalación y Configuración</h3>
+        <ol>
+          <li><strong>Clonar el Repositorio</strong>
+            <pre><code>git clone &lt;tu-repositorio&gt;
+cd Proyecto</code></pre>
+          </li>
+          <li><strong>Configurar el Backend</strong>
+            <pre><code>cd backend
+python -m venv venv
+venv\Scripts\activate  # Windows
+pip install -r requirements.txt</code></pre>
+          </li>
+          <li><strong>Configurar la Base de Datos</strong>
+            <pre><code>cd backend
+mysql -u root -p &lt; data/schema.sql</code></pre>
+          </li>
+          <li><strong>Entrenar los Modelos</strong>
+            <pre><code>cd backend
+python save_model.py</code></pre>
+          </li>
+          <li><strong>Configurar el Frontend</strong>
+            <pre><code>cd frontend
+npm install</code></pre>
+          </li>
+        </ol>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>Ejemplo de Código (Entrenamiento y uso de Autoencoder)</h3>
+        <pre><code># save_model.py - Entrenamiento de autoencoder para imputación de datos faltantes
+import torch
+import torch.nn as nn
+import pandas as pd
+from sklearn.model_selection import train_test_split
+
+# Definición del autoencoder
+class Autoencoder(nn.Module):
+    def __init__(self, input_dim):
+        super().__init__()
+        self.encoder = nn.Sequential(
+            nn.Linear(input_dim, 32),
+            nn.ReLU(),
+            nn.Linear(32, 16),
+            nn.ReLU()
+        )
+        self.decoder = nn.Sequential(
+            nn.Linear(16, 32),
+            nn.ReLU(),
+            nn.Linear(32, input_dim)
+        )
+    def forward(self, x):
+        encoded = self.encoder(x)
+        decoded = self.decoder(encoded)
+        return decoded
+
+# Cargar datos y preprocesar
+# ...
+# Entrenamiento y guardado del modelo
+# ...
+</code></pre>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>Funcionalidades de IA</h3>
+        <ol>
+          <li><strong>📊 Imputación de datos faltantes</strong> con autoencoder</li>
+          <li><strong>💖 Análisis de sentimientos</strong> con NLP</li>
+          <li><strong>✍️ Generación de texto</strong> con Gemini API</li>
+        </ol>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>Ejemplos Prácticos y Capturas</h3>
+        <p>A continuación se muestran ejemplos prácticos de las tecnologías y conceptos aprendidos:</p>
+        <div class="capturas-container">
+          <div class="captura-placeholder">
+            <p>📸 <strong>Captura 1:</strong> Dashboard del sistema</p>
+            <img src="imagenes/semana16-captura1.png" alt="Dashboard del sistema" class="captura-img">
+          </div>
+          <div class="captura-placeholder">
+            <p>📸 <strong>Captura 2:</strong> Imputación de datos faltantes</p>
+            <img src="imagenes/semana16-captura2.png" alt="Imputación de datos faltantes" class="captura-img">
+          </div>
+          <div class="captura-placeholder">
+            <p>📸 <strong>Captura 3:</strong> Análisis de sentimientos</p>
+            <img src="imagenes/semana16-captura3.png" alt="Análisis de sentimientos" class="captura-img">
+          </div>
+          <div class="captura-placeholder">
+            <p>📸 <strong>Captura 4:</strong> Generación de texto</p>
+            <img src="imagenes/semana16-captura4.png" alt="Generación de texto" class="captura-img">
+          </div>
+        </div>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>Tecnologías y Herramientas</h3>
+        <div class="tecnologias-grid">
+          <div class="tech-category">
+            <h4>Lenguajes/Frameworks:</h4>
+            <ul>
+              <li><strong>Python</strong></li>
+              <li><strong>Flask</strong></li>
+              <li><strong>React</strong></li>
+            </ul>
+          </div>
+          <div class="tech-category">
+            <h4>IA/ML:</h4>
+            <ul>
+              <li><strong>PyTorch</strong></li>
+              <li><strong>scikit-learn</strong></li>
+              <li><strong>TextBlob</strong></li>
+              <li><strong>Google Gemini API</strong></li>
+            </ul>
+          </div>
+          <div class="tech-category">
+            <h4>Base de datos:</h4>
+            <ul>
+              <li><strong>MySQL</strong></li>
+            </ul>
+          </div>
+          <div class="tech-category">
+            <h4>Frontend:</h4>
+            <ul>
+              <li><strong>HTML</strong></li>
+              <li><strong>CSS</strong></li>
+              <li><strong>JavaScript</strong></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>Recursos y Documentación</h3>
+        <div class="codigo-fuente-container">
+          <div class="github-link-card">
+            <div class="github-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.30.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+              </svg>
+            </div>
+            <div class="github-content">
+              <h4>Ver Código Fuente Completo</h4>
+              <p>Accede al repositorio completo con el sistema inteligente y aplicaciones de IA desarrolladas en la Semana 16.</p>
+              <div class="github-features">
+                <span class="feature-tag">🤖 IA & ML</span>
+                <span class="feature-tag">🧠 LLM</span>
+                <span class="feature-tag">🐍 Python</span>
+                <span class="feature-tag">📊 Análisis</span>
+              </div>
+              <a href="https://github.com/GomezHuamanlazoIvan/GomezHuamanlazoIvan" target="_blank" rel="noopener noreferrer" class="btn-github">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.30.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                </svg>
+                Ver en GitHub
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+          <div class="recursos-adicionales">
+            <h4>📁 Contenido del Repositorio</h4>
+            <ul class="recursos-lista">
+              <li>
+                <span class="recurso-icon">🤖</span>
+                <div>
+                  <strong>Sistemas de IA</strong>
+                  <p>Implementaciones de algoritmos de inteligencia artificial</p>
+                </div>
+              </li>
+              <li>
+                <span class="recurso-icon">🧠</span>
+                <div>
+                  <strong>Modelos de Lenguaje</strong>
+                  <p>Integración y uso de Large Language Models (LLM)</p>
+                </div>
+              </li>
+              <li>
+                <span class="recurso-icon">📊</span>
+                <div>
+                  <strong>Análisis de Datos</strong>
+                  <p>Scripts de procesamiento y análisis de datos con Python</p>
+                </div>
+              </li>
+              <li>
+                <span class="recurso-icon">🌐</span>
+                <div>
+                  <strong>Aplicaciones Web IA</strong>
+                  <p>Interfaces web para interactuar con sistemas inteligentes</p>
+                </div>
+              </li>
+              <li>
+                <span class="recurso-icon">📚</span>
+                <div>
+                  <strong>Documentación Técnica</strong>
+                  <p>Guías de implementación y casos de uso de IA</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>Reflexión Personal</h3>
+        <p>Desarrollar este sistema inteligente de análisis de datos me permitió integrar conocimientos de IA, desarrollo web y ciencia de datos. Comprendí la importancia de la gestión de datos faltantes y la potencia de los autoencoders para resolver problemas reales. La integración de modelos de lenguaje y la visualización de resultados en una interfaz web moderna me motivaron a seguir explorando la convergencia entre IA y desarrollo fullstack.</p>
+      </section>
+    </div>
+
+    <div class="navegacion-semana">
+      <a href="semana15.html" class="nav-btn">
+        ← Semana 15
+      </a>
+      <a href="proyectos.html" class="volver-proyectos">Índice de Proyectos</a>
+      <span class="nav-btn disabled">
+        Final del recorrido ✨
+      </span>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Gomez Huamanlazo - Semana 16</p>
+  </footer>
+  
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Semana 9 - Desarrollo Backend - Arquitectura y Principios</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/pages/semana9.css">
+</head>
+
+<body>
+  <header>
+    <img src="imagenes/perfil.png" alt="Foto de perfil" class="perfil">
+    <h1>Gomez Huamanlazo Ivan Paul</h1>
+    <p>Desarrollador Web Frontend & Backend</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="proyectos.html">Proyectos</a>
+    <a href="blog.html">Blog</a>
+    <a href="index.html#contacto">Contacto</a>
+  </nav>
+
+  <main class="semana-individual">
+    <div class="semana-header">
+      <div class="semana-numero">SEMANA 9</div>
+      <h1>Desarrollo Backend - Arquitectura y Principios</h1>
+      <img src="imagenes/semana9.png" alt="Semana 9 - Desarrollo Backend" onerror="this.style.display='none'">
+    </div>
+
+    <div class="contenido-semana">
+      <section class="seccion-contenido">
+        <h3>Definición y Conceptos Clave</h3>
+        <p>El desarrollo de aplicaciones para internet se basa en la <strong>arquitectura cliente-servidor</strong>,
+          dividiéndose en <strong>FrontEnd (Side-Client)</strong> y <strong>BackEnd (Side-Server)</strong>.</p>
+
+        <h4>Tipos de Arquitectura:</h4>
+
+        <div class="arquitectura-item">
+          <h5>Arquitectura C/S Clásica - Múltiples Páginas (MPA):</h5>
+          <p>Webs tradicionales con múltiples páginas, cada una con sus archivos HTML, CSS, JS y recursos, conectadas
+            por enlaces.</p>
+        </div>
+
+        <div class="arquitectura-item">
+          <h5>Arquitectura C/S Multicapa - Múltiples Páginas:</h5>
+          <p>Separa sistemas de software complejos en capas según responsabilidades, utilizando el <strong>Modelo
+              MVC</strong> (Modelo, Vista, Controlador).</p>
+        </div>
+
+        <div class="arquitectura-item">
+          <h5>Arquitectura C/S Multicapa - Página Única (SPA):</h5>
+          <p>El servidor solo tiene una página HTML, los estilos y formatos se cargan en el cliente en el primer acceso.
+            JavaScript gestiona la navegación entre componentes.</p>
+        </div>
+
+        <div class="arquitectura-item">
+          <h5>Arquitectura C/S Multicapa - SPA / MPA - Híbridas:</h5>
+          <p>Combinan características de SPA (como componentes con Next JS) con un enfoque multipágina.</p>
+        </div>
+
+        <div class="arquitectura-item">
+          <h5>Arquitectura Hexagonal (Puertos y Adaptadores):</h5>
+          <p>Separa la aplicación en capas distintas con responsabilidades propias, permitiendo evolución y testeo
+            independientes. Los puertos definen puntos de entrada/salida y los adaptadores implementan la conexión.</p>
+        </div>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>Servidores Web, Hosting y Cloud Computing</h3>
+
+        <div class="concepto-item">
+          <h4>Servidor Web:</h4>
+          <p>Un equipo que almacena archivos de un sitio web y los transmite a los usuarios vía HTTP.</p>
+        </div>
+
+        <div class="concepto-item">
+          <h4>Hosting:</h4>
+          <p>Un servicio de alojamiento web que hace accesible el contenido de tu web y correo electrónico en internet.
+          </p>
+        </div>
+
+        <div class="concepto-item">
+          <h4>Cloud Hosting:</h4>
+          <p>Agrupa recursos de computación de una red de servidores, ofreciendo escalabilidad y flexibilidad.</p>
+        </div>
+
+        <div class="concepto-item">
+          <h4>Cloud Computing:</h4>
+          <p>Proporciona recursos de computación bajo demanda a través de internet, evitando la gestión de
+            infraestructura.</p>
+        </div>
+
+        <div class="concepto-item">
+          <h4>Nombre de Dominio Web / DNS:</h4>
+          <p>La dirección única de un sitio web en internet.</p>
+        </div>
+
+        <div class="concepto-item">
+          <h4>Configuración de Servidores Web:</h4>
+          <p>El proceso de optimizar un servidor para gestionar solicitudes HTTP de forma eficiente y segura.</p>
+        </div>
+
+        <div class="concepto-item">
+          <h4>Funcionamiento del Server Side:</h4>
+          <p>El servidor procesa solicitudes del navegador, ejecuta código (PHP, Node.js, Python), interactúa con bases
+            de datos y genera una respuesta para el cliente.</p>
+        </div>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>Autenticación Basada en Tokens</h3>
+        <p>Es un método de verificación de identidad que permite a los usuarios acceder a sistemas sin proporcionar
+          credenciales constantemente, mediante la emisión de un token cifrado.</p>
+
+        <div class="proceso-token">
+          <div class="token-step">
+            <h4>1. Generación del Token:</h4>
+            <p>Se crea un token único al iniciar sesión.</p>
+          </div>
+
+          <div class="token-step">
+            <h4>2. Uso del Token:</h4>
+            <p>El token se incluye en las peticiones al servidor.</p>
+          </div>
+
+          <div class="token-step">
+            <h4>3. Validación del Token:</h4>
+            <p>El servidor verifica la validez del token.</p>
+          </div>
+
+          <div class="token-step">
+            <h4>4. Expiración y Renovación:</h4>
+            <p>Los tokens tienen duración limitada.</p>
+          </div>
+
+          <div class="token-step">
+            <h4>5. Seguridad:</h4>
+            <p>Tokens cifrados y firmados digitalmente.</p>
+          </div>
+        </div>
+
+        <h4>Tipos de Tokens:</h4>
+        <ul>
+          <li><strong>JSON Web Token (JWT)</strong></li>
+          <li><strong>OAuth Tokens</strong></li>
+          <li><strong>SAML Tokens</strong></li>
+        </ul>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>Ejemplos Prácticos y Capturas</h3>
+        <p>A continuación se muestran ejemplos prácticos de las tecnologías y conceptos aprendidos:</p>
+
+        <div class="capturas-container">
+          <div class="captura-item">
+            <h4>📸 Captura 1: Configuración de servidor web</h4>
+            <img src="imagenes/semana9-captura1.png" alt="Configuración de servidor web"
+              onerror="this.style.display='none'">
+            <p>Configuración y setup de servidor web con Apache/NGINX</p>
+          </div>
+
+          <div class="captura-item">
+            <h4>📸 Captura 2: Implementación de autenticación JWT</h4>
+            <img src="imagenes/semana9-captura2.png" alt="Implementación JWT" onerror="this.style.display='none'">
+            <p>Código de implementación de JSON Web Tokens para autenticación</p>
+          </div>
+
+          <div class="captura-item">
+            <h4>📸 Captura 3: Arquitectura MVC en acción</h4>
+            <img src="imagenes/semana9-captura3.png" alt="Arquitectura MVC" onerror="this.style.display='none'">
+            <p>Estructura de proyecto siguiendo el patrón Modelo-Vista-Controlador</p>
+          </div>
+
+          <div class="captura-item">
+            <h4>📸 Captura 4: Configuración de base de datos</h4>
+            <img src="imagenes/semana9-captura4.png" alt="Configuración de base de datos"
+              onerror="this.style.display='none'">
+            <p>Setup y configuración de base de datos para la aplicación backend</p>
+          </div>
+
+          <div class="captura-item">
+            <h4>📸 Captura 5: Vista localhost del proyecto</h4>
+            <img src="imagenes/semana9-captura5.png" alt="Vista localhost del proyecto"
+              onerror="this.style.display='none'">
+            <p>Aplicación backend funcionando en localhost mostrando la interfaz web</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>Tecnologías Aprendidas</h3>
+
+        <div class="tecnologias-grid">
+          <div class="tech-category">
+            <h4>Tecnologías y Software de Servidores Web:</h4>
+            <ul>
+              <li><strong>Java EE, Jakarta EE</strong></li>
+              <li><strong>Servidores Web:</strong> Apache HTTP Server, NGINX, Microsoft IIS, Apache Tomcat, Node.js</li>
+              <li><strong>Stacks de desarrollo:</strong> LAMP/LEMP, MEAN/MERN, XAMPP, WAMP</li>
+              <li><strong>Proveedores de Cloud Hosting:</strong> Azure, AWS, Google Cloud Platform</li>
+              <li><strong>Registradores de Dominios:</strong> Wix, Domain.com, Namecheap, Bluehost, GoDaddy, Google
+                Domains, HostGator</li>
+            </ul>
+          </div>
+
+          <div class="tech-category">
+            <h4>Lenguajes de Programación Backend y Frameworks:</h4>
+            <ul>
+              <li><strong>Lenguajes:</strong> PHP, Node.js, Python</li>
+              <li><strong>Tecnologías Java:</strong> Servlets, JavaServer Pages (JSP)</li>
+              <li><strong>Otros frameworks:</strong> ASP.net, .NET Framework, Ruby, Rails, Sinatra, Express, Koa,
+                Sail.js, Nest.js</li>
+            </ul>
+          </div>
+
+          <div class="tech-category">
+            <h4>Gestores de Base de Datos:</h4>
+            <ul>
+              <li><strong>SQL</strong> y gestores de bases de datos</li>
+            </ul>
+          </div>
+
+          <div class="tech-category">
+            <h4>Herramientas de Construcción y Desarrollo:</h4>
+            <ul>
+              <li><strong>Maven:</strong> Herramienta de gestión de proyectos Java para dependencias, compilación,
+                empaquetado</li>
+              <li><strong>Gradle:</strong> Herramienta de gestión de proyectos para Java, Groovy o Scala</li>
+              <li><strong>OpenJDK:</strong> Para la instalación de JDK</li>
+              <li><strong>IntelliJ IDEA Community Edition:</strong> Entorno de Desarrollo Integrado (IDE)</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="requisitos-server">
+          <h4>Requisitos para el Server Side:</h4>
+          <ul>
+            <li>Sistema Operativo</li>
+            <li>Software de Servidor Web</li>
+            <li>Lenguaje de Programación Backend</li>
+            <li>Sistema Gestor de BD</li>
+            <li>Herramientas de desarrollo</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>Código Fuente y Recursos</h3>
+        <div class="codigo-fuente-container">
+          <div class="github-link-card">
+            <div class="github-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+              </svg>
+            </div>
+            <div class="github-content">
+              <h4>Ver Código Fuente Completo</h4>
+              <p>Accede al repositorio completo con todos los ejercicios, ejemplos prácticos y código fuente de la
+                Semana 9 - Desarrollo Backend.</p>
+              <div class="github-features">
+                <span class="feature-tag">🏗️ Arquitecturas</span>
+                <span class="feature-tag">🔐 JWT Auth</span>
+                <span class="feature-tag">⚙️ Configuraciones</span>
+                <span class="feature-tag">📚 Documentación</span>
+              </div>
+              <a href="https://github.com/GomezHuamanlazoIvan/GomezHuamanlazoIvan" target="_blank"
+                rel="noopener noreferrer" class="btn-github">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                </svg>
+                Ver en GitHub
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M7 17L17 7M17 7H7M17 7V17" />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="recursos-adicionales">
+            <h4>📁 Contenido del Repositorio</h4>
+            <ul class="recursos-lista">
+              <li>
+                <span class="recurso-icon">🏗️</span>
+                <div>
+                  <strong>Ejemplos de Arquitecturas</strong>
+                  <p>Implementaciones de MVC, SPA, MPA y Arquitectura Hexagonal</p>
+                </div>
+              </li>
+              <li>
+                <span class="recurso-icon">🔐</span>
+                <div>
+                  <strong>Sistema de Autenticación JWT</strong>
+                  <p>Código completo de implementación de JSON Web Tokens</p>
+                </div>
+              </li>
+              <li>
+                <span class="recurso-icon">⚙️</span>
+                <div>
+                  <strong>Configuraciones de Servidor</strong>
+                  <p>Scripts y archivos de configuración para Apache, NGINX y Tomcat</p>
+                </div>
+              </li>
+              <li>
+                <span class="recurso-icon">🗄️</span>
+                <div>
+                  <strong>Conexiones a Base de Datos</strong>
+                  <p>Ejemplos de conexión y consultas SQL con diferentes gestores</p>
+                </div>
+              </li>
+              <li>
+                <span class="recurso-icon">📚</span>
+                <div>
+                  <strong>Documentación Técnica</strong>
+                  <p>Guías detalladas y comentarios explicativos del código</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>Reflexión Personal</h3>
+        <p>Esta semana marcó un punto de inflexión en mi comprensión del desarrollo web. Pasar del frontend al backend
+          me permitió entender la arquitectura completa de las aplicaciones web modernas.</p>
+
+        <p>El aprendizaje de las diferentes arquitecturas (MPA, SPA, Híbridas y Hexagonal) me dio una perspectiva amplia
+          sobre cómo estructurar aplicaciones según sus necesidades específicas. La arquitectura hexagonal, en
+          particular, me enseñó la importancia de la separación de responsabilidades y la testabilidad del código.</p>
+
+        <p>La implementación de autenticación basada en tokens, especialmente JWT, me mostró cómo manejar la seguridad
+          de manera eficiente en aplicaciones modernas. Comprender el flujo completo desde la generación hasta la
+          validación del token me dio confianza para implementar sistemas de autenticación robustos.</p>
+
+        <p>El trabajo con diferentes stacks de desarrollo (LAMP, MEAN, MERN) y herramientas como Maven y Gradle me
+          preparó para trabajar en diversos entornos de desarrollo. La experiencia con servidores web como Apache, NGINX
+          y la configuración de hosting en la nube me dio una visión práctica de cómo desplegar aplicaciones en
+          producción.</p>
+
+        <p>Esta semana consolidó mi transición de desarrollador frontend a desarrollador full-stack, proporcionándome
+          las bases sólidas necesarias para construir aplicaciones web completas y escalables.</p>
+      </section>
+    </div>
+
+    <div class="navegacion-semana">
+      <a href="semana7.html" class="nav-btn">
+        ← Semana 7
+      </a>
+      <a href="proyectos.html" class="volver-proyectos">Índice de Proyectos</a>
+      <a href="semana10.html" class="nav-btn">
+        Semana 10 →
+      </a>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Gomez Huamanlazo - Semana 9</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

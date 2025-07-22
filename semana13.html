@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Semana 13 - PHP Laravel Framework</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/pages/semana13.css">
+</head>
+
+<body>
+  <header>
+    <img src="imagenes/perfil.png" alt="Foto de perfil" class="perfil">
+    <h1>Gomez Huamanlazo Ivan Paul</h1>
+    <p>Desarrollador Web Frontend & Backend</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="proyectos.html">Proyectos</a>
+    <a href="blog.html">Blog</a>
+    <a href="index.html#contacto">Contacto</a>
+  </nav>
+
+  <main class="semana-individual">
+    <div class="semana-header">
+      <div class="semana-numero">SEMANA 13</div>
+      <h1>Desarrollo Web Backend - Stack: PHP - Laravel</h1>
+      <div class="semana-icon">🎨🐘</div>
+    </div>
+
+    <div class="contenido-semana">
+      <section class="seccion-contenido">
+        <h3>Desarrollo Web Backend con PHP y Laravel</h3>
+        <p>Esta semana se centra en el desarrollo de aplicaciones web backend utilizando el <strong>stack PHP</strong> y
+          el framework <strong>Laravel</strong>.</p>
+
+        <div class="concepto-item">
+          <h4>Apache HTTP Server:</h4>
+          <p>Conocido como "Apache", es el <strong>servidor web de código abierto más popular del mundo</strong>. Su
+            función principal es entregar contenido web a los usuarios. Recibe solicitudes HTTP/HTTPS del navegador,
+            busca el contenido solicitado (HTML, imágenes, videos, PDF) en el servidor y lo envía de vuelta al navegador
+            del usuario.</p>
+
+          <p><strong>Apache Lounge</strong> es una comunidad que proporciona versiones compiladas de Apache HTTP Server,
+            principalmente para Windows. La configuración de Apache se realiza mediante el archivo
+            <strong>httpd.conf</strong>, que contiene directivas como:
+          </p>
+          <ul>
+            <li><strong>ServerRoot:</strong> Directorio raíz del servidor</li>
+            <li><strong>Listen:</strong> Puerto de escucha</li>
+            <li><strong>ServerName:</strong> Nombre del servidor</li>
+            <li><strong>DocumentRoot:</strong> Directorio de documentos web</li>
+            <li><strong>DirectoryIndex:</strong> Archivos índice por defecto</li>
+            <li><strong>ErrorLog:</strong> Archivo de registro de errores</li>
+            <li><strong>LogLevel:</strong> Nivel de logging</li>
+            <li><strong>LoadModule:</strong> Carga de módulos</li>
+            <li><strong>User/Group:</strong> Usuario y grupo de ejecución</li>
+          </ul>
+        </div>
+
+        <div class="concepto-item">
+          <h4>PHP (Hypertext Preprocessor):</h4>
+          <p>Es un <strong>lenguaje de programación de código abierto del lado del servidor</strong>, diseñado
+            específicamente para el desarrollo web. Es uno de los lenguajes más utilizados para construir sitios y
+            aplicaciones web dinámicas.</p>
+
+          <p>Cuando se solicita una página con código PHP, el servidor pasa ese código a un <strong>intérprete
+              PHP</strong>, que lo procesa (interactuando con bases de datos o manejando formularios) y genera HTML, CSS
+            y JavaScript puro, que luego se envía al navegador del usuario.</p>
+        </div>
+
+        <div class="concepto-item">
+          <h4>Composer:</h4>
+          <p>Es la <strong>herramienta fundamental y el gestor de dependencias de facto para PHP</strong>. Funciona de
+            manera similar a npm (Node.js) o pip (Python). Composer no instala paquetes globalmente; en su lugar,
+            instala las dependencias por cada proyecto en un directorio local (generalmente <strong>vendor/</strong>).
+          </p>
+        </div>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>Laravel Framework</h3>
+        <p>Es un <strong>framework de PHP de código abierto</strong> que se enfoca en la simplicidad, elegancia y
+          patrones modernos de desarrollo. Se basa en el patrón <strong>Modelo-Vista-Controlador (MVC)</strong> para
+          organizar la lógica de la aplicación, facilitando el mantenimiento del código y la separación de
+          responsabilidades. Laravel tiene una comunidad extensa y en crecimiento.</p>
+
+        <div class="laravel-concepts">
+          <div class="concept-item">
+            <h4>Rutas (Routes):</h4>
+            <p>Puntos de entrada de la aplicación que asignan una URL a una lógica específica.</p>
+            <div class="code-example">
+              <p>// routes/web.php</p>
+              <p>Route::get('/', function () {</p>
+              <p> return view('welcome');</p>
+              <p>});</p>
+              <p></p>
+              <p>Route::get('/usuarios', [UserController::class, 'index']);</p>
+              <p>Route::post('/usuarios', [UserController::class, 'store']);</p>
+              <p>Route::get('/usuarios/{id}', [UserController::class, 'show']);</p>
+              <p>Route::put('/usuarios/{id}', [UserController::class, 'update']);</p>
+              <p>Route::delete('/usuarios/{id}', [UserController::class, 'destroy']);</p>
+            </div>
+          </div>
+
+          <div class="concept-item">
+            <h4>Controladores (Controllers):</h4>
+            <p>Agrupan la lógica de negocio y gestionan las peticiones del usuario, interactuando con modelos y
+              retornando respuestas.</p>
+            <div class="code-example">
+              <p>// app/Http/Controllers/UserController.php</p>
+              <p>namespace App\Http\Controllers;</p>
+              <p></p>
+              <p>use App\Models\User;</p>
+              <p>use Illuminate\Http\Request;</p>
+              <p></p>
+              <p>class UserController extends Controller</p>
+              <p>{</p>
+              <p> public function index()</p>
+              <p> {</p>
+              <p> $users = User::all();</p>
+              <p> return view('users.index', compact('users'));</p>
+              <p> }</p>
+              <p> </p>
+              <p> public function store(Request $request)</p>
+              <p> {</p>
+              <p> $request->validate([</p>
+              <p> 'name' => 'required|string|max:255',</p>
+              <p> 'email' => 'required|email|unique:users',</p>
+              <p> 'password' => 'required|min:8|confirmed'</p>
+              <p> ]);</p>
+              <p> </p>
+              <p> $user = User::create([</p>
+              <p> 'name' => $request->name,</p>
+              <p> 'email' => $request->email,</p>
+              <p> 'password' => bcrypt($request->password)</p>
+              <p> ]);</p>
+              <p> </p>
+              <p> return redirect()->route('users.index')</p>
+              <p> ->with('success', 'Usuario creado exitosamente');</p>
+              <p> }</p>
+              <p>}</p>
+            </div>
+          </div>
+
+          <div class="concept-item">
+            <h4>Vistas y Blade:</h4>
+            <p>Laravel usa <strong>Blade</strong> como motor de plantillas para separar la presentación del contenido,
+              permitiendo incorporar código PHP en HTML.</p>
+            <div class="code-example">
+              <p>{{-- resources/views/users/index.blade.php --}}</p>
+              <p>@extends('layouts.app')</p>
+              <p></p>
+              <p>@section('title', 'Lista de Usuarios')</p>
+              <p></p>
+              <p>@section('content')</p>
+              <p>&lt;div class="container"&gt;</p>
+              <p> &lt;h1&gt;Usuarios&lt;/h1&gt;</p>
+              <p> </p>
+              <p> @if(session('success'))</p>
+              <p> &lt;div class="alert alert-success"&gt;</p>
+              <p> {{ session('success') }}</p>
+              <p> &lt;/div&gt;</p>
+              <p> @endif</p>
+              <p> </p>
+              <p> &lt;table class="table"&gt;</p>
+              <p> &lt;thead&gt;</p>
+              <p> &lt;tr&gt;</p>
+              <p> &lt;th&gt;ID&lt;/th&gt;</p>
+              <p> &lt;th&gt;Nombre&lt;/th&gt;</p>
+              <p> &lt;th&gt;Email&lt;/th&gt;</p>
+              <p> &lt;th&gt;Acciones&lt;/th&gt;</p>
+              <p> &lt;/tr&gt;</p>
+              <p> &lt;/thead&gt;</p>
+              <p> &lt;tbody&gt;</p>
+              <p> @forelse($users as $user)</p>
+              <p> &lt;tr&gt;</p>
+              <p> &lt;td&gt;{{ $user->id }}&lt;/td&gt;</p>
+              <p> &lt;td&gt;{{ $user->name }}&lt;/td&gt;</p>
+              <p> &lt;td&gt;{{ $user->email }}&lt;/td&gt;</p>
+              <p> &lt;td&gt;</p>
+              <p> &lt;a href="{{ route('users.show', $user) }}" class="btn btn-info"&gt;Ver&lt;/a&gt;</p>
+              <p> &lt;a href="{{ route('users.edit', $user) }}" class="btn btn-warning"&gt;Editar&lt;/a&gt;</p>
+              <p> &lt;/td&gt;</p>
+              <p> &lt;/tr&gt;</p>
+              <p> @empty</p>
+              <p> &lt;tr&gt;</p>
+              <p> &lt;td colspan="4"&gt;No hay usuarios registrados&lt;/td&gt;</p>
+              <p> &lt;/tr&gt;</p>
+              <p> @endforelse</p>
+              <p> &lt;/tbody&gt;</p>
+              <p> &lt;/table&gt;</p>
+              <p>&lt;/div&gt;</p>
+              <p>@endsection</p>
+            </div>
+          </div>
+
+          <div class="concept-item">
+            <h4>Eloquent ORM:</h4>
+            <p>Herramienta para interactuar con la base de datos, mapeando tablas a clases modelo para operaciones CRUD.
+            </p>
+            <div class="code-example">
+              <p>// app/Models/User.php</p>
+              <p>namespace App\Models;</p>
+              <p></p>
+              <p>use Illuminate\Database\Eloquent\Factories\HasFactory;</p>
+              <p>use Illuminate\Foundation\Auth\User as Authenticatable;</p>
+              <p>use Illuminate\Notifications\Notifiable;</p>
+              <p></p>
+              <p>class User extends Authenticatable</p>
+              <p>{</p>
+              <p> use HasFactory, Notifiable;</p>
+              <p></p>
+              <p> protected $fillable = [</p>
+              <p> 'name', 'email', 'password',</p>
+              <p> ];</p>
+              <p></p>
+              <p> protected $hidden = [</p>
+              <p> 'password', 'remember_token',</p>
+              <p> ];</p>
+              <p></p>
+              <p> protected $casts = [</p>
+              <p> 'email_verified_at' => 'datetime',</p>
+              <p> ];</p>
+              <p> </p>
+              <p> // Relaciones</p>
+              <p> public function posts()</p>
+              <p> {</p>
+              <p> return $this->hasMany(Post::class);</p>
+              <p> }</p>
+              <p> </p>
+              <p> public function profile()</p>
+              <p> {</p>
+              <p> return $this->hasOne(Profile::class);</p>
+              <p> }</p>
+              <p>}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>Conceptos Avanzados de Laravel</h3>
+
+        <div class="advanced-concepts">
+          <div class="concept-item">
+            <h4>Middleware:</h4>
+            <p>Filtros o capas intermedias entre la solicitud y la respuesta, usadas para autenticación, autorización,
+              etc.</p>
+            <div class="code-example">
+              <p>// app/Http/Middleware/CheckAge.php</p>
+              <p>namespace App\Http\Middleware;</p>
+              <p></p>
+              <p>use Closure;</p>
+              <p></p>
+              <p>class CheckAge</p>
+              <p>{</p>
+              <p> public function handle($request, Closure $next)</p>
+              <p> {</p>
+              <p> if ($request->age <= 18) {</p>
+                  <p> return redirect('home');</p>
+                  <p> }</p>
+                  <p></p>
+                  <p> return $next($request);</p>
+                  <p> }</p>
+                  <p>}</p>
+            </div>
+          </div>
+
+          <div class="concept-item">
+            <h4>Artisan:</h4>
+            <p>Interfaz de línea de comandos de Laravel para automatizar tareas comunes como la generación de código y
+              la administración de la base de datos.</p>
+            <div class="artisan-commands">
+              <h5>Comandos Artisan más utilizados:</h5>
+              <ul>
+                <li><code>php artisan serve</code> - Iniciar servidor de desarrollo</li>
+                <li><code>php artisan make:controller UserController</code> - Crear controlador</li>
+                <li><code>php artisan make:model Post -m</code> - Crear modelo con migración</li>
+                <li><code>php artisan migrate</code> - Ejecutar migraciones</li>
+                <li><code>php artisan db:seed</code> - Ejecutar seeders</li>
+                <li><code>php artisan route:list</code> - Listar todas las rutas</li>
+                <li><code>php artisan cache:clear</code> - Limpiar caché</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="concept-item">
+            <h4>Migrations y Seeds:</h4>
+            <p>Las <strong>migraciones</strong> versionan y modifican la estructura de la base de datos, mientras que
+              los <strong>seeds</strong> pueblan la base de datos con datos iniciales o de prueba.</p>
+            <div class="code-example">
+              <p>// database/migrations/create_users_table.php</p>
+              <p>use Illuminate\Database\Migrations\Migration;</p>
+              <p>use Illuminate\Database\Schema\Blueprint;</p>
+              <p>use Illuminate\Support\Facades\Schema;</p>
+              <p></p>
+              <p>class CreateUsersTable extends Migration</p>
+              <p>{</p>
+              <p> public function up()</p>
+              <p> {</p>
+              <p> Schema::create('users', function (Blueprint $table) {</p>
+              <p> $table->id();</p>
+              <p> $table->string('name');</p>
+              <p> $table->string('email')->unique();</p>
+              <p> $table->timestamp('email_verified_at')->nullable();</p>
+              <p> $table->string('password');</p>
+              <p> $table->rememberToken();</p>
+              <p> $table->timestamps();</p>
+              <p> });</p>
+              <p> }</p>
+              <p></p>
+              <p> public function down()</p>
+              <p> {</p>
+              <p> Schema::dropIfExists('users');</p>
+              <p> }</p>
+              <p>}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>Estructura de Directorios de Laravel</h3>
+        <p>La estructura organiza lógicamente el código para facilitar el desarrollo y mantenimiento:</p>
+
+        <div class="directory-structure">
+          <div class="dir-item">
+            <h4>📁 app/</h4>
+            <p>Núcleo de la lógica de negocio (Modelos, Controladores, Middleware)</p>
+          </div>
+
+          <div class="dir-item">
+            <h4>📁 bootstrap/</h4>
+            <p>Inicio del framework y archivos de caché</p>
+          </div>
+
+          <div class="dir-item">
+            <h4>📁 config/</h4>
+            <p>Archivos de configuración de la aplicación</p>
+          </div>
+
+          <div class="dir-item">
+            <h4>📁 database/</h4>
+            <p>Migraciones, factories y seeders</p>
+          </div>
+
+          <div class="dir-item">
+            <h4>📁 public/</h4>
+            <p>Punto de entrada HTTP y activos públicos</p>
+          </div>
+
+          <div class="dir-item">
+            <h4>📁 resources/</h4>
+            <p>Vistas, archivos de lenguaje y assets</p>
+          </div>
+
+          <div class="dir-item">
+            <h4>📁 routes/</h4>
+            <p>Definición de rutas (web.php, api.php)</p>
+          </div>
+
+          <div class="dir-item">
+            <h4>📁 storage/</h4>
+            <p>Logs, cachés, sesiones y archivos subidos</p>
+          </div>
+
+          <div class="dir-item">
+            <h4>📁 vendor/</h4>
+            <p>Dependencias gestionadas por Composer</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>Tecnologías Aprendidas</h3>
+
+        <div class="tecnologias-grid">
+          <div class="tech-category">
+            <h4>Servidores Web:</h4>
+            <ul>
+              <li><strong>Apache HTTP Server</strong></li>
+            </ul>
+          </div>
+
+          <div class="tech-category">
+            <h4>Lenguajes de Programación:</h4>
+            <ul>
+              <li><strong>PHP (Hypertext Preprocessor)</strong></li>
+            </ul>
+          </div>
+
+          <div class="tech-category">
+            <h4>Frameworks:</h4>
+            <ul>
+              <li><strong>Laravel Framework</strong></li>
+            </ul>
+          </div>
+
+          <div class="tech-category">
+            <h4>Gestores de Dependencias:</h4>
+            <ul>
+              <li><strong>Composer</strong></li>
+            </ul>
+          </div>
+
+          <div class="tech-category">
+            <h4>Bases de Datos:</h4>
+            <ul>
+              <li><strong>MySQL</strong> (mencionado en configuración Laravel)</li>
+            </ul>
+          </div>
+
+          <div class="tech-category">
+            <h4>Tecnologías Frontend/CSS:</h4>
+            <ul>
+              <li><strong>Tailwind CSS</strong></li>
+            </ul>
+          </div>
+
+          <div class="tech-category">
+            <h4>Herramientas de Desarrollo:</h4>
+            <ul>
+              <li><strong>Node.js y NPM</strong> (opcional para compilar assets)</li>
+              <li><strong>php artisan</strong> (línea de comandos de Laravel)</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>Código Fuente y Recursos</h3>
+        <div class="codigo-fuente-container">
+          <div class="github-link-card">
+            <div class="github-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+              </svg>
+            </div>
+            <div class="github-content">
+              <h4>Ver Código Fuente Completo</h4>
+              <p>Accede al repositorio completo con el proyecto PHP Laravel desarrollado en la Semana 13.</p>
+              <div class="github-features">
+                <span class="feature-tag">🐘 PHP</span>
+                <span class="feature-tag">🅻 Laravel</span>
+                <span class="feature-tag">🎨 Blade</span>
+                <span class="feature-tag">🗄️ Eloquent</span>
+              </div>
+              <a href="https://github.com/GomezHuamanlazoIvan/GomezHuamanlazoIvan" target="_blank" rel="noopener noreferrer" class="btn-github">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                </svg>
+                Ver en GitHub
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+          
+          <div class="recursos-adicionales">
+            <h4>📁 Contenido del Repositorio</h4>
+            <ul class="recursos-lista">
+              <li>
+                <span class="recurso-icon">🐘</span>
+                <div>
+                  <strong>Aplicación PHP Completa</strong>
+                  <p>Proyecto completo desarrollado con PHP y mejores prácticas</p>
+                </div>
+              </li>
+              <li>
+                <span class="recurso-icon">🅻</span>
+                <div>
+                  <strong>Framework Laravel</strong>
+                  <p>Implementación usando Laravel con arquitectura MVC</p>
+                </div>
+              </li>
+              <li>
+                <span class="recurso-icon">🎨</span>
+                <div>
+                  <strong>Templates Blade</strong>
+                  <p>Vistas dinámicas creadas con el motor de plantillas Blade</p>
+                </div>
+              </li>
+              <li>
+                <span class="recurso-icon">🗄️</span>
+                <div>
+                  <strong>ORM Eloquent</strong>
+                  <p>Modelos y relaciones de base de datos con Eloquent</p>
+                </div>
+              </li>
+              <li>
+                <span class="recurso-icon">📚</span>
+                <div>
+                  <strong>Documentación Laravel</strong>
+                  <p>Guías de instalación, configuración y desarrollo</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>Reflexión Personal</h3>
+        <p>Esta semana me introdujo al mundo del desarrollo web con PHP y Laravel, una experiencia completamente
+          diferente a los frameworks de JavaScript que había usado anteriormente. La elegancia y simplicidad de Laravel
+          me impresionaron desde el primer momento.</p>
+
+        <p>El patrón MVC implementado en Laravel me ayudó a organizar mejor mi código y entender la importancia de la
+          separación de responsabilidades. El motor de plantillas Blade simplificó enormemente la creación de vistas
+          dinámicas, mientras que Eloquent ORM hizo que las operaciones de base de datos fueran intuitivas y expresivas.
+        </p>
+
+        <p>Composer se convirtió en una herramienta indispensable, similar a npm en el ecosistema Node.js, pero
+          específicamente diseñada para PHP. La gestión de dependencias nunca había sido tan sencilla en mis proyectos
+          PHP.</p>
+
+        <p>Los comandos Artisan revolucionaron mi flujo de trabajo, automatizando tareas repetitivas como la creación de
+          controladores, modelos y migraciones. La capacidad de generar código boilerplate con un simple comando aceleró
+          significativamente mi desarrollo.</p>
+
+        <p>Apache HTTP Server me enseñó los fundamentos de la configuración de servidores web, conocimiento que
+          considero esencial para cualquier desarrollador backend. Entender cómo funciona el servidor web por debajo me
+          dio una perspectiva más completa del stack de desarrollo.</p>
+
+        <p>Esta semana consolidó mi comprensión del desarrollo backend con PHP, proporcionándome una alternativa sólida
+          y madura a los stacks de JavaScript y Java que había aprendido anteriormente.</p>
+      </section>
+    </div>
+
+    <div class="navegacion-semana">
+      <a href="semana12.html" class="nav-btn">
+        ← Semana 12
+      </a>
+      <a href="proyectos.html" class="volver-proyectos">Índice de Proyectos</a>
+      <a href="semana14.html" class="nav-btn">
+        Semana 14 →
+      </a>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Gomez Huamanlazo - Semana 13</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

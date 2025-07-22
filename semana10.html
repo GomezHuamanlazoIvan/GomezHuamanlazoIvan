@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Semana 10 - Desarrollo Web Backend - Stack: Java - SPRING</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/pages/semana10.css">
+</head>
+<body>
+  <header>
+    <img src="imagenes/perfil.png" alt="Foto de perfil" class="perfil">
+    <h1>Gomez Huamanlazo Ivan Paul</h1>
+    <p>Desarrollador Web Frontend & Backend</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="proyectos.html">Proyectos</a>
+    <a href="blog.html">Blog</a>
+    <a href="index.html#contacto">Contacto</a>
+  </nav>
+
+  <main class="semana-individual">
+    <div class="semana-header">
+      <div class="semana-numero">SEMANA 10</div>
+      <h1>Desarrollo Web Backend - Stack: Java - SPRING</h1>
+      <img src="imagenes/semana10.png" alt="Semana 10 - Java Spring" onerror="this.style.display='none'">
+    </div>
+
+    <div class="contenido-semana">
+      <section class="seccion-contenido">
+        <h3>Definición y Conceptos Clave</h3>
+        <p>Este documento profundiza en el desarrollo de aplicaciones web backend utilizando el <strong>stack Java</strong>, con énfasis en <strong>JSP (JavaServer Pages)</strong>, <strong>Jakarta EE</strong> y el <strong>Spring Framework</strong>.</p>
+        
+        <div class="concepto-item">
+          <h4>Apache Tomcat:</h4>
+          <p>También conocido como Jakarta Tomcat o simplemente Tomcat, funciona como un <strong>contenedor de servlets</strong> desarrollado bajo el proyecto Jakarta en la Apache Software Foundation. Implementa las especificaciones de servlets y JSP de Oracle Corporation. Es de código abierto y sus versiones más recientes (9.x) implementan Servlet 4.0 y JSP 2.3. La configuración principal de Tomcat se gestiona a través del archivo <strong>server.xml</strong>.</p>
+        </div>
+        
+        <div class="concepto-item">
+          <h4>Jakarta Server Pages (JSP):</h4>
+          <p>Es un <strong>lenguaje script del lado del servidor</strong> que permite la creación de un método dinámico e independiente de la plataforma para construir aplicaciones web. JSP tiene acceso a la API JDBC para bases de datos. La fundación Eclipse ha impulsado el nuevo JSP Jakarta Server Page. Un servidor web requiere un <strong>motor JSP</strong> (un contenedor) para procesar estas páginas, interceptando solicitudes y proporcionando el entorno de ejecución.</p>
+        </div>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>Procesamiento y Sintaxis de JSP</h3>
+        <p>El procesamiento de JSP implica la <strong>traducción de la página JSP a un servlet Java</strong>, su compilación y posterior ejecución.</p>
+        
+        <h4>La sintaxis de JSP incluye:</h4>
+        <div class="jsp-syntax">
+          <div class="syntax-item">
+            <h5>Scriptlets:</h5>
+            <p>Fragmentos de código Java embebidos en la página</p>
+            <pre><code>&lt;% 
+  String nombre = "Ivan Paul";
+  int edad = 25;
+  out.println("Hola " + nombre + ", tienes " + edad + " años");
+%&gt;</code></pre>
+          </div>
+          
+          <div class="syntax-item">
+            <h5>Declaraciones:</h5>
+            <p>Variables o métodos que se declaran a nivel de clase</p>
+            <pre><code>&lt;%! 
+  private String obtenerSaludo() {
+    return "¡Bienvenido a mi aplicación web!";
+  }
+  
+  private int contador = 0;
+%&gt;</code></pre>
+          </div>
+          
+          <div class="syntax-item">
+            <h5>Expresiones:</h5>
+            <p>Evalúan e insertan resultados directamente en la página</p>
+            <pre><code>&lt;%= obtenerSaludo() %&gt;
+&lt;%= new java.util.Date() %&gt;
+&lt;%= "El contador actual es: " + (++contador) %&gt;</code></pre>
+          </div>
+          
+          <div class="syntax-item">
+            <h5>Directivas:</h5>
+            <p>Afectan la estructura de la clase de servicio</p>
+            <pre><code>&lt;%@ page language="java" contentType="text/html; charset=UTF-8" %&gt;
+&lt;%@ page import="java.util.*, java.sql.*" %&gt;
+&lt;%@ include file="header.jsp" %&gt;</code></pre>
+          </div>
+          
+          <div class="syntax-item">
+            <h5>Acciones:</h5>
+            <p>Controlan el comportamiento del motor de servicio usando sintaxis XML</p>
+            <pre><code>&lt;jsp:useBean id="usuario" class="com.ejemplo.Usuario" scope="session" /&gt;
+&lt;jsp:setProperty name="usuario" property="nombre" value="Ivan" /&gt;
+&lt;jsp:getProperty name="usuario" property="nombre" /&gt;</code></pre>
+          </div>
+        </div>
+        
+        <h4>JSP soporta nueve objetos implícitos:</h4>
+        <ul>
+          <li><strong>Request:</strong> Información de la solicitud HTTP</li>
+          <li><strong>Response:</strong> Respuesta HTTP al cliente</li>
+          <li><strong>Out:</strong> Flujo de salida para escribir contenido</li>
+          <li><strong>Session:</strong> Sesión del usuario</li>
+          <li><strong>Application:</strong> Contexto de la aplicación</li>
+          <li><strong>Config:</strong> Configuración del servlet</li>
+          <li><strong>pageContext:</strong> Contexto de la página</li>
+          <li><strong>Page:</strong> Referencia a la instancia del servlet</li>
+          <li><strong>Exception:</strong> Excepción no capturada</li>
+        </ul>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>Gestión de Dependencias (Maven y Gradle)</h3>
+        <p>Un <strong>gestor de dependencias</strong> es una herramienta que administra automáticamente las bibliotecas y módulos necesarios en un proyecto de software, descargando, instalando y actualizando recursos, asegurando compatibilidad y evitando conflictos de versiones.</p>
+        
+        <div class="dependency-managers">
+          <div class="manager-item">
+            <h4>Maven:</h4>
+            <p>Herramienta de software libre (lanzada en 2002) para gestionar proyectos Java, basada en archivos XML (pom.xml). Su filosofía es la estandarización de las estructuras de aplicaciones y su configuración.</p>
+            
+            <h5>Ejemplo de pom.xml:</h5>
+            <pre><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;project xmlns="http://maven.apache.org/POM/4.0.0"&gt;
+    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+    
+    &lt;groupId&gt;com.ejemplo&lt;/groupId&gt;
+    &lt;artifactId&gt;mi-aplicacion-web&lt;/artifactId&gt;
+    &lt;version&gt;1.0.0&lt;/version&gt;
+    &lt;packaging&gt;war&lt;/packaging&gt;
+    
+    &lt;properties&gt;
+        &lt;maven.compiler.source&gt;11&lt;/maven.compiler.source&gt;
+        &lt;maven.compiler.target&gt;11&lt;/maven.compiler.target&gt;
+        &lt;spring.version&gt;5.3.21&lt;/spring.version&gt;
+    &lt;/properties&gt;
+    
+    &lt;dependencies&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-webmvc&lt;/artifactId&gt;
+            &lt;version&gt;${spring.version}&lt;/version&gt;
+        &lt;/dependency&gt;
+        
+        &lt;dependency&gt;
+            &lt;groupId&gt;javax.servlet&lt;/groupId&gt;
+            &lt;artifactId&gt;jstl&lt;/artifactId&gt;
+            &lt;version&gt;1.2&lt;/version&gt;
+        &lt;/dependency&gt;
+        
+        &lt;dependency&gt;
+            &lt;groupId&gt;mysql&lt;/groupId&gt;
+            &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
+            &lt;version&gt;8.0.33&lt;/version&gt;
+        &lt;/dependency&gt;
+    &lt;/dependencies&gt;
+    
+    &lt;build&gt;
+        &lt;plugins&gt;
+            &lt;plugin&gt;
+                &lt;groupId&gt;org.apache.tomcat.maven&lt;/groupId&gt;
+                &lt;artifactId&gt;tomcat7-maven-plugin&lt;/artifactId&gt;
+                &lt;version&gt;2.2&lt;/version&gt;
+                &lt;configuration&gt;
+                    &lt;url&gt;http://localhost:8080/manager/text&lt;/url&gt;
+                    &lt;server&gt;tomcat-server&lt;/server&gt;
+                    &lt;path&gt;/mi-app&lt;/path&gt;
+                &lt;/configuration&gt;
+            &lt;/plugin&gt;
+        &lt;/plugins&gt;
+    &lt;/build&gt;
+&lt;/project&gt;</code></pre>
+            
+            <p><strong>Funcionalidades de Maven:</strong></p>
+            <ul>
+              <li>Gestionar dependencias</li>
+              <li>Compilar código</li>
+              <li>Empaquetar aplicaciones</li>
+              <li>Instalar en repositorios</li>
+              <li>Generar documentación</li>
+              <li>Gestionar fases del ciclo de vida</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>Spring Framework</h3>
+        <p>Es un <strong>robusto framework</strong> para el desarrollo de aplicaciones empresariales en Java, diseñado para estandarizar el trabajo, agilizar y manejar las complejidades de la programación.</p>
+        
+        <div class="spring-concepts">
+          <div class="concept-item">
+            <h4>Bean:</h4>
+            <p>En Spring, un "bean" se refiere a cualquier componente manejado por el framework, generalmente clases en forma de JavaBeans (sin argumentos en el constructor y con métodos getter y setter).</p>
+          </div>
+          
+          <div class="concept-item">
+            <h4>Inversión de Control (IoC):</h4>
+            <p>Se refiere a un cambio en el flujo de ejecución y vida de los objetos; el control de la aplicación (e.g., orden de llamadas a métodos) depende completamente del framework, no del programador.</p>
+          </div>
+          
+          <div class="concept-item">
+            <h4>Inyección de Dependencia (DI):</h4>
+            <p>Es un tipo de IoC donde las propiedades de un objeto son inyectadas a través de un constructor, un setter o un servicio.</p>
+          </div>
+          
+          <div class="concept-item">
+            <h4>Spring Container (Contenedor IoC):</h4>
+            <p>Parte fundamental del framework Spring que realiza la inyección de dependencia, crea, relaciona, configura y gestiona el ciclo de vida completo de los objetos (beans). Utiliza el patrón Factory para generar instancias.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>Arquitectura MVC y Spring Boot</h3>
+        
+        <div class="mvc-architecture">
+          <h4>Arquitectura MVC (Modelo-Vista-Controlador) con JSP:</h4>
+          <p>Una arquitectura que separa el desarrollo en capas: <strong>presentación (Vista)</strong>, <strong>lógica (Controlador)</strong> y <strong>datos (Modelo)</strong>. El flujo de solicitud comienza en la vista, se procesa en el controlador y se interactúa con el modelo para datos.</p>
+          
+          <div class="mvc-flow">
+            <div class="mvc-step">
+              <h5>1. Vista (JSP):</h5>
+              <p>Interfaz de usuario que presenta los datos</p>
+            </div>
+            <div class="mvc-step">
+              <h5>2. Controlador (Servlet/Spring Controller):</h5>
+              <p>Procesa las solicitudes y coordina entre Vista y Modelo</p>
+            </div>
+            <div class="mvc-step">
+              <h5>3. Modelo (JavaBeans/Entities):</h5>
+              <p>Representa los datos y la lógica de negocio</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="spring-boot">
+          <h4>Spring Boot:</h4>
+          <p>Herramienta que facilita la creación de proyectos con Spring Framework, eliminando la complejidad de las configuraciones y la instalación de dependencias. Ofrece:</p>
+          <ul>
+            <li><strong>Configuración automática</strong></li>
+            <li><strong>Métricas integradas</strong></li>
+            <li><strong>Comprobación de "vida" (health)</strong> de la aplicación</li>
+            <li><strong>Servidor incorporado</strong> para simplificar el despliegue</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>Despliegue de Aplicaciones Web</h3>
+        <p>En esta semana también se abordó el despliegue de aplicaciones web utilizando servicios en la nube, específicamente el despliegue de bases de datos en <strong>Railway</strong> y aplicaciones backend en <strong>Render</strong>.</p>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>1. Despliegue de Base de Datos (MySQL en Railway)</h3>
+        <p><strong>Railway</strong> es una plataforma que facilita el despliegue de bases de datos y servicios. Para desplegar MySQL:</p>
+        
+        <div class="deployment-steps">
+          <div class="step-item">
+            <h4>Paso 1: Crear un nuevo proyecto en Railway</h4>
+            <p>Inicia sesión en Railway y crea un nuevo proyecto desde el dashboard principal.</p>
+          </div>
+          
+          <div class="step-item">
+            <h4>Paso 2: Añadir servicio de base de datos MySQL</h4>
+            <p>Dentro de tu proyecto, haz clic en "New" y selecciona "Database" → "MySQL". Railway provisionará automáticamente una instancia de MySQL.</p>
+          </div>
+          
+          <div class="step-item">
+            <h4>Paso 3: Obtener credenciales</h4>
+            <p>Una vez que la base de datos esté lista, ve a la configuración de tu servicio MySQL. En la sección "Variables", encontrarás las credenciales necesarias:</p>
+            <ul>
+              <li><strong>MYSQL_HOST:</strong> Dirección del servidor</li>
+              <li><strong>MYSQL_PORT:</strong> Puerto de conexión</li>
+              <li><strong>MYSQL_USER:</strong> Usuario de la base de datos</li>
+              <li><strong>MYSQL_PASSWORD:</strong> Contraseña</li>
+              <li><strong>MYSQL_DATABASE:</strong> Nombre de la base de datos</li>
+            </ul>
+          </div>
+          
+          <div class="step-item">
+            <h4>Paso 4: Configurar el Backend</h4>
+            <p>Estas credenciales se usarán en las variables de entorno de tu backend (Render) para conectar la aplicación a la base de datos de Railway.</p>
+          </div>
+        </div>
+
+        <h4>Capturas del Proceso de Railway:</h4>
+        <div class="capturas-container">
+          <div class="captura-item">
+            <h4>📸 Railway Paso 1: Creación del proyecto</h4>
+            <img src="imagenes/semana10-railway1.png" alt="Creación proyecto Railway" onerror="this.style.display='none'">
+            <p>Dashboard de Railway mostrando la creación de un nuevo proyecto</p>
+          </div>
+
+          <div class="captura-item">
+            <h4>📸 Railway Paso 2: Configuración MySQL</h4>
+            <img src="imagenes/semana10-railway2.png" alt="Configuración MySQL Railway" onerror="this.style.display='none'">
+            <p>Selección y configuración del servicio de base de datos MySQL</p>
+          </div>
+
+          <div class="captura-item">
+            <h4>📸 Railway Paso 3: Variables y credenciales</h4>
+            <img src="imagenes/semana10-railway3.png" alt="Variables Railway" onerror="this.style.display='none'">
+            <p>Panel de variables mostrando las credenciales de conexión a MySQL</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>2. Despliegue del Backend (Flask Framework en Render)</h3>
+        <p><strong>Render</strong> es una plataforma de despliegue que permite hospedar aplicaciones web de manera sencilla y escalable.</p>
+        
+        <div class="deployment-steps">
+          <div class="step-item">
+            <h4>Paso 1: Preparar el proyecto Flask</h4>
+            <p>Asegúrate de que tu proyecto Flask tenga los archivos necesarios:</p>
+            <ul>
+              <li><strong>requirements.txt:</strong> Lista de dependencias</li>
+              <li><strong>app.py:</strong> Archivo principal de la aplicación</li>
+              <li><strong>Procfile o configuración de inicio:</strong> Para especificar cómo ejecutar la app</li>
+            </ul>
+          </div>
+          
+          <div class="step-item">
+            <h4>Paso 2: Conectar repositorio en Render</h4>
+            <p>En Render, crea un nuevo "Web Service" y conecta tu repositorio de GitHub que contiene el proyecto Flask.</p>
+          </div>
+          
+          <div class="step-item">
+            <h4>Paso 3: Configurar variables de entorno</h4>
+            <p>Añade las credenciales de Railway como variables de entorno en Render:</p>
+            <pre><code>DATABASE_URL=mysql://user:password@host:port/database
+MYSQL_HOST=railway-host
+MYSQL_PORT=3306
+MYSQL_USER=root
+MYSQL_PASSWORD=your-password
+MYSQL_DATABASE=railway</code></pre>
+          </div>
+          
+          <div class="step-item">
+            <h4>Paso 4: Desplegar</h4>
+            <p>Render construirá y desplegará automáticamente tu aplicación. La URL pública de tu backend estará disponible una vez que el despliegue sea exitoso.</p>
+          </div>
+        </div>
+
+        <h4>Capturas del Proceso de Render:</h4>
+        <div class="capturas-container">
+          <div class="captura-item">
+            <h4>📸 Render Paso 1: Configuración del servicio</h4>
+            <img src="imagenes/semana10-render1.png" alt="Configuración servicio Render" onerror="this.style.display='none'">
+            <p>Panel de Render mostrando la configuración del nuevo Web Service</p>
+          </div>
+
+          <div class="captura-item">
+            <h4>📸 Render Paso 2: Variables de entorno</h4>
+            <img src="imagenes/semana10-render2.png" alt="Variables entorno Render" onerror="this.style.display='none'">
+            <p>Configuración de variables de entorno con credenciales de Railway</p>
+          </div>
+
+          <div class="captura-item">
+            <h4>📸 Render Paso 3: Aplicación desplegada</h4>
+            <img src="imagenes/semana10-render3.png" alt="Aplicación desplegada Render" onerror="this.style.display='none'">
+            <p>Aplicación Flask funcionando en producción con URL pública</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>3. Integración y Funcionamiento Completo</h3>
+        <p>Una vez completados ambos despliegues, la aplicación web funciona de manera integrada:</p>
+        
+        <div class="integration-flow">
+          <div class="flow-item">
+            <h4>🌐 Frontend</h4>
+            <p>Interfaz de usuario accesible desde cualquier navegador</p>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-item">
+            <h4>🔧 Backend (Render)</h4>
+            <p>API Flask procesando solicitudes y lógica de negocio</p>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-item">
+            <h4>🗄️ Base de Datos (Railway)</h4>
+            <p>MySQL almacenando y gestionando los datos</p>
+          </div>
+        </div>
+
+        <h4>Capturas del Sistema Integrado:</h4>
+        <div class="capturas-container">
+          <div class="captura-item">
+            <h4>📸 Integración 1: Dashboard completo</h4>
+            <img src="imagenes/semana10-integracion1.png" alt="Dashboard completo" onerror="this.style.display='none'">
+            <p>Vista general del sistema con Railway y Render funcionando</p>
+          </div>
+
+          <div class="captura-item">
+            <h4>📸 Integración 2: API en funcionamiento</h4>
+            <img src="imagenes/semana10-integracion2.png" alt="API funcionando" onerror="this.style.display='none'">
+            <p>Pruebas de API mostrando la conexión exitosa con la base de datos</p>
+          </div>
+
+          <div class="captura-item">
+            <h4>📸 Integración 3: Aplicación web completa</h4>
+            <img src="imagenes/semana10-integracion3.png" alt="Aplicación web completa" onerror="this.style.display='none'">
+            <p>Aplicación web final funcionando con todos los componentes integrados</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>Tecnologías Aprendidas</h3>
+        
+        <div class="tecnologias-grid">
+          <div class="tech-category">
+            <h4>Lenguajes y Frameworks:</h4>
+            <ul>
+              <li><strong>Java</strong></li>
+              <li><strong>Jakarta EE</strong></li>
+              <li><strong>Spring Framework</strong></li>
+              <li><strong>Spring Data</strong></li>
+              <li><strong>Hibernate</strong></li>
+              <li><strong>JPA</strong></li>
+              <li><strong>JSP (JavaServer Pages)</strong></li>
+              <li><strong>Groovy</strong></li>
+              <li><strong>Scala</strong></li>
+            </ul>
+          </div>
+          
+          <div class="tech-category">
+            <h4>Servidores Web/Contenedores:</h4>
+            <ul>
+              <li><strong>Apache Tomcat (Jakarta Tomcat)</strong></li>
+              <li><strong>Catalina</strong></li>
+            </ul>
+          </div>
+          
+          <div class="tech-category">
+            <h4>Gestión de Dependencias y Build:</h4>
+            <ul>
+              <li><strong>Maven</strong></li>
+              <li><strong>Gradle</strong></li>
+            </ul>
+          </div>
+          
+          <div class="tech-category">
+            <h4>Bases de Datos:</h4>
+            <ul>
+              <li><strong>MySQL</strong></li>
+              <li><strong>API JDBC</strong> (para acceso a bases de datos)</li>
+            </ul>
+          </div>
+          
+          <div class="tech-category">
+            <h4>Herramientas de Desarrollo (IDEs):</h4>
+            <ul>
+              <li><strong>IntelliJ IDEA</strong></li>
+              <li><strong>Eclipse</strong></li>
+              <li><strong>Netbeans</strong></li>
+              <li><strong>JDeveloper</strong></li>
+            </ul>
+          </div>
+          
+          <div class="tech-category">
+            <h4>Herramientas Adicionales:</h4>
+            <ul>
+              <li><strong>Postman</strong> (Testing/Demostración)</li>
+              <li><strong>Servlets</strong> (Conceptos de Implementación)</li>
+              <li><strong>OpenJDK</strong> (Entorno de Ejecución Java)</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="maven-commands">
+          <h4>Comandos Maven para Tomcat:</h4>
+          <ul>
+            <li><code>mvn tomcat7:deploy</code> - Desplegar aplicación</li>
+            <li><code>mvn tomcat7:redeploy</code> - Redesplegar aplicación</li>
+            <li><code>mvn tomcat7:undeploy</code> - Quitar aplicación del servidor</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>Código Fuente y Recursos</h3>
+        <div class="codigo-fuente-container">
+          <div class="github-link-card">
+            <div class="github-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+              </svg>
+            </div>
+            <div class="github-content">
+              <h4>Ver Código Fuente Completo</h4>
+              <p>Accede al repositorio completo con todos los ejercicios, ejemplos prácticos y código fuente de la Semana 10 - Java Spring Framework.</p>
+              <div class="github-features">
+                <span class="feature-tag">☕ Java Spring</span>
+                <span class="feature-tag">🌐 JSP</span>
+                <span class="feature-tag">🐱 Apache Tomcat</span>
+                <span class="feature-tag">📚 Documentación</span>
+              </div>
+              <a href="https://github.com/GomezHuamanlazoIvan/GomezHuamanlazoIvan" target="_blank" rel="noopener noreferrer" class="btn-github">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                </svg>
+                Ver en GitHub
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+          
+          <div class="recursos-adicionales">
+            <h4>📁 Contenido del Repositorio</h4>
+            <ul class="recursos-lista">
+              <li>
+                <span class="recurso-icon">☕</span>
+                <div>
+                  <strong>Proyectos Java Spring</strong>
+                  <p>Aplicaciones completas desarrolladas con Spring Framework</p>
+                </div>
+              </li>
+              <li>
+                <span class="recurso-icon">🌐</span>
+                <div>
+                  <strong>Páginas JSP Dinámicas</strong>
+                  <p>Ejemplos de JavaServer Pages con lógica de negocio</p>
+                </div>
+              </li>
+              <li>
+                <span class="recurso-icon">🐱</span>
+                <div>
+                  <strong>Configuración Apache Tomcat</strong>
+                  <p>Scripts de despliegue y configuración del servidor</p>
+                </div>
+              </li>
+              <li>
+                <span class="recurso-icon">🗄️</span>
+                <div>
+                  <strong>Integración con Bases de Datos</strong>
+                  <p>Conexiones JDBC y manejo de datos persistentes</p>
+                </div>
+              </li>
+              <li>
+                <span class="recurso-icon">📚</span>
+                <div>
+                  <strong>Documentación y Guías</strong>
+                  <p>Tutoriales paso a paso y mejores prácticas</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>Reflexión Personal</h3>
+        <p>Esta semana representó una inmersión profunda en el ecosistema Java para desarrollo web empresarial. El aprendizaje de JSP me permitió comprender cómo se generan páginas dinámicas del lado del servidor, mientras que Apache Tomcat me enseñó los fundamentos de los contenedores de servlets.</p>
+        
+        <p>La experiencia con Maven fue transformadora, ya que me mostró la importancia de la gestión automatizada de dependencias y el ciclo de vida de construcción de proyectos. La capacidad de definir dependencias en el pom.xml y que Maven se encargue de descargar y gestionar todas las bibliotecas necesarias simplificó enormemente el desarrollo.</p>
+        
+        <p>El Spring Framework me introdujo a conceptos avanzados como la Inversión de Control (IoC) y la Inyección de Dependencias (DI), que revolucionaron mi forma de pensar sobre el diseño de aplicaciones. La arquitectura MVC con Spring me proporcionó un marco sólido para separar responsabilidades y crear aplicaciones más mantenibles.</p>
+        
+        <p>Spring Boot fue una revelación, eliminando la complejidad de configuración y permitiéndome enfocarme en la lógica de negocio. La configuración automática y el servidor embebido aceleraron significativamente mi proceso de desarrollo y despliegue.</p>
+        
+        <p>Esta semana consolidó mi comprensión del desarrollo backend empresarial con Java, proporcionándome las herramientas y conocimientos necesarios para crear aplicaciones web robustas, escalables y de nivel profesional.</p>
+      </section>
+    </div>
+
+    <div class="navegacion-semana">
+      <a href="semana9.html" class="nav-btn">
+        ← Semana 9
+      </a>
+      <a href="proyectos.html" class="volver-proyectos">Índice de Proyectos</a>
+      <a href="semana11.html" class="nav-btn">
+        Semana 11 →
+      </a>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Gomez Huamanlazo - Semana 10</p>
+  </footer>
+  
+  <script src="script.js"></script>
+</body>
+</html>

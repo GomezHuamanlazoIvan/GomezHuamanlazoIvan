@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Semana 11 - Exposición de Artículo Científico sobre IA</title>A</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/pages/semana11.css">
+</head>
+
+<body>
+  <header>
+    <img src="imagenes/perfil.png" alt="Foto de perfil" class="perfil">
+    <h1>Gomez Huamanlazo Ivan Paul</h1>
+    <p>Desarrollador Web Frontend & Backend</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="proyectos.html">Proyectos</a>
+    <a href="blog.html">Blog</a>
+    <a href="index.html#contacto">Contacto</a>
+  </nav>
+
+  <main class="semana-individual">
+    <div class="semana-header">
+      <div class="semana-numero">SEMANA 11</div>
+      <h1>Exposición de Artículo Científico</h1>
+      <div class="semana-icon">🧠📊</div>
+    </div>
+
+    <div class="contenido-semana">
+      <section class="seccion-contenido">
+        <h3>Artículo Científico Expuesto</h3>
+        <div class="paper-title">
+          <h2>"Un Nuevo Enfoque para Gestionar Datos Faltantes para Mejorar el Sistema de Detección de Intrusiones en la
+            Red"</h2>
+        </div>
+
+        <p>Este documento presenta un nuevo método para mejorar los <strong>sistemas de detección de intrusiones
+            (IDS)</strong> de red abordando el desafío crítico de los datos faltantes en los conjuntos de datos.</p>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>Problema Abordado</h3>
+        <div class="problem-statement">
+          <p>La gestión de <strong>datos faltantes</strong> es un desafío significativo en los conjuntos de datos de los
+            sistemas de detección de intrusiones (IDS), que impacta considerablemente el rendimiento de los modelos de
+            aprendizaje profundo.</p>
+
+          <div class="challenge-points">
+            <h4>Desafíos Principales:</h4>
+            <ul>
+              <li><strong>Calidad de datos comprometida:</strong> Los datos faltantes reducen la efectividad de los
+                algoritmos de ML</li>
+              <li><strong>Rendimiento degradado:</strong> Los modelos de detección pierden precisión con datos
+                incompletos</li>
+              <li><strong>Falsos positivos/negativos:</strong> Incremento en errores de clasificación</li>
+              <li><strong>Robustez limitada:</strong> Los sistemas IDS se vuelven menos confiables</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>Solución Propuesta: DMDI</h3>
+        <p>Para solucionar este problema, se introduce el método <strong>DeepLearning_Based_MissingData_Imputation
+            (DMDI)</strong>. Este es un enfoque novedoso diseñado para mejorar la calidad de los datos de entrada
+          mediante la gestión eficiente de los valores faltantes.</p>
+
+        <div class="dmdi-overview">
+          <div class="method-card">
+            <h4>🧠 DMDI (DeepLearning_Based_MissingData_Imputation)</h4>
+            <p>Un método innovador que combina técnicas avanzadas de deep learning para la imputación inteligente de
+              datos faltantes en sistemas IDS.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>Características y Metodología de DMDI</h3>
+
+        <div class="methodology-components">
+          <div class="component-item">
+            <h4>1. Red Neuronal Convolucional Bidireccional (Bi-CNN)</h4>
+            <p>DMDI utiliza una <strong>red neuronal convolucional bidireccional de última generación (Bi-CNN)</strong>
+              para aprender de los patrones de datos existentes y predecir los valores que faltan.</p>
+
+            <div class="tech-details">
+              <h5>Características técnicas:</h5>
+              <ul>
+                <li>Procesamiento bidireccional de secuencias de datos</li>
+                <li>Extracción automática de características relevantes</li>
+                <li>Aprendizaje de patrones complejos en datos de red</li>
+                <li>Optimización para datos temporales de IDS</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="component-item">
+            <h4>2. Mecanismo de Atención Temporal-Espacial</h4>
+            <p>Además, incorpora un <strong>mecanismo de atención temporal-espacial</strong> que permite al modelo
+              centrarse tanto en las dependencias de tiempo (secuencia) como en las relaciones entre características
+              (espacio) en los datos de la red, mejorando la precisión de la imputación.</p>
+
+            <div class="attention-mechanism">
+              <h5>Componentes del mecanismo:</h5>
+              <div class="attention-types">
+                <div class="attention-type">
+                  <h6>⏰ Atención Temporal</h6>
+                  <p>Analiza patrones secuenciales y dependencias temporales en el tráfico de red</p>
+                </div>
+                <div class="attention-type">
+                  <h6>🌐 Atención Espacial</h6>
+                  <p>Identifica relaciones entre diferentes características de los datos de red</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="component-item">
+            <h4>3. Módulo de Adversarios de Datos</h4>
+            <p>El método también integra un <strong>módulo de adversarios de datos</strong> que genera ejemplos
+              realistas de datos faltantes para entrenar el modelo, aumentando su robustez y precisión en diversos
+              escenarios.</p>
+
+            <div class="adversarial-training">
+              <h5>Beneficios del entrenamiento adversarial:</h5>
+              <ul>
+                <li>Generación de datos sintéticos realistas</li>
+                <li>Mejora de la robustez del modelo</li>
+                <li>Adaptación a diferentes tipos de ataques</li>
+                <li>Reducción del overfitting</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>Contribución y Resultados Esperados</h3>
+        <p>El enfoque de DMDI promete una imputación más precisa de los datos faltantes y una mejora significativa en el
+          rendimiento general de la detección de intrusiones.</p>
+
+        <div class="results-section">
+          <div class="contribution-points">
+            <h4>Contribuciones Principales:</h4>
+            <ul>
+              <li><strong>Metodología innovadora:</strong> Primer enfoque que combina Bi-CNN con atención
+                temporal-espacial para IDS</li>
+              <li><strong>Mejora en precisión:</strong> Imputación más precisa de datos faltantes</li>
+              <li><strong>Robustez aumentada:</strong> Mayor resistencia a diferentes tipos de ataques</li>
+              <li><strong>Aplicabilidad práctica:</strong> Solución escalable para sistemas IDS reales</li>
+            </ul>
+          </div>
+
+          <div class="expected-results">
+            <h4>Resultados Esperados:</h4>
+            <p>Los resultados de las simulaciones y experimentos exhaustivos demuestran la eficacia de DMDI en
+              comparación con los métodos de imputación existentes.</p>
+
+            <div class="performance-metrics">
+              <div class="metric-item">
+                <h5>📈 Precisión Mejorada</h5>
+                <p>Incremento significativo en la detección de intrusiones</p>
+              </div>
+              <div class="metric-item">
+                <h5>⚡ Eficiencia Optimizada</h5>
+                <p>Procesamiento más rápido de datos incompletos</p>
+              </div>
+              <div class="metric-item">
+                <h5>🎯 Reducción de Errores</h5>
+                <p>Menor tasa de falsos positivos y negativos</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>Estructura de la Exposición</h3>
+        <p>La presentación del artículo científico se estructuró en las siguientes secciones:</p>
+
+        <div class="exposicion-estructura">
+          <div class="estructura-item">
+            <h4>� 1. Inrtroducción y Planteamiento del Problema</h4>
+            <p>Presentación del desafío de datos faltantes en sistemas IDS y su impacto en la efectividad de los
+              algoritmos de machine learning.</p>
+          </div>
+
+          <div class="estructura-item">
+            <h4>🔬 2. Metodología DMDI</h4>
+            <p>Explicación detallada de la arquitectura del método DeepLearning_Based_MissingData_Imputation, incluyendo
+              sus tres componentes principales.</p>
+          </div>
+
+          <div class="estructura-item">
+            <h4>📈 3. Resultados y Conclusiones</h4>
+            <p>Presentación de los resultados experimentales que demuestran la eficacia de DMDI comparado con métodos
+              tradicionales de imputación.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>Tecnologías y Conceptos Relacionados</h3>
+
+        <div class="tecnologias-grid">
+          <div class="tech-category">
+            <h4>Inteligencia Artificial y Machine Learning:</h4>
+            <ul>
+              <li><strong>Deep Learning</strong></li>
+              <li><strong>Redes Neuronales Convolucionales (CNN)</strong></li>
+              <li><strong>Redes Bidireccionales (Bi-CNN)</strong></li>
+              <li><strong>Mecanismos de Atención</strong></li>
+              <li><strong>Entrenamiento Adversarial</strong></li>
+              <li><strong>Imputación de Datos</strong></li>
+            </ul>
+          </div>
+
+          <div class="tech-category">
+            <h4>Seguridad y Redes:</h4>
+            <ul>
+              <li><strong>Sistemas de Detección de Intrusiones (IDS)</strong></li>
+              <li><strong>Seguridad de Redes</strong></li>
+              <li><strong>Análisis de Tráfico de Red</strong></li>
+              <li><strong>Detección de Anomalías</strong></li>
+              <li><strong>Ciberseguridad</strong></li>
+            </ul>
+          </div>
+
+          <div class="tech-category">
+            <h4>Procesamiento de Datos:</h4>
+            <ul>
+              <li><strong>Preprocesamiento de Datos</strong></li>
+              <li><strong>Limpieza de Datos</strong></li>
+              <li><strong>Análisis Temporal-Espacial</strong></li>
+              <li><strong>Minería de Datos</strong></li>
+              <li><strong>Big Data Analytics</strong></li>
+            </ul>
+          </div>
+
+          <div class="tech-category">
+            <h4>Herramientas y Frameworks:</h4>
+            <ul>
+              <li><strong>TensorFlow/PyTorch</strong> (Deep Learning)</li>
+              <li><strong>Scikit-learn</strong> (Machine Learning)</li>
+              <li><strong>Pandas/NumPy</strong> (Procesamiento de datos)</li>
+              <li><strong>Matplotlib/Seaborn</strong> (Visualización)</li>
+              <li><strong>Jupyter Notebooks</strong> (Desarrollo)</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>Código Fuente y Recursos</h3>
+        <div class="codigo-fuente-container">
+          <div class="github-link-card">
+            <div class="github-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+              </svg>
+            </div>
+            <div class="github-content">
+              <h4>Ver Código Fuente Completo</h4>
+              <p>Accede al repositorio completo con la presentación del artículo científico y recursos de la Semana 11 - IA para Sistemas de Detección de Intrusiones.</p>
+              <div class="github-features">
+                <span class="feature-tag">🤖 IA & ML</span>
+                <span class="feature-tag">🔒 Ciberseguridad</span>
+                <span class="feature-tag">📊 Presentación</span>
+                <span class="feature-tag">📚 Investigación</span>
+              </div>
+              <a href="https://github.com/GomezHuamanlazoIvan/GomezHuamanlazoIvan" target="_blank" rel="noopener noreferrer" class="btn-github">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                </svg>
+                Ver en GitHub
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+          
+          <div class="recursos-adicionales">
+            <h4>📁 Contenido del Repositorio</h4>
+            <ul class="recursos-lista">
+              <li>
+                <span class="recurso-icon">📊</span>
+                <div>
+                  <strong>Presentación Completa</strong>
+                  <p>Slides y material de la presentación del artículo científico</p>
+                </div>
+              </li>
+              <li>
+                <span class="recurso-icon">🤖</span>
+                <div>
+                  <strong>Algoritmos de IA</strong>
+                  <p>Implementaciones de algoritmos de machine learning para detección</p>
+                </div>
+              </li>
+              <li>
+                <span class="recurso-icon">🔒</span>
+                <div>
+                  <strong>Sistemas de Seguridad</strong>
+                  <p>Ejemplos de sistemas de detección de intrusiones</p>
+                </div>
+              </li>
+              <li>
+                <span class="recurso-icon">📈</span>
+                <div>
+                  <strong>Análisis de Datos</strong>
+                  <p>Scripts de análisis y visualización de patrones de seguridad</p>
+                </div>
+              </li>
+              <li>
+                <span class="recurso-icon">📚</span>
+                <div>
+                  <strong>Referencias y Bibliografía</strong>
+                  <p>Fuentes académicas y recursos de investigación utilizados</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>Reflexión Personal</h3>
+        <p>La exposición de este artículo científico me permitió profundizar en la intersección entre la inteligencia
+          artificial y la ciberseguridad, dos campos de gran relevancia en el desarrollo tecnológico actual.</p>
+
+        <p>El estudio del método DMDI me enseñó la importancia de abordar problemas reales con soluciones innovadoras.
+          La gestión de datos faltantes es un desafío común en muchos proyectos de machine learning, y ver cómo se puede
+          resolver específicamente en el contexto de sistemas de detección de intrusiones fue muy enriquecedor.</p>
+
+        <p>La combinación de técnicas avanzadas como las redes neuronales convolucionales bidireccionales, los
+          mecanismos de atención temporal-espacial y el entrenamiento adversarial demuestra la sofisticación que
+          requieren las soluciones modernas de ciberseguridad.</p>
+
+        <p>Esta experiencia me motivó a explorar más profundamente el campo de la inteligencia artificial aplicada a la
+          seguridad, y me dio una perspectiva valiosa sobre cómo la investigación académica puede traducirse en
+          soluciones prácticas para problemas del mundo real.</p>
+
+        <p>Además, la presentación del artículo mejoró mis habilidades de comunicación técnica y me ayudó a comprender
+          mejor cómo estructurar y presentar investigación compleja de manera clara y accesible.</p>
+      </section>
+    </div>
+
+    <div class="navegacion-semana">
+      <a href="semana10.html" class="nav-btn">
+        ← Semana 10
+      </a>
+      <a href="proyectos.html" class="volver-proyectos">Índice de Proyectos</a>
+      <a href="semana12.html" class="nav-btn">
+        Semana 12 →
+      </a>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Gomez Huamanlazo - Semana 11</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <!-- Actualizado: Semana 11 - Artículo Científico sobre Detección de Intrusiones -->
+</body>
+
+</html>

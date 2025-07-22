@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Semana 1 - Fundamentos de las Tecnologías Web</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/pages/semana1.css">
+</head>
+<body>
+  <!-- Toggle de tema -->
+  <div class="theme-toggle" onclick="toggleTheme()">
+    <div class="theme-toggle-inner">
+      <span class="theme-icon sun-icon">☀️</span>
+      <span class="theme-text">Tema</span>
+      <span class="theme-icon moon-icon">🌙</span>
+    </div>
+  </div>
+
+  <header>
+    <img src="imagenes/perfil.png" alt="Foto de perfil" class="perfil">
+    <h1>Gomez Huamanlazo Ivan Paul</h1>
+    <p>Desarrollador Web Frontend & Backend</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="proyectos.html">Proyectos</a>
+    <a href="blog.html">Blog</a>
+    <a href="index.html#contacto">Contacto</a>
+  </nav>
+
+  <main class="semana-individual">
+    <div class="semana-header">
+      <div class="semana-numero">SEMANA 1</div>
+      <h1>Fundamentos de las Tecnologías Web</h1>
+      <img src="imagenes/semana1.png" alt="Semana 1 - Fundamentos Web">
+    </div>
+
+    <div class="contenido-semana">
+      <section class="seccion-contenido">
+        <h3>Definición y Conceptos Clave</h3>
+        <p>Esta semana se centró en entender los pilares básicos de la web. Un <strong>sistema web</strong> es una colección de páginas interconectadas accesibles a través de Internet. Una <strong>aplicación web</strong> es un programa que los usuarios pueden utilizar accediendo a un servidor web.</p>
+        
+        <p>Un <strong>sitio web</strong> es un conjunto de páginas web relacionadas, y una <strong>página web</strong> es un documento individual en la web. Las tecnologías web como HTML, CSS, JS y XML son esenciales para crear y estructurar contenido en la web.</p>
+        
+        <p>El <strong>DNS</strong> traduce nombres de dominio a direcciones IP, el protocolo <strong>TCP/IP</strong> permite la comunicación entre dispositivos, y el protocolo <strong>HTTP</strong> es utilizado para transferir datos en la web.</p>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>Ejemplo Práctico</h3>
+        <p><strong>Objetivo:</strong> Creación de un archivo HTML básico y navegación local.</p>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;Mi Primera Página&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Hola Mundo&lt;/h1&gt;
+  &lt;p&gt;Esta es mi primera página web&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>Tecnologías Aprendidas</h3>
+        <ul>
+          <li><strong>HTML:</strong> Estructura básica de documentos web</li>
+          <li><strong>Protocolos:</strong> HTTP, TCP/IP, DNS</li>
+          <li><strong>Herramientas:</strong> VS Code, navegadores web</li>
+          <li><strong>Conceptos:</strong> Cliente-servidor, arquitectura web</li>
+        </ul>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>Reflexión Personal</h3>
+        <p>Aprendí la arquitectura básica del internet, el propósito de los protocolos y cómo usar eficientemente VS Code. Esta semana fue crucial para entender cómo se estructuran y despliegan las páginas web.</p>
+        
+        <p>La comprensión de estos fundamentos me proporcionó una base sólida para las tecnologías más avanzadas que vendría en las siguientes semanas.</p>
+      </section>
+    </div>
+
+    <!-- Sistema de feedback -->
+    <div class="feedback-section">
+      <h4>¿Te fue útil este contenido?</h4>
+      <div class="rating-buttons">
+        <button class="rating-btn" data-rating="1" title="No me gustó">😞</button>
+        <button class="rating-btn" data-rating="2" title="Regular">😐</button>
+        <button class="rating-btn" data-rating="3" title="Me gustó">😊</button>
+        <button class="rating-btn" data-rating="4" title="Excelente">😍</button>
+        <button class="rating-btn" data-rating="5" title="Increíble">🤩</button>
+      </div>
+      <textarea placeholder="Comparte tu feedback o sugerencias (opcional)..."></textarea>
+    </div>
+
+    <div class="navegacion-semana">
+      <a href="proyectos.html" class="nav-btn">
+        ← Volver a Proyectos
+      </a>
+      <a href="proyectos.html" class="volver-proyectos">Índice de Proyectos</a>
+      <a href="semana2.html" class="nav-btn">
+        Semana 2 →
+      </a>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Gomez Huamanlazo - Semana 1</p>
+  </footer>
+  
+  <script src="script.js"></script>
+</body>
+</html>

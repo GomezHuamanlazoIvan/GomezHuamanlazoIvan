@@ -1,0 +1,181 @@
+/* Estilos específicos para la semana 11 - Artículo Científico */
+
+/* Paper title */
+.paper-title {
+  background: rgba(45, 45, 45, 0.6);
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  border: 1px solid var(--border-color);
+  text-align: center;
+}
+
+.paper-title h2 {
+  font-size: 1.5rem;
+  color: var(--accent-color);
+  line-height: 1.4;
+}
+
+/* Problem statement */
+.problem-statement {
+  background: rgba(45, 45, 45, 0.6);
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  border: 1px solid var(--border-color);
+}
+
+.challenge-points {
+  margin-top: 1.5rem;
+}
+
+.challenge-points h4 {
+  color: var(--accent-color);
+  margin-bottom: 1rem;
+}
+
+/* DMDI overview */
+.dmdi-overview {
+  margin: 2rem 0;
+}
+
+.method-card {
+  background: rgba(45, 45, 45, 0.6);
+  border-radius: 10px;
+  padding: 1.5rem;
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+}
+
+.method-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent-color);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.method-card h4 {
+  color: var(--accent-color);
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+/* Methodology components */
+.methodology-components {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.component-item {
+  background: rgba(45, 45, 45, 0.6);
+  border-radius: 10px;
+  padding: 1.5rem;
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+}
+
+.component-item:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent-color);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.component-item h4 {
+  color: var(--accent-color);
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.tech-details, .attention-mechanism, .adversarial-training {
+  background: rgba(30, 30, 30, 0.6);
+  border-radius: 8px;
+  padding: 1.2rem;
+  margin-top: 1.5rem;
+  border: 1px solid var(--border-color);
+}
+
+.tech-details h5, .attention-mechanism h5, .adversarial-training h5 {
+  color: #ddd;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.attention-types {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.attention-type {
+  background: rgba(26, 26, 26, 0.8);
+  border-radius: 8px;
+  padding: 1rem;
+  border: 1px solid var(--border-color);
+}
+
+.attention-type h6 {
+  color: var(--accent-color);
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+/* Results section */
+.results-section {
+  margin: 2rem 0;
+}
+
+.contribution-points, .expected-results {
+  background: rgba(45, 45, 45, 0.6);
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--border-color);
+}
+
+.contribution-points h4, .expected-results h4 {
+  color: var(--accent-color);
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.performance-metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.metric-item {
+  background: rgba(26, 26, 26, 0.8);
+  border-radius: 8px;
+  padding: 1rem;
+  border: 1px solid var(--border-color);
+  text-align: center;
+}
+
+.metric-item h5 {
+  color: var(--accent-color);
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .paper-title h2 {
+    font-size: 1.3rem;
+  }
+  
+  .methodology-components {
+    gap: 1.5rem;
+  }
+  
+  .component-item, .method-card, .contribution-points, .expected-results {
+    padding: 1.2rem;
+  }
+  
+  .attention-types, .performance-metrics {
+    grid-template-columns: 1fr;
+  }
+}

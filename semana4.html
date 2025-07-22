@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Semana 4 - JavaScript y TypeScript</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/pages/semana4.css">
+</head>
+<body>
+  <header>
+    <img src="imagenes/perfil.png" alt="Foto de perfil" class="perfil">
+    <h1>Gomez Huamanlazo Ivan Paul</h1>
+    <p>Desarrollador Web Frontend & Backend</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="proyectos.html">Proyectos</a>
+    <a href="blog.html">Blog</a>
+    <a href="index.html#contacto">Contacto</a>
+  </nav>
+
+  <main class="semana-individual">
+    <div class="semana-header">
+      <div class="semana-numero">SEMANA 4</div>
+      <h1>JavaScript y TypeScript</h1>
+      <img src="imagenes/semana4.png" alt="Semana 4 - JavaScript y TypeScript">
+    </div>
+
+    <div class="contenido-semana">
+      <section class="seccion-contenido">
+        <h3>Programación Dinámica Web</h3>
+        <p><strong>JavaScript</strong> es un lenguaje de programación que permite implementar funciones complejas en páginas web. Se utiliza para crear contenido dinámico, controlar multimedia, animar imágenes, y mucho más.</p>
+        
+        <p><strong>TypeScript</strong> es un superset de JavaScript que añade tipos estáticos. Esto permite detectar errores durante el desarrollo y hace que el código sea más fácil de mantener y escalar.</p>
+        
+        <p>El <strong>DOM (Document Object Model)</strong> es una interfaz de programación para documentos HTML y XML que permite a los programas cambiar la estructura, estilo y contenido de un documento.</p>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>Canvas y Gráficos</h3>
+        <p><strong>Canvas</strong> es una API de HTML5 que permite dibujar gráficos mediante scripting, generalmente JavaScript.</p>
+        
+        <h4>Ejemplo de Canvas:</h4>
+        <pre><code>const canvas = document.getElementById('myCanvas');
+const ctx = canvas.getContext('2d');
+
+// Dibujar un rectángulo azul
+ctx.fillStyle = 'blue';
+ctx.fillRect(10, 10, 100, 100);
+
+// Dibujar un círculo rojo
+ctx.beginPath();
+ctx.arc(200, 60, 50, 0, 2 * Math.PI);
+ctx.fillStyle = 'red';
+ctx.fill();
+
+// Animación simple
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  // Lógica de animación aquí
+  requestAnimationFrame(animate);
+}
+animate();</code></pre>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>TypeScript en Acción</h3>
+        <pre><code>// Definición de interfaces
+interface Usuario {
+  id: number;
+  nombre: string;
+  email: string;
+  activo: boolean;
+}
+
+// Función con tipos
+function crearUsuario(datos: Partial&lt;Usuario&gt;): Usuario {
+  return {
+    id: Math.random(),
+    nombre: datos.nombre || 'Sin nombre',
+    email: datos.email || '',
+    activo: datos.activo ?? true
+  };
+}
+
+// Uso de la función
+const nuevoUsuario = crearUsuario({
+  nombre: 'Ivan Paul',
+  email: 'ivan@example.com'
+});</code></pre>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>Conceptos Clave Aprendidos</h3>
+        <ul>
+          <li><strong>Manipulación del DOM:</strong> Selección y modificación de elementos</li>
+          <li><strong>Eventos:</strong> Click, hover, submit, keyboard events</li>
+          <li><strong>Canvas API:</strong> Dibujo de gráficos y animaciones</li>
+          <li><strong>TypeScript:</strong> Tipado estático, interfaces, generics</li>
+          <li><strong>ES6+:</strong> Arrow functions, destructuring, modules</li>
+        </ul>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>Reflexión Personal</h3>
+        <p>Fortalecí mi lógica de programación y la interacción directa con elementos HTML. Aprendí a crear animaciones y gráficos dinámicos usando Canvas, lo que abrió nuevas posibilidades creativas.</p>
+        
+        <p>TypeScript me enseñó la importancia del tipado estático para proyectos escalables, mejorando significativamente la calidad y mantenibilidad del código.</p>
+      </section>
+    </div>
+
+    <div class="navegacion-semana">
+      <a href="semana3.html" class="nav-btn">
+        ← Semana 3
+      </a>
+      <a href="proyectos.html" class="volver-proyectos">Índice de Proyectos</a>
+      <a href="semana5.html" class="nav-btn">
+        Semana 5 →
+      </a>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Gomez Huamanlazo - Semana 4</p>
+  </footer>
+  
+  <script src="script.js"></script>
+</body>
+</html>

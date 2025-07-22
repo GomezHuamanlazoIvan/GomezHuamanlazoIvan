@@ -1,3 +1,4 @@
+HEAD
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -145,3 +146,495 @@
   </footer>
 </body>
 </html>
+=======
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog - Gomez Ivan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css" />
+</head>
+<body>
+  <!-- Toggle de tema -->
+  <div class="theme-toggle" onclick="toggleTheme()">
+    <div class="theme-toggle-inner">
+      <span class="theme-icon sun-icon">☀️</span>
+      <span class="theme-text">Tema</span>
+      <span class="theme-icon moon-icon">🌙</span>
+    </div>
+  </div>
+
+  <header>
+    <img src="imagenes/perfil.png" alt="Foto de perfil" class="perfil">
+    <h1>Gomez Huamanlazo Ivan Paul</h1>
+    <p>Desarrollador Web Frontend & Backend</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="proyectos.html">Proyectos</a>
+    <a href="blog.html">Blog</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+
+  <main>
+    <!-- Filtros del blog -->
+    <div class="blog-filters">
+      <input type="text" id="search-blog" placeholder="🔍 Buscar en el blog...">
+      <div class="filter-tags">
+        <button class="filter-btn active" data-filter="all">Todos</button>
+        <button class="filter-btn" data-filter="frontend">Frontend</button>
+        <button class="filter-btn" data-filter="backend">Backend</button>
+        <button class="filter-btn" data-filter="reflexion">Reflexiones</button>
+        <button class="filter-btn" data-filter="tutorial">Tutoriales</button>
+      </div>
+    </div>
+
+    <section id="blog">
+      <h2>Blog de Desarrollo</h2>
+      <p class="blog-intro">Reflexiones, aprendizajes y experiencias en mi recorrido como desarrollador web</p>
+
+      <div class="blog-post" data-categories="reflexion frontend">
+        <div class="post-meta">
+          <span class="post-date">18 Julio, 2025</span>
+          <span class="post-category">Reflexión</span>
+          <span class="reading-time">5 min</span>
+        </div>
+        <h3>Mi Transformación: De Principiante a Desarrollador Full Stack</h3>
+        <img src="imagenes/post-1.png" alt="Evolución como desarrollador">
+        <p>Hace 15 semanas comencé este viaje sin saber prácticamente nada sobre desarrollo web. Hoy, al mirar atrás, puedo ver una transformación completa en mi forma de pensar y resolver problemas.</p>
+        
+        <p><strong>Los primeros pasos fueron fundamentales:</strong> Entender HTML y CSS no era solo aprender etiquetas y propiedades, sino comprender cómo estructurar información y crear experiencias visuales coherentes.</p>
+        
+        <p>El momento decisivo llegó con <strong>JavaScript y React</strong>. Pasar de páginas estáticas a aplicaciones interactivas cambió completamente mi perspectiva sobre lo que es posible crear en la web.</p>
+        
+        <blockquote>
+          "El desarrollo web no es solo código, es resolver problemas reales de personas reales"
+        </blockquote>
+        
+        <p>Ahora, con conocimientos en backend (Spring, Laravel, Flask) y frontend (React, TypeScript), me siento preparado para enfrentar proyectos complejos y crear soluciones completas.</p>
+      </div>
+
+      <div class="blog-post" data-categories="tutorial frontend">
+        <div class="post-meta">
+          <span class="post-date">15 Julio, 2025</span>
+          <span class="post-category">Tutorial</span>
+          <span class="reading-time">8 min</span>
+        </div>
+        <h3>React Hooks: El Antes y Después en mi Código</h3>
+        <img src="imagenes/semana7.png" alt="React Hooks">
+        <p>Los React Hooks revolucionaron mi forma de escribir componentes. Aquí comparto las lecciones más importantes que aprendí.</p>
+        
+        <h4>useState: Gestión de Estado Simplificada</h4>
+        <pre><code>// Antes: Componentes de clase complejos
+// Después: Funciones simples y elegantes
+const [count, setCount] = useState(0);
+const [user, setUser] = useState(null);</code></pre>
+        
+        <h4>useEffect: El Ciclo de Vida Reimaginado</h4>
+        <p>Entender useEffect fue clave para manejar efectos secundarios de manera predecible:</p>
+        <ul>
+          <li><strong>Montaje:</strong> useEffect(() => {}, [])</li>
+          <li><strong>Actualización:</strong> useEffect(() => {}, [dependency])</li>
+          <li><strong>Limpieza:</strong> return () => cleanup()</li>
+        </ul>
+        
+        <p><strong>Consejo clave:</strong> Siempre piensa en las dependencias. Un useEffect mal configurado puede causar bucles infinitos o comportamientos inesperados.</p>
+      </div>
+
+      <div class="blog-post" data-categories="backend tutorial">
+        <div class="post-meta">
+          <span class="post-date">12 Julio, 2025</span>
+          <span class="post-category">Backend</span>
+          <span class="reading-time">6 min</span>
+        </div>
+        <h3>Comparando Frameworks Backend: Spring vs Laravel vs Flask</h3>
+        <img src="imagenes/post-2.png" alt="Comparación de frameworks">
+        <p>Después de trabajar con tres frameworks backend diferentes, aquí están mis reflexiones sobre cada uno:</p>
+        
+        <div class="framework-comparison">
+          <h4>🍃 Spring Boot (Java)</h4>
+          <p><strong>Fortalezas:</strong> Robusto, escalable, excelente para aplicaciones empresariales</p>
+          <p><strong>Desafíos:</strong> Curva de aprendizaje pronunciada, configuración inicial compleja</p>
+          
+          <h4>🎨 Laravel (PHP)</h4>
+          <p><strong>Fortalezas:</strong> Sintaxis elegante, Eloquent ORM intuitivo, desarrollo rápido</p>
+          <p><strong>Desafíos:</strong> Rendimiento en aplicaciones muy grandes</p>
+          
+          <h4>🐍 Flask (Python)</h4>
+          <p><strong>Fortalezas:</strong> Simplicidad, flexibilidad total, perfecto para APIs</p>
+          <p><strong>Desafíos:</strong> Requiere más configuración manual para proyectos grandes</p>
+        </div>
+        
+        <p><strong>Mi recomendación:</strong> Elige según el contexto. Flask para APIs rápidas, Laravel para desarrollo web tradicional, Spring para aplicaciones empresariales.</p>
+      </div>
+
+      <div class="blog-post" data-categories="reflexion frontend">
+        <div class="post-meta">
+          <span class="post-date">10 Julio, 2025</span>
+          <span class="post-category">Reflexión</span>
+          <span class="reading-time">4 min</span>
+        </div>
+        <h3>CSS: De Enemigo a Mejor Amigo</h3>
+        <img src="imagenes/semana3.png" alt="CSS Evolution">
+        <p>Al principio, CSS me parecía impredecible y frustrante. "¿Por qué este div no se centra?" era mi pregunta diaria. Hoy entiendo que CSS no es el problema, sino mi falta de comprensión de sus fundamentos.</p>
+        
+        <h4>Los Momentos de Iluminación</h4>
+        <ul>
+          <li><strong>Flexbox:</strong> Cuando finalmente entendí justify-content y align-items</li>
+          <li><strong>Grid:</strong> El poder de crear layouts complejos con pocas líneas</li>
+          <li><strong>Box Model:</strong> Margin, border, padding... todo tiene sentido ahora</li>
+        </ul>
+        
+        <p>Bootstrap y Tailwind me ayudaron a acelerar el desarrollo, pero entender CSS vanilla fue fundamental para personalizar y debuggear cuando las cosas no funcionaban como esperaba.</p>
+        
+        <p><strong>Consejo para principiantes:</strong> No saltes directo a frameworks. Domina CSS puro primero, te ahorrará horas de frustración después.</p>
+      </div>
+
+      <div class="blog-post" data-categories="ai research">
+        <div class="post-meta">
+          <span class="post-date">8 Julio, 2025</span>
+          <span class="post-category">Inteligencia Artificial</span>
+          <span class="reading-time">7 min</span>
+        </div>
+        <h3>Semana 11: Exposición de Artículo Científico sobre IA</h3>
+        <img src="imagenes/semana11.png" alt="Artículo Científico IA">
+        <p>La Semana 11 me introdujo al mundo de la investigación académica en IA. Presenté un artículo sobre sistemas de detección de intrusiones que utilizan deep learning para gestionar datos faltantes.</p>
+        
+        <h4>El Artículo: DMDI (DeepLearning_Based_MissingData_Imputation)</h4>
+        <p>El paper presenta un método innovador que combina:</p>
+        <ul>
+          <li><strong>Redes Neuronales Convolucionales Bidireccionales (Bi-CNN)</strong></li>
+          <li><strong>Mecanismo de Atención Temporal-Espacial</strong></li>
+          <li><strong>Módulo de Adversarios de Datos</strong></li>
+        </ul>
+        
+        <h4>¿Por qué es Importante?</h4>
+        <p>Los sistemas de detección de intrusiones (IDS) sufren cuando tienen datos incompletos. DMDI soluciona este problema mediante:</p>
+        <ul>
+          <li>Imputación inteligente de datos faltantes</li>
+          <li>Mejora en la precisión de detección</li>
+          <li>Reducción de falsos positivos/negativos</li>
+          <li>Mayor robustez del sistema</li>
+        </ul>
+        
+        <blockquote>
+          "Esta experiencia me mostró cómo la investigación académica puede traducirse en soluciones prácticas para problemas reales de ciberseguridad."
+        </blockquote>
+        
+        <p><strong>Reflexión:</strong> Presentar investigación académica me ayudó a desarrollar habilidades de comunicación técnica y me dio una perspectiva más profunda sobre el potencial de la IA en ciberseguridad.</p>
+      </div>
+
+      <div class="blog-post" data-categories="reflexion">
+        <div class="post-meta">
+          <span class="post-date">5 Julio, 2025</span>
+          <span class="post-category">Recursos</span>
+          <span class="reading-time">3 min</span>
+        </div>
+        <h3>Recursos y Herramientas que Cambiaron mi Desarrollo</h3>
+        <img src="imagenes/post-1.png" alt="Herramientas de desarrollo">
+        <p>A lo largo de estas 15 semanas, descubrí herramientas y recursos que transformaron mi productividad y calidad de código.</p>
+        
+        <h4>📚 Documentación Esencial</h4>
+        <ul>
+          <li><a href="https://developer.mozilla.org/" target="_blank">MDN Web Docs</a> - La biblia del desarrollo web</li>
+          <li><a href="https://react.dev/" target="_blank">React Docs</a> - Documentación clara y ejemplos prácticos</li>
+          <li><a href="https://spring.io/guides" target="_blank">Spring Guides</a> - Tutoriales paso a paso</li>
+        </ul>
+        
+        <h4>🛠️ Herramientas de Desarrollo</h4>
+        <ul>
+          <li><strong>VS Code:</strong> Extensions como Prettier, ESLint, Auto Rename Tag</li>
+          <li><strong>Postman:</strong> Testing de APIs indispensable</li>
+          <li><strong>Chrome DevTools:</strong> Debugging y performance</li>
+          <li><strong>Git:</strong> Control de versiones, ramas, colaboración</li>
+        </ul>
+        
+        <h4>🎨 Diseño y UI</h4>
+        <ul>
+          <li><a href="https://fonts.google.com/" target="_blank">Google Fonts</a> - Tipografías web</li>
+          <li><a href="https://tailwindcss.com/" target="_blank">Tailwind CSS</a> - Utility-first CSS</li>
+          <li><a href="https://unsplash.com/" target="_blank">Unsplash</a> - Imágenes de alta calidad</li>
+        </ul>
+        
+        <p><strong>Consejo:</strong> No trates de aprender todas las herramientas a la vez. Domina una tecnología antes de pasar a la siguiente.</p>
+      </div>
+
+      <div class="blog-post" data-categories="backend tutorial">
+        <div class="post-meta">
+          <span class="post-date">3 Julio, 2025</span>
+          <span class="post-category">Python</span>
+          <span class="reading-time">6 min</span>
+        </div>
+        <h3>Python Flask: Simplicidad y Elegancia en el Backend</h3>
+        <img src="imagenes/semana14.png" alt="Python Flask">
+        <p>La Semana 14 me introdujo a Python Flask, y fue amor a primera vista. Después de trabajar con Spring Boot y Laravel, Flask me sorprendió por su simplicidad y flexibilidad.</p>
+        
+        <h4>¿Por qué Flask me conquistó?</h4>
+        <ul>
+          <li><strong>Minimalista:</strong> Solo incluye lo esencial, tú decides qué agregar</li>
+          <li><strong>Pythónico:</strong> Código limpio y legible</li>
+          <li><strong>Flexible:</strong> Perfecto para APIs y aplicaciones pequeñas a medianas</li>
+        </ul>
+        
+        <h4>Mi primera API con Flask</h4>
+        <pre><code>from flask import Flask, jsonify, request
+from flask_sqlalchemy import SQLAlchemy
+
+app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
+db = SQLAlchemy(app)
+
+@app.route('/api/users', methods=['GET'])
+def get_users():
+    users = User.query.all()
+    return jsonify([user.to_dict() for user in users])
+
+@app.route('/api/users', methods=['POST'])
+def create_user():
+    data = request.get_json()
+    user = User(name=data['name'], email=data['email'])
+    db.session.add(user)
+    db.session.commit()
+    return jsonify(user.to_dict()), 201</code></pre>
+        
+        <p><strong>Jinja2 Templates:</strong> El sistema de plantillas de Flask es intuitivo y poderoso. Me recordó a Blade de Laravel pero con la sintaxis limpia de Python.</p>
+        
+        <p><strong>SQLAlchemy:</strong> El ORM de Python es increíblemente expresivo. Definir modelos y relaciones se siente natural.</p>
+      </div>
+
+      <div class="blog-post" data-categories="ai tutorial">
+        <div class="post-meta">
+          <span class="post-date">1 Julio, 2025</span>
+          <span class="post-category">Inteligencia Artificial</span>
+          <span class="reading-time">9 min</span>
+        </div>
+        <h3>Semana 15: Mi Primer Encuentro con la Inteligencia Artificial</h3>
+        <img src="imagenes/semana15.png" alt="IA y Machine Learning">
+        <p>La última semana del programa fue la más emocionante: <strong>Sistemas Inteligentes con IA</strong>. Pasar de desarrollo web tradicional a Machine Learning y LLMs fue un salto cuántico en mi comprensión de lo que es posible con código.</p>
+        
+        <h4>🧠 Machine Learning: Los Primeros Pasos</h4>
+        <p>Comenzé con conceptos básicos: supervised learning, unsupervised learning, y neural networks. Lo que más me impactó fue ver cómo los algoritmos pueden "aprender" patrones de los datos.</p>
+        
+        <pre><code># Mi primer modelo de ML con scikit-learn
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error
+
+# Preparar datos
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+
+# Entrenar modelo
+model = LinearRegression()
+model.fit(X_train, y_train)
+
+# Hacer predicciones
+predictions = model.predict(X_test)
+mse = mean_squared_error(y_test, predictions)</code></pre>
+        
+        <h4>🤖 Large Language Models (LLMs)</h4>
+        <p>Trabajar con LLMs fue revelador. Entender cómo funcionan modelos como GPT y cómo integrarlos en aplicaciones web abrió un mundo de posibilidades.</p>
+        
+        <ul>
+          <li><strong>APIs de IA:</strong> OpenAI, Hugging Face, Google AI</li>
+          <li><strong>Prompt Engineering:</strong> El arte de comunicarse con IA</li>
+          <li><strong>Fine-tuning:</strong> Personalizar modelos para casos específicos</li>
+          <li><strong>RAG (Retrieval-Augmented Generation):</strong> Combinar búsqueda con generación</li>
+        </ul>
+        
+        <h4>🚀 Proyecto Final: Chatbot Inteligente</h4>
+        <p>Creé un chatbot que combina Flask (backend), React (frontend) y OpenAI API. El bot puede responder preguntas sobre desarrollo web basándose en mi experiencia de las 15 semanas.</p>
+        
+        <blockquote>
+          "La IA no reemplaza a los desarrolladores, los potencia. Es una herramienta que amplifica nuestra creatividad y productividad."
+        </blockquote>
+        
+        <p><strong>Reflexión:</strong> Esta semana me hizo ver que el futuro del desarrollo web está íntimamente ligado con la IA. No es solo una tendencia, es una evolución natural de cómo interactuamos con la tecnología.</p>
+      </div>
+
+      <div class="blog-post" data-categories="backend tutorial">
+        <div class="post-meta">
+          <span class="post-date">28 Junio, 2025</span>
+          <span class="post-category">PHP</span>
+          <span class="reading-time">7 min</span>
+        </div>
+        <h3>Semana 13: Laravel - Elegancia en PHP</h3>
+        <img src="imagenes/semana13.png" alt="Laravel Framework">
+        <p>La Semana 13 me introdujo al mundo del desarrollo web con PHP y Laravel, una experiencia completamente diferente a los frameworks de JavaScript que había usado anteriormente.</p>
+        
+        <h4>🎨 Eloquent ORM: Belleza en las Consultas</h4>
+        <p>Eloquent hace que trabajar con bases de datos sea un placer. La sintaxis es tan natural que se lee como inglés.</p>
+        
+        <pre><code>// Relaciones elegantes
+class User extends Model {
+    public function posts() {
+        return $this->hasMany(Post::class);
+    }
+}
+
+// Consultas expresivas
+$users = User::with('posts')
+    ->where('active', true)
+    ->orderBy('created_at', 'desc')
+    ->paginate(10);</code></pre>
+        
+        <h4>🔧 Artisan: La Navaja Suiza de Laravel</h4>
+        <p>Los comandos Artisan aceleran el desarrollo de manera increíble:</p>
+        <ul>
+          <li><code>php artisan make:model User -m</code> - Modelo con migración</li>
+          <li><code>php artisan make:controller UserController --resource</code> - Controlador CRUD</li>
+          <li><code>php artisan migrate</code> - Ejecutar migraciones</li>
+          <li><code>php artisan serve</code> - Servidor de desarrollo</li>
+        </ul>
+        
+        <h4>🌟 Blade Templates: Templating Intuitivo</h4>
+        <p>Blade combina la potencia de PHP con una sintaxis limpia y expresiva. Los componentes y layouts hacen que el código sea reutilizable y mantenible.</p>
+        
+        <p><strong>Reflexión:</strong> Laravel me hizo apreciar PHP moderno. Es un lenguaje que ha evolucionado mucho y Laravel aprovecha lo mejor de él.</p>
+      </div>
+
+      <div class="blog-post" data-categories="backend tutorial">
+        <div class="post-meta">
+          <span class="post-date">25 Junio, 2025</span>
+          <span class="post-category">DevOps</span>
+          <span class="reading-time">6 min</span>
+        </div>
+        <h3>Semana 12: API RESTful con Jakarta EE y Spring</h3>
+        <img src="imagenes/semana12.png" alt="API RESTful Jakarta Spring">
+        <p>La Semana 12 fue un desafío técnico intenso: desarrollar una <strong>API RESTful completa</strong> para gestión de docentes usando Jakarta EE y Spring Framework.</p>
+        
+        <h4>🎯 Sistema de Gestión de Docentes</h4>
+        <p>Desarrollé una API completa con operaciones CRUD avanzadas, incluyendo endpoints especializados como búsqueda por ciudad, filtrado por experiencia y cálculo de edad promedio.</p>
+        
+        <h4>✅ Validaciones Robustas</h4>
+        <p>Implementé validaciones complejas usando Bean Validation:</p>
+        <ul>
+          <li><strong>Email válido:</strong> Formato de correo electrónico</li>
+          <li><strong>Tiempo de servicio:</strong> No puede ser negativo</li>
+          <li><strong>Fecha de nacimiento:</strong> Debe ser anterior a hoy</li>
+        </ul>
+        
+        <h4>📖 Documentación y Testing</h4>
+        <p>Integré Swagger para documentación automática y realicé testing exhaustivo con Postman. La paginación avanzada fue especialmente desafiante pero gratificante.</p>
+        
+        <p><strong>Reflexión:</strong> Esta semana consolidó mis conocimientos en desarrollo de APIs empresariales con Java, mostrándome el poder de Spring Framework para aplicaciones robustas.</p>
+      </div>
+
+      <div class="blog-post" data-categories="backend tutorial">
+        <div class="post-meta">
+          <span class="post-date">22 Junio, 2025</span>
+          <span class="post-category">Java</span>
+          <span class="reading-time">8 min</span>
+        </div>
+        <h3>Semana 10: Java Spring Boot - Poder Empresarial</h3>
+        <img src="imagenes/semana10.png" alt="Spring Boot">
+        <p>La semana 10 fue intensa: <strong>Java Spring Boot</strong>. Pasar de JavaScript a Java fue un cambio de paradigma completo, pero entendí por qué Spring domina el desarrollo empresarial.</p>
+        
+        <h4>🍃 Spring Boot: Configuración por Convención</h4>
+        <p>Lo que más me impresionó de Spring Boot fue cómo elimina la complejidad de configuración. Con pocas anotaciones, tienes una aplicación completa funcionando.</p>
+        
+        <pre><code>@RestController
+@RequestMapping("/api/users")
+public class UserController {
+    
+    @Autowired
+    private UserService userService;
+    
+    @GetMapping
+    public ResponseEntity<List<User>> getAllUsers() {
+        return ResponseEntity.ok(userService.findAll());
+    }
+    
+    @PostMapping
+    public ResponseEntity<User> createUser(@RequestBody User user) {
+        User savedUser = userService.save(user);
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedUser);
+    }
+}</code></pre>
+        
+        <h4>🔒 Spring Security: Seguridad Robusta</h4>
+        <p>Implementar autenticación y autorización con Spring Security fue complejo pero revelador. La seguridad no es opcional en aplicaciones reales.</p>
+        
+        <ul>
+          <li><strong>JWT Authentication:</strong> Tokens stateless para APIs</li>
+          <li><strong>Role-based Access:</strong> Permisos granulares</li>
+          <li><strong>Password Encoding:</strong> BCrypt para hash seguro</li>
+          <li><strong>CORS Configuration:</strong> Comunicación segura con frontend</li>
+        </ul>
+        
+        <h4>📊 JPA/Hibernate: ORM Poderoso</h4>
+        <p>Trabajar con JPA me enseñó sobre mapeo objeto-relacional a nivel profesional. Las relaciones complejas, lazy loading, y optimización de consultas son conceptos que todo backend developer debe dominar.</p>
+        
+        <p><strong>Reflexión:</strong> Java y Spring Boot me dieron una base sólida en desarrollo backend empresarial. Es verboso comparado con JavaScript, pero esa verbosidad trae claridad y mantenibilidad.</p>
+      </div>
+
+      <div class="blog-post" data-categories="reflexion">
+        <div class="post-meta">
+          <span class="post-date">20 Junio, 2025</span>
+          <span class="post-category">Recorrido Completo</span>
+          <span class="reading-time">10 min</span>
+        </div>
+        <h3>15 Semanas, 15 Lecciones: El Recorrido Completo</h3>
+        <img src="imagenes/post-1.png" alt="Recorrido completo de 15 semanas">
+        <p>Al completar las 15 semanas de este intensivo programa de desarrollo web, quiero reflexionar sobre cada etapa de este increíble viaje de transformación.</p>
+        
+        <h4>🏗️ Fundamentos Sólidos (Semanas 1-4)</h4>
+        <ul>
+          <li><strong>Semana 1:</strong> Protocolos web, HTML, CSS - Los cimientos de todo</li>
+          <li><strong>Semana 2:</strong> HTML/CSS avanzado - Flexbox y Grid cambiaron mi vida</li>
+          <li><strong>Semana 3:</strong> Bootstrap y Tailwind - Velocidad de desarrollo</li>
+          <li><strong>Semana 4:</strong> JavaScript y TypeScript - El poder de la interactividad</li>
+        </ul>
+        
+        <h4>⚛️ Frontend Moderno (Semanas 5-7)</h4>
+        <ul>
+          <li><strong>Semana 5:</strong> React - Componentes que cambiaron mi perspectiva</li>
+          <li><strong>Semana 6:</strong> APIs y eventos - Conectando frontend con el mundo</li>
+          <li><strong>Semana 7:</strong> React Hooks - Funcional vs. Clases, una revolución</li>
+        </ul>
+        
+        <h4>🔧 Backend Profundo (Semanas 9-14)</h4>
+        <ul>
+          <li><strong>Semana 9:</strong> Arquitectura backend - MVC, APIs, JWT</li>
+          <li><strong>Semana 10:</strong> Java Spring Boot - Poder empresarial</li>
+          <li><strong>Semana 11:</strong> Exposición de Artículo Científico - IA para Detección de Intrusiones</li>
+          <li><strong>Semana 12:</strong> API RESTful con Jakarta EE y Spring</li>
+          <li><strong>Semana 13:</strong> PHP Laravel - Elegancia en PHP</li>
+          <li><strong>Semana 14:</strong> Python Flask - Simplicidad pythónica</li>
+        </ul>
+        
+        <h4>🤖 El Futuro (Semana 15)</h4>
+        <ul>
+          <li><strong>Semana 15:</strong> IA y Machine Learning - El siguiente nivel</li>
+        </ul>
+        
+        <h4>🎯 Lecciones Clave del Recorrido</h4>
+        <ol>
+          <li><strong>Los fundamentos importan:</strong> HTML, CSS y JavaScript son la base de todo</li>
+          <li><strong>Cada framework tiene su lugar:</strong> React para UIs, Spring para empresas, Flask para simplicidad</li>
+          <li><strong>La seguridad no es opcional:</strong> JWT, HTTPS, validación siempre</li>
+          <li><strong>DevOps es parte del desarrollo:</strong> Docker, CI/CD, monitoring</li>
+          <li><strong>La IA es el futuro:</strong> Integrar ML en aplicaciones web es inevitable</li>
+        </ol>
+        
+        <blockquote>
+          "15 semanas atrás era un principiante. Hoy me siento preparado para construir aplicaciones completas, desde la base de datos hasta la interfaz de usuario, con seguridad, escalabilidad y las mejores prácticas."
+        </blockquote>
+        
+        <p><strong>El próximo paso:</strong> Aplicar todo este conocimiento en proyectos reales, seguir aprendiendo, y contribuir a la comunidad de desarrolladores que me ayudó en este camino.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Gomez Huamanlazo - Todos los derechos reservados</p>
+  </footer>
+  
+  <script src="script.js"></script>
+</body>
+</html>
+>>>>>>> b7c7432 (Actualización Portafolio)

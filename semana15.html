@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Semana 15 - Sistemas Inteligentes con Python - Flask / Django</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/pages/semana15.css">
+</head>
+<body>
+  <header>
+    <img src="imagenes/perfil.png" alt="Foto de perfil" class="perfil">
+    <h1>Gomez Huamanlazo Ivan Paul</h1>
+    <p>Desarrollador Web Frontend & Backend</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="proyectos.html">Proyectos</a>
+    <a href="blog.html">Blog</a>
+    <a href="index.html#contacto">Contacto</a>
+  </nav>
+
+  <main class="semana-individual">
+    <div class="semana-header">
+      <div class="semana-numero">SEMANA 15</div>
+      <h1>Sistemas Inteligentes con Python - Flask / Django</h1>
+      <img src="imagenes/semana15.png" alt="Semana 15 - Sistemas Inteligentes" onerror="this.style.display='none'">
+    </div>
+
+    <div class="contenido-semana">
+      <section class="seccion-contenido">
+        <h3>Definición y Conceptos Clave</h3>
+        <p>Este documento abarca los conceptos fundamentales, la arquitectura y las tecnologías clave en el campo de los <strong>Sistemas Inteligentes</strong>, con un enfoque práctico en el desarrollo web backend utilizando Python, Flask y Django.</p>
+        
+        <div class="concepto-item">
+          <h4>Sistemas Inteligentes:</h4>
+          <p>Son <strong>entidades computacionales capaces de percibir su entorno, procesar información, razonar y ejecutar acciones de forma autónoma</strong> para alcanzar metas definidas.</p>
+          
+          <div class="alcances-funcionales">
+            <h5>Alcances funcionales:</h5>
+            <ul>
+              <li><strong>Percepción sensorial:</strong> Captura de datos de sensores o fuentes digitales</li>
+              <li><strong>Razonamiento simbólico:</strong> Inferencia basada en reglas lógicas y conocimiento previo</li>
+              <li><strong>Aprendizaje adaptativo:</strong> Capacidad de mejorar el desempeño con la experiencia</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="ambitos-aplicacion">
+          <h4>Ámbitos de aplicación:</h4>
+          <div class="aplicaciones-grid">
+            <div class="aplicacion-item">
+              <h5>🏭 Automatización industrial</h5>
+              <p>Robótica autónoma</p>
+            </div>
+            <div class="aplicacion-item">
+              <h5>🏥 Diagnóstico médico</h5>
+              <p>Asistido por IA</p>
+            </div>
+            <div class="aplicacion-item">
+              <h5>🚗 Vehículos inteligentes</h5>
+              <p>Conducción autónoma</p>
+            </div>
+            <div class="aplicacion-item">
+              <h5>💰 Finanzas</h5>
+              <p>Mercados predictivos</p>
+            </div>
+            <div class="aplicacion-item">
+              <h5>🎓 Educación</h5>
+              <p>Personalizada</p>
+            </div>
+            <div class="aplicacion-item">
+              <h5>🤖 Sistemas expertos</h5>
+              <p>Atención al cliente</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>Ejemplos de Sistemas Inteligentes</h3>
+        
+        <div class="ejemplos-sistemas">
+          <div class="sistema-categoria">
+            <h4>🏥 Salud:</h4>
+            <ul>
+              <li><strong>Watson Health de IBM:</strong> Análisis de datos médicos</li>
+              <li><strong>Sistemas de diagnóstico por imagen:</strong> Detección de patologías</li>
+            </ul>
+          </div>
+          
+          <div class="sistema-categoria">
+            <h4>🚗 Automoción:</h4>
+            <ul>
+              <li><strong>Vehículos autónomos:</strong> Tesla, Waymo</li>
+              <li><strong>Sistemas ADAS:</strong> Asistencia avanzada al conductor</li>
+            </ul>
+          </div>
+          
+          <div class="sistema-categoria">
+            <h4>🏭 Industria 4.0:</h4>
+            <ul>
+              <li><strong>Robots colaborativos (cobots):</strong> Trabajo conjunto humano-robot</li>
+              <li><strong>Sistemas predictivos de mantenimiento:</strong> Prevención de fallos</li>
+            </ul>
+          </div>
+          
+          <div class="sistema-categoria">
+            <h4>🛒 Retail y logística:</h4>
+            <ul>
+              <li><strong>Centros logísticos de Amazon:</strong> Automatización completa</li>
+              <li><strong>Sistemas de recomendación:</strong> Netflix, Spotify, Yachay</li>
+            </ul>
+          </div>
+          
+          <div class="sistema-categoria">
+            <h4>🏠 Hogar inteligente:</h4>
+            <ul>
+              <li><strong>Asistentes virtuales:</strong> Alexa, Google Assistant</li>
+              <li><strong>Termostatos inteligentes:</strong> Nest</li>
+            </ul>
+          </div>
+          
+          <div class="sistema-categoria">
+            <h4>🏙️ Ciudades inteligentes:</h4>
+            <ul>
+              <li><strong>Semáforos adaptativos:</strong> Optimización de tráfico</li>
+              <li><strong>Sistemas de videovigilancia:</strong> Reconocimiento facial</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>Arquitectura de los Sistemas Inteligentes</h3>
+        <p>La arquitectura define la estructura e interacción de los componentes. Los <strong>componentes principales</strong> incluyen:</p>
+        
+        <div class="arquitectura-componentes">
+          <div class="componente-item">
+            <h4>🔍 Módulo de percepción:</h4>
+            <p>Interfaces con sensores y fuentes de datos</p>
+          </div>
+          
+          <div class="componente-item">
+            <h4>🧠 Módulo de conocimiento:</h4>
+            <p>Base de datos estructurada, ontologías, redes semánticas</p>
+          </div>
+          
+          <div class="componente-item">
+            <h4>⚡ Módulo de razonamiento:</h4>
+            <p>Algoritmos de inferencia lógica, toma de decisiones, planificación</p>
+          </div>
+          
+          <div class="componente-item">
+            <h4>📚 Módulo de aprendizaje:</h4>
+            <p>Técnicas de machine learning y adaptación al entorno</p>
+          </div>
+          
+          <div class="componente-item">
+            <h4>🎯 Módulo de acción:</h4>
+            <p>Control de actuadores físicos o ejecución de comandos virtuales</p>
+          </div>
+          
+          <div class="componente-item">
+            <h4>👤 Interfaz hombre-máquina:</h4>
+            <p>Canales de interacción con usuarios</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>Redes Neuronales Artificiales (RNA)</h3>
+        <p>Son <strong>modelos computacionales inspirados en el cerebro humano</strong> para el procesamiento paralelo y adaptativo de información.</p>
+        
+        <div class="rna-concepts">
+          <div class="rna-item">
+            <h4>Características clave:</h4>
+            <p>Compuestas por <strong>nodos (neuronas)</strong> y <strong>conexiones (sinapsis)</strong> en capas (entrada, ocultas, salida). Aprenden ajustando pesos sinápticos mediante algoritmos como retropropagación.</p>
+          </div>
+          
+          <div class="rna-item">
+            <h4>Tipos comunes:</h4>
+            <ul>
+              <li><strong>Perceptrón multicapa (MLP)</strong></li>
+              <li><strong>Redes de Kohonen</strong></li>
+              <li><strong>Redes de Hopfield</strong></li>
+              <li><strong>Redes convolucionales (CNNs)</strong></li>
+              <li><strong>Redes recurrentes (RNNs y LSTMs)</strong></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>Aprendizaje Profundo (Deep Learning)</h3>
+        <p><strong>Subdisciplina del aprendizaje automático</strong> que emplea arquitecturas de redes neuronales profundas con múltiples capas ocultas.</p>
+        
+        <div class="deep-learning-concepts">
+          <div class="dl-item">
+            <h4>Aspectos fundamentales:</h4>
+            <ul>
+              <li><strong>Extracción automática de características</strong></li>
+              <li><strong>Escalabilidad para grandes volúmenes de datos</strong></li>
+              <li><strong>Uso de backpropagation y optimización</strong> (Adam, RMSprop, SGD)</li>
+            </ul>
+          </div>
+          
+          <div class="dl-item">
+            <h4>Arquitecturas principales:</h4>
+            <ul>
+              <li><strong>CNNs:</strong> Para visión artificial</li>
+              <li><strong>RNNs y LSTMs:</strong> Para secuencias y procesamiento de lenguaje</li>
+              <li><strong>Transformers:</strong> Para modelos generativos y entendimiento semántico (GPT, BERT)</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>Algoritmos de Toma de Decisiones</h3>
+        <p>Permiten a los sistemas inteligentes <strong>seleccionar acciones óptimas</strong> según objetivos y restricciones.</p>
+        
+        <div class="algoritmos-decision">
+          <div class="algoritmo-item">
+            <h4>🔧 Sistemas basados en reglas:</h4>
+            <p>IF-THEN</p>
+          </div>
+          
+          <div class="algoritmo-item">
+            <h4>📊 Redes Bayesianas:</h4>
+            <p>Probabilidad condicional</p>
+          </div>
+          
+          <div class="algoritmo-item">
+            <h4>🌫️ Lógica difusa:</h4>
+            <p>Razonamiento aproximado</p>
+          </div>
+          
+          <div class="algoritmo-item">
+            <h4>🌳 Árboles de decisión:</h4>
+            <p>Clasificación jerárquica</p>
+          </div>
+          
+          <div class="algoritmo-item">
+            <h4>🎯 Algoritmos heurísticos:</h4>
+            <p>Búsqueda optimizada</p>
+          </div>
+          
+          <div class="algoritmo-item">
+            <h4>🗺️ Algoritmos de planificación:</h4>
+            <p>STRIPS, A*</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>Clasificación de Modelos en Deep Learning</h3>
+        
+        <div class="modelos-clasificacion">
+          <div class="modelo-tipo">
+            <h4>🎯 Modelos Discriminativos:</h4>
+            <p>Clasifican datos de entrada en categorías, modelando la probabilidad condicional <strong>P(y|x)</strong>. No generan datos nuevos, se centran en la separación de clases.</p>
+            
+            <h5>Ejemplos:</h5>
+            <ul>
+              <li>Regresión logística</li>
+              <li>SVM</li>
+              <li>Árboles de decisión</li>
+              <li>Redes neuronales clásicas (MLP)</li>
+              <li>Modelos BERT</li>
+            </ul>
+          </div>
+          
+          <div class="modelo-tipo">
+            <h4>🎨 Modelos Generativos:</h4>
+            <p>Aprenden la distribución conjunta <strong>P(x,y)</strong> o <strong>P(x)</strong> para generar nuevas muestras de datos. Pueden reconstruir o simular datos similares a los reales.</p>
+            
+            <h5>Ejemplos:</h5>
+            <ul>
+              <li>Naive Bayes</li>
+              <li>Hidden Markov Models</li>
+              <li>GANs</li>
+              <li>Autoencoders</li>
+              <li>VAEs</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>Large Language Models (LLM)</h3>
+        <p><strong>Modelos generativos avanzados especializados en lenguaje natural</strong>, entrenados con arquitecturas Transformer sobre grandes volúmenes de texto. Pueden generar texto coherente, traducir, responder preguntas y redactar código.</p>
+        
+        <div class="llm-examples">
+          <div class="llm-item">
+            <h4>🤖 GPT (OpenAI):</h4>
+            <p>Generación de texto y código</p>
+          </div>
+          
+          <div class="llm-item">
+            <h4>💎 Gemini (Google):</h4>
+            <p>Multimodal AI</p>
+          </div>
+          
+          <div class="llm-item">
+            <h4>🎭 Claude (Anthropic):</h4>
+            <p>Asistente conversacional</p>
+          </div>
+          
+          <div class="llm-item">
+            <h4>🦙 LLAMA (Meta):</h4>
+            <p>Modelo de código abierto</p>
+          </div>
+          
+          <div class="llm-item">
+            <h4>🌟 Mistral:</h4>
+            <p>Modelo europeo eficiente</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>Implementación Práctica con Python</h3>
+        <p>Ejemplo de aplicación Flask con integración de IA:</p>
+        
+        <pre><code># app.py - Sistema Inteligente con Flask
+from flask import Flask, render_template, request, jsonify
+import numpy as np
+from transformers import pipeline
+import skfuzzy as fuzz
+from skfuzzy import control as ctrl
+import torch
+
+app = Flask(__name__)
+
+# Inicializar modelos de IA
+sentiment_analyzer = pipeline("sentiment-analysis")
+text_generator = pipeline("text-generation", model="gpt2")
+
+# Sistema de lógica difusa para recomendaciones
+def create_fuzzy_system():
+    # Variables de entrada
+    quality = ctrl.Antecedent(np.arange(0, 11, 1), 'quality')
+    service = ctrl.Antecedent(np.arange(0, 11, 1), 'service')
+    
+    # Variable de salida
+    tip = ctrl.Consequent(np.arange(0, 26, 1), 'tip')
+    
+    # Funciones de membresía
+    quality.automf(3)
+    service.automf(3)
+    tip['low'] = fuzz.trimf(tip.universe, [0, 0, 13])
+    tip['medium'] = fuzz.trimf(tip.universe, [0, 13, 25])
+    tip['high'] = fuzz.trimf(tip.universe, [13, 25, 25])
+    
+    # Reglas difusas
+    rule1 = ctrl.Rule(quality['poor'] | service['poor'], tip['low'])
+    rule2 = ctrl.Rule(service['average'], tip['medium'])
+    rule3 = ctrl.Rule(service['good'] | quality['good'], tip['high'])
+    
+    return ctrl.ControlSystem([rule1, rule2, rule3])
+
+fuzzy_system = create_fuzzy_system()
+tip_calculator = ctrl.ControlSystemSimulation(fuzzy_system)
+
+@app.route('/')
+def index():
+    return render_template('ai_dashboard.html')
+
+@app.route('/analyze_sentiment', methods=['POST'])
+def analyze_sentiment():
+    text = request.json.get('text', '')
+    
+    if not text:
+        return jsonify({'error': 'No text provided'}), 400
+    
+    try:
+        result = sentiment_analyzer(text)
+        return jsonify({
+            'text': text,
+            'sentiment': result[0]['label'],
+            'confidence': result[0]['score']
+        })
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+@app.route('/generate_text', methods=['POST'])
+def generate_text():
+    prompt = request.json.get('prompt', '')
+    max_length = request.json.get('max_length', 50)
+    
+    if not prompt:
+        return jsonify({'error': 'No prompt provided'}), 400
+    
+    try:
+        result = text_generator(
+            prompt, 
+            max_length=max_length, 
+            num_return_sequences=1,
+            temperature=0.7
+        )
+        
+        return jsonify({
+            'prompt': prompt,
+            'generated_text': result[0]['generated_text']
+        })
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+@app.route('/fuzzy_recommendation', methods=['POST'])
+def fuzzy_recommendation():
+    quality_score = request.json.get('quality', 5)
+    service_score = request.json.get('service', 5)
+    
+    try:
+        # Aplicar lógica difusa
+        tip_calculator.input['quality'] = quality_score
+        tip_calculator.input['service'] = service_score
+        tip_calculator.compute()
+        
+        recommendation = tip_calculator.output['tip']
+        
+        return jsonify({
+            'quality_input': quality_score,
+            'service_input': service_score,
+            'tip_recommendation': round(recommendation, 2),
+            'explanation': f'Basado en calidad ({quality_score}/10) y servicio ({service_score}/10)'
+        })
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+@app.route('/neural_prediction', methods=['POST'])
+def neural_prediction():
+    # Simulación de red neuronal simple
+    data = request.json.get('data', [])
+    
+    if not data:
+        return jsonify({'error': 'No data provided'}), 400
+    
+    try:
+        # Convertir a tensor
+        input_tensor = torch.tensor(data, dtype=torch.float32)
+        
+        # Red neuronal simple (simulada)
+        weights = torch.randn(len(data), 1)
+        bias = torch.randn(1)
+        
+        # Predicción lineal simple
+        prediction = torch.matmul(input_tensor, weights) + bias
+        
+        return jsonify({
+            'input_data': data,
+            'prediction': prediction.item(),
+            'model_type': 'Simple Neural Network'
+        })
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+@app.route('/ai_dashboard')
+def ai_dashboard():
+    return render_template('ai_dashboard.html')
+
+if __name__ == '__main__':
+    app.run(debug=True)</code></pre>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>Ejemplos Prácticos y Capturas</h3>
+        <p>A continuación se muestran ejemplos prácticos de las tecnologías y conceptos aprendidos:</p>
+        
+        <div class="capturas-container">
+          <div class="captura-placeholder">
+            <p>📸 <strong>Captura 1:</strong> Dashboard de Sistema Inteligente</p>
+            <img src="imagenes/semana15-captura1.png" alt="Dashboard de Sistema Inteligente" class="captura-img">
+          </div>
+          
+          <div class="captura-placeholder">
+            <p>📸 <strong>Captura 2:</strong> Análisis de sentimientos en tiempo real</p>
+            <img src="imagenes/semana15-captura2.png" alt="Análisis de sentimientos en tiempo real" class="captura-img">
+          </div>
+          
+          <div class="captura-placeholder">
+            <p>📸 <strong>Captura 3:</strong> Sistema de lógica difusa</p>
+            <img src="imagenes/semana15-captura3.png" alt="Sistema de lógica difusa" class="captura-img">
+          </div>
+          
+          <div class="captura-placeholder">
+            <p>📸 <strong>Captura 4:</strong> Integración con modelos LLM</p>
+            <img src="imagenes/semana15-captura4.png" alt="Integración con modelos LLM" class="captura-img">
+          </div>
+        </div>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>Tecnologías Aprendidas</h3>
+        
+        <div class="tecnologias-grid">
+          <div class="tech-category">
+            <h4>Lenguajes/Frameworks:</h4>
+            <ul>
+              <li><strong>Python</strong></li>
+              <li><strong>Flask</strong></li>
+              <li><strong>Django</strong></li>
+            </ul>
+          </div>
+          
+          <div class="tech-category">
+            <h4>Servidores Web/Módulos:</h4>
+            <ul>
+              <li><strong>Apache HTTP Server</strong></li>
+            </ul>
+          </div>
+          
+          <div class="tech-category">
+            <h4>Gestores de Paquetes:</h4>
+            <ul>
+              <li><strong>PIP</strong></li>
+              <li><code>pip install scikit-fuzzy</code></li>
+              <li><code>pip install torch transformers flask python-dotenv</code></li>
+            </ul>
+          </div>
+          
+          <div class="tech-category">
+            <h4>Librerías/Herramientas de IA/ML:</h4>
+            <ul>
+              <li><strong>Hugging Face Transformers</strong></li>
+              <li><strong>scikit-fuzzy (skfuzzy)</strong></li>
+              <li><strong>numpy</strong></li>
+            </ul>
+          </div>
+          
+          <div class="tech-category">
+            <h4>Modelos de Lenguaje:</h4>
+            <ul>
+              <li><strong>Llama 3 (Meta)</strong></li>
+            </ul>
+          </div>
+          
+          <div class="tech-category">
+            <h4>Tecnologías Frontend:</h4>
+            <ul>
+              <li><strong>HTML</strong></li>
+              <li><strong>CSS</strong></li>
+              <li><strong>JavaScript</strong></li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="python-concepts">
+          <h4>Conceptos de Programación Python:</h4>
+          <ul>
+            <li><strong>Clases</strong></li>
+            <li><strong>Herencia</strong></li>
+            <li><strong>Lógica condicional</strong></li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>Código Fuente y Recursos</h3>
+        <div class="codigo-fuente-container">
+          <div class="github-link-card">
+            <div class="github-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.30.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+              </svg>
+            </div>
+            <div class="github-content">
+              <h4>Ver Código Fuente Completo</h4>
+              <p>Accede al repositorio completo con los sistemas inteligentes y aplicaciones de IA desarrollados en la Semana 15.</p>
+              <div class="github-features">
+                <span class="feature-tag">🤖 IA & ML</span>
+                <span class="feature-tag">🧠 LLM</span>
+                <span class="feature-tag">🐍 Python</span>
+                <span class="feature-tag">📊 Análisis</span>
+              </div>
+              <a href="https://github.com/GomezHuamanlazoIvan/GomezHuamanlazoIvan" target="_blank" rel="noopener noreferrer" class="btn-github">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.30.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                </svg>
+                Ver en GitHub
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+          
+          <div class="recursos-adicionales">
+            <h4>📁 Contenido del Repositorio</h4>
+            <ul class="recursos-lista">
+              <li>
+                <span class="recurso-icon">🤖</span>
+                <div>
+                  <strong>Sistemas de IA</strong>
+                  <p>Implementaciones de algoritmos de inteligencia artificial</p>
+                </div>
+              </li>
+              <li>
+                <span class="recurso-icon">🧠</span>
+                <div>
+                  <strong>Modelos de Lenguaje</strong>
+                  <p>Integración y uso de Large Language Models (LLM)</p>
+                </div>
+              </li>
+              <li>
+                <span class="recurso-icon">📊</span>
+                <div>
+                  <strong>Análisis de Datos</strong>
+                  <p>Scripts de procesamiento y análisis de datos con Python</p>
+                </div>
+              </li>
+              <li>
+                <span class="recurso-icon">🌐</span>
+                <div>
+                  <strong>Aplicaciones Web IA</strong>
+                  <p>Interfaces web para interactuar con sistemas inteligentes</p>
+                </div>
+              </li>
+              <li>
+                <span class="recurso-icon">📚</span>
+                <div>
+                  <strong>Documentación Técnica</strong>
+                  <p>Guías de implementación y casos de uso de IA</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>Reflexión Personal</h3>
+        <p>Esta semana final representó la culminación de mi viaje de aprendizaje, integrando todo el conocimiento adquirido en desarrollo web con el fascinante mundo de los sistemas inteligentes. La combinación de Python, Flask y tecnologías de IA me abrió un horizonte completamente nuevo de posibilidades.</p>
+        
+        <p>El estudio de los sistemas inteligentes me hizo comprender la complejidad y elegancia de crear entidades computacionales que pueden percibir, razonar y actuar de forma autónoma. La arquitectura modular de estos sistemas, con sus componentes de percepción, conocimiento, razonamiento, aprendizaje y acción, me proporcionó un marco conceptual sólido para diseñar soluciones inteligentes.</p>
+        
+        <p>Las redes neuronales artificiales y el aprendizaje profundo me fascinaron por su capacidad de modelar patrones complejos y aprender de los datos. La implementación práctica con bibliotecas como Transformers de Hugging Face me permitió experimentar con modelos de lenguaje avanzados y comprender su potencial transformador.</p>
+        
+        <p>La lógica difusa me enseñó una forma diferente de abordar la incertidumbre y el razonamiento aproximado, especialmente útil en sistemas donde las decisiones no son binarias. Su implementación con scikit-fuzzy me mostró cómo traducir el conocimiento humano en reglas computacionales.</p>
+        
+        <p>Los Large Language Models como GPT, Gemini y LLAMA me impresionaron por su capacidad de generar texto coherente y realizar tareas complejas de procesamiento de lenguaje natural. Integrar estos modelos en aplicaciones Flask me demostró el poder de combinar desarrollo web tradicional con inteligencia artificial.</p>
+        
+        <p>La distinción entre modelos discriminativos y generativos me ayudó a entender mejor cuándo usar cada tipo de modelo según el problema a resolver. Esta comprensión teórica, combinada con la implementación práctica, me preparó para abordar proyectos de IA más complejos.</p>
+        
+        <p>Esta semana no solo completó mi formación técnica, sino que me inspiró a seguir explorando las infinitas posibilidades que surgen de la intersección entre el desarrollo web y la inteligencia artificial. El futuro de la tecnología está en esta convergencia, y me siento preparado para ser parte de esa revolución.</p>
+      </section>
+    </div>
+
+    <div class="navegacion-semana">
+      <a href="semana14.html" class="nav-btn">
+        ← Semana 14
+      </a>
+      <a href="proyectos.html" class="volver-proyectos">Índice de Proyectos</a>
+      <span class="nav-btn disabled">
+        Final del recorrido ✨
+      </span>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Gomez Huamanlazo - Semana 15</p>
+  </footer>
+  
+  <script src="script.js"></script>
+</body>
+</html>

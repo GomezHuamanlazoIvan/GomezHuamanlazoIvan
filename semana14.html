@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Semana 14 - Stack: Python - Flask</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/pages/semana14.css">
+</head>
+<body>
+  <header>
+    <img src="imagenes/perfil.png" alt="Foto de perfil" class="perfil">
+    <h1>Gomez Huamanlazo Ivan Paul</h1>
+    <p>Desarrollador Web Frontend & Backend</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="proyectos.html">Proyectos</a>
+    <a href="blog.html">Blog</a>
+    <a href="index.html#contacto">Contacto</a>
+  </nav>
+
+  <main class="semana-individual">
+    <div class="semana-header">
+      <div class="semana-numero">SEMANA 14</div>
+      <h1>Stack: Python - Flask</h1>
+      <img src="imagenes/semana14.png" alt="Semana 14 - Python Flask" onerror="this.style.display='none'">
+    </div>
+
+    <div class="contenido-semana">
+      <section class="seccion-contenido">
+        <h3>Definición y Conceptos Clave</h3>
+        <p>Este documento explora el desarrollo de aplicaciones web backend utilizando <strong>Python</strong> y el microframework <strong>Flask</strong>.</p>
+        
+        <div class="concepto-item">
+          <h4>Apache HTTP Server:</h4>
+          <p>Conocido como "Apache", es un <strong>servidor web de código abierto</strong> cuya función principal es entregar contenido web a los usuarios. Recibe solicitudes HTTP/HTTPS del navegador, busca el contenido solicitado (HTML, imágenes, etc.) en el servidor y lo envía de vuelta al navegador. <strong>Apache Lounge</strong> es una comunidad que proporciona versiones compiladas de Apache para sistemas operativos Windows.</p>
+        </div>
+        
+        <div class="concepto-item">
+          <h4>MOD_WSGI:</h4>
+          <p>Es un <strong>módulo para el servidor Apache</strong> que permite ejecutar aplicaciones web escritas en Python. Facilita que frameworks como Flask o Django funcionen directamente dentro de Apache.</p>
+        </div>
+        
+        <div class="concepto-item">
+          <h4>Python:</h4>
+          <p>Un <strong>lenguaje de programación interpretado y multiparadigma</strong> (orientado a objetos, funcional e imperativo), de tipado dinámico. Transforma el código fuente a bytecode (.pyc), que es interpretado por la máquina virtual de Python para una ejecución rápida. Es ampliamente utilizado en educación, ciencia de datos, inteligencia artificial, desarrollo de software, desarrollo web, automatización e IoT.</p>
+        </div>
+        
+        <div class="concepto-item">
+          <h4>PIP (Python Installs Packages):</h4>
+          <p>Es el <strong>gestor de paquetes oficial de Python</strong>, utilizado para instalar, actualizar y desinstalar bibliotecas externas desde el repositorio PyPI.</p>
+        </div>
+        
+        <div class="concepto-item">
+          <h4>PEP-8:</h4>
+          <p>Es la <strong>guía de estilo de Python</strong>, que promueve la legibilidad del código mediante reglas de indentación (4 espacios), longitud de línea, convenciones de nombres (ej. snake_case para funciones, PascalCase para clases) y organización de importaciones.</p>
+        </div>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>Flask Framework</h3>
+        <p>Es un <strong>microframework de desarrollo web ligero, flexible y fácil de usar</strong>, escrito en Python. Sigue el patrón MVC, incluye un servidor de desarrollo integrado y soporta pruebas unitarias. Permite definir rutas con <strong>@app.route</strong> y es compatible con Python 3 y el protocolo WSGI.</p>
+        
+        <div class="flask-concepts">
+          <div class="concept-item">
+            <h4>@app.route:</h4>
+            <p>Un decorador para definir las URL que activan funciones específicas en la aplicación.</p>
+            <pre><code>from flask import Flask
+
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return '¡Hola Mundo desde Flask!'
+
+@app.route('/usuario/&lt;nombre&gt;')
+def mostrar_usuario(nombre):
+    return f'¡Hola, {nombre}!'
+
+@app.route('/posts/&lt;int:post_id&gt;')
+def mostrar_post(post_id):
+    return f'Post ID: {post_id}'
+
+@app.route('/api/usuarios', methods=['GET', 'POST'])
+def api_usuarios():
+    if request.method == 'POST':
+        return 'Crear nuevo usuario'
+    return 'Listar usuarios'
+
+if __name__ == '__main__':
+    app.run(debug=True)</code></pre>
+          </div>
+          
+          <div class="concept-item">
+            <h4>request:</h4>
+            <p>Un objeto que representa los datos enviados por el cliente.</p>
+            <pre><code>from flask import Flask, request, jsonify
+
+app = Flask(__name__)
+
+@app.route('/login', methods=['POST'])
+def login():
+    # Obtener datos del formulario
+    username = request.form.get('username')
+    password = request.form.get('password')
+    
+    # Obtener datos JSON
+    if request.is_json:
+        data = request.get_json()
+        username = data.get('username')
+        password = data.get('password')
+    
+    # Obtener parámetros de la URL
+    remember_me = request.args.get('remember', False)
+    
+    # Obtener headers
+    user_agent = request.headers.get('User-Agent')
+    
+    if username == 'admin' and password == 'secret':
+        return jsonify({
+            'success': True,
+            'message': 'Login exitoso',
+            'user_agent': user_agent
+        })
+    
+    return jsonify({'success': False, 'message': 'Credenciales inválidas'}), 401
+
+@app.route('/upload', methods=['POST'])
+def upload_file():
+    if 'file' not in request.files:
+        return 'No se seleccionó archivo'
+    
+    file = request.files['file']
+    if file.filename == '':
+        return 'No se seleccionó archivo'
+    
+    if file:
+        filename = secure_filename(file.filename)
+        file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        return 'Archivo subido exitosamente'</code></pre>
+          </div>
+          
+          <div class="concept-item">
+            <h4>render_template:</h4>
+            <p>Una función que renderiza archivos HTML utilizando Jinja2.</p>
+            <pre><code>from flask import Flask, render_template
+
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+    usuarios = [
+        {'nombre': 'Ivan Paul', 'email': 'ivan@example.com'},
+        {'nombre': 'María García', 'email': 'maria@example.com'},
+        {'nombre': 'Carlos López', 'email': 'carlos@example.com'}
+    ]
+    
+    return render_template('index.html', 
+                         titulo='Mi Aplicación Flask',
+                         usuarios=usuarios,
+                         total_usuarios=len(usuarios))
+
+@app.route('/perfil/&lt;username&gt;')
+def perfil_usuario(username):
+    # Simular datos del usuario
+    usuario = {
+        'nombre': username.title(),
+        'email': f'{username}@example.com',
+        'fecha_registro': '2024-01-15',
+        'activo': True
+    }
+    
+    return render_template('perfil.html', usuario=usuario)
+
+@app.route('/dashboard')
+def dashboard():
+    estadisticas = {
+        'usuarios_totales': 150,
+        'posts_publicados': 45,
+        'comentarios': 230,
+        'visitas_hoy': 1250
+    }
+    
+    return render_template('dashboard.html', stats=estadisticas)</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>Jinja2 - Motor de Plantillas</h3>
+        <p><strong>Jinja2</strong> es un motor de plantillas que permite incrustar lógica en archivos HTML, utilizado para generar contenido dinámico y separar la lógica del programa de la presentación visual. Soporta estructuras de control (condicionales, bucles), herencia de plantillas, filtros y macros.</p>
+        
+        <div class="jinja-examples">
+          <div class="jinja-item">
+            <h4>Template Base (base.html):</h4>
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;{% block title %}Mi App Flask{% endblock %}&lt;/title&gt;
+    &lt;link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;nav class="navbar navbar-expand-lg navbar-dark bg-dark"&gt;
+        &lt;div class="container"&gt;
+            &lt;a class="navbar-brand" href="{{ url_for('index') }}"&gt;Mi App&lt;/a&gt;
+            &lt;div class="navbar-nav"&gt;
+                &lt;a class="nav-link" href="{{ url_for('index') }}"&gt;Inicio&lt;/a&gt;
+                &lt;a class="nav-link" href="{{ url_for('dashboard') }}"&gt;Dashboard&lt;/a&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/nav&gt;
+    
+    &lt;div class="container mt-4"&gt;
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    &lt;div class="alert alert-{{ 'danger' if category == 'error' else category }}"&gt;
+                        {{ message }}
+                    &lt;/div&gt;
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        
+        {% block content %}{% endblock %}
+    &lt;/div&gt;
+    
+    &lt;script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          </div>
+          
+          <div class="jinja-item">
+            <h4>Template de Lista (index.html):</h4>
+            <pre><code>{% extends "base.html" %}
+
+{% block title %}{{ titulo }} - Lista de Usuarios{% endblock %}
+
+{% block content %}
+&lt;h1&gt;{{ titulo }}&lt;/h1&gt;
+&lt;p&gt;Total de usuarios: &lt;strong&gt;{{ total_usuarios }}&lt;/strong&gt;&lt;/p&gt;
+
+{% if usuarios %}
+    &lt;div class="row"&gt;
+        {% for usuario in usuarios %}
+            &lt;div class="col-md-4 mb-3"&gt;
+                &lt;div class="card"&gt;
+                    &lt;div class="card-body"&gt;
+                        &lt;h5 class="card-title"&gt;{{ usuario.nombre }}&lt;/h5&gt;
+                        &lt;p class="card-text"&gt;{{ usuario.email }}&lt;/p&gt;
+                        &lt;a href="{{ url_for('perfil_usuario', username=usuario.nombre.lower().replace(' ', '')) }}" 
+                           class="btn btn-primary"&gt;Ver Perfil&lt;/a&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            
+            {% if loop.index % 3 == 0 %}
+                &lt;/div&gt;&lt;div class="row"&gt;
+            {% endif %}
+        {% endfor %}
+    &lt;/div&gt;
+{% else %}
+    &lt;div class="alert alert-info"&gt;
+        No hay usuarios registrados.
+    &lt;/div&gt;
+{% endif %}
+
+&lt;!-- Filtros de Jinja2 --&gt;
+&lt;div class="mt-4"&gt;
+    &lt;h3&gt;Ejemplos de Filtros&lt;/h3&gt;
+    &lt;ul&gt;
+        &lt;li&gt;Fecha actual: {{ moment().format('YYYY-MM-DD') }}&lt;/li&gt;
+        &lt;li&gt;Texto en mayúsculas: {{ "hola mundo" | upper }}&lt;/li&gt;
+        &lt;li&gt;Longitud de lista: {{ usuarios | length }}&lt;/li&gt;
+        &lt;li&gt;Primer usuario: {{ usuarios | first }}&lt;/li&gt;
+        &lt;li&gt;Último usuario: {{ usuarios | last }}&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;
+{% endblock %}</code></pre>
+          </div>
+          
+          <div class="jinja-item">
+            <h4>Macros y Funciones Reutilizables:</h4>
+            <pre><code>&lt;!-- macros.html --&gt;
+{% macro render_field(field, label_class="", field_class="") %}
+    &lt;div class="mb-3"&gt;
+        {{ field.label(class=label_class) }}
+        {{ field(class=field_class) }}
+        {% if field.errors %}
+            {% for error in field.errors %}
+                &lt;div class="text-danger"&gt;{{ error }}&lt;/div&gt;
+            {% endfor %}
+        {% endif %}
+    &lt;/div&gt;
+{% endmacro %}
+
+{% macro render_pagination(pagination, endpoint) %}
+    {% if pagination.pages &gt; 1 %}
+        &lt;nav&gt;
+            &lt;ul class="pagination"&gt;
+                {% if pagination.has_prev %}
+                    &lt;li class="page-item"&gt;
+                        &lt;a class="page-link" href="{{ url_for(endpoint, page=pagination.prev_num) }}"&gt;Anterior&lt;/a&gt;
+                    &lt;/li&gt;
+                {% endif %}
+                
+                {% for page_num in pagination.iter_pages() %}
+                    {% if page_num %}
+                        {% if page_num != pagination.page %}
+                            &lt;li class="page-item"&gt;
+                                &lt;a class="page-link" href="{{ url_for(endpoint, page=page_num) }}"&gt;{{ page_num }}&lt;/a&gt;
+                            &lt;/li&gt;
+                        {% else %}
+                            &lt;li class="page-item active"&gt;
+                                &lt;span class="page-link"&gt;{{ page_num }}&lt;/span&gt;
+                            &lt;/li&gt;
+                        {% endif %}
+                    {% else %}
+                        &lt;li class="page-item disabled"&gt;
+                            &lt;span class="page-link"&gt;...&lt;/span&gt;
+                        &lt;/li&gt;
+                    {% endif %}
+                {% endfor %}
+                
+                {% if pagination.has_next %}
+                    &lt;li class="page-item"&gt;
+                        &lt;a class="page-link" href="{{ url_for(endpoint, page=pagination.next_num) }}"&gt;Siguiente&lt;/a&gt;
+                    &lt;/li&gt;
+                {% endif %}
+            &lt;/ul&gt;
+        &lt;/nav&gt;
+    {% endif %}
+{% endmacro %}</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>Aplicación Flask Completa</h3>
+        <p>Ejemplo de una aplicación Flask con múltiples funcionalidades:</p>
+        
+        <pre><code># app.py
+from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
+from flask_sqlalchemy import SQLAlchemy
+from flask_login import LoginManager, UserMixin, login_user, logout_user, login_required, current_user
+from flask_wtf import FlaskForm
+from wtforms import StringField, PasswordField, TextAreaField, SubmitField
+from wtforms.validators import DataRequired, Email, Length
+from werkzeug.security import generate_password_hash, check_password_hash
+import os
+from datetime import datetime
+
+# Configuración de la aplicación
+app = Flask(__name__)
+app.config['SECRET_KEY'] = 'tu-clave-secreta-aqui'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///blog.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+# Inicialización de extensiones
+db = SQLAlchemy(app)
+login_manager = LoginManager()
+login_manager.init_app(app)
+login_manager.login_view = 'login'
+
+# Modelos de base de datos
+class User(UserMixin, db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(80), unique=True, nullable=False)
+    email = db.Column(db.String(120), unique=True, nullable=False)
+    password_hash = db.Column(db.String(120), nullable=False)
+    posts = db.relationship('Post', backref='author', lazy=True)
+    
+    def set_password(self, password):
+        self.password_hash = generate_password_hash(password)
+    
+    def check_password(self, password):
+        return check_password_hash(self.password_hash, password)
+
+class Post(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(100), nullable=False)
+    content = db.Column(db.Text, nullable=False)
+    date_posted = db.Column(db.DateTime, default=datetime.utcnow)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+
+# Formularios
+class LoginForm(FlaskForm):
+    username = StringField('Usuario', validators=[DataRequired()])
+    password = PasswordField('Contraseña', validators=[DataRequired()])
+    submit = SubmitField('Iniciar Sesión')
+
+class PostForm(FlaskForm):
+    title = StringField('Título', validators=[DataRequired(), Length(min=1, max=100)])
+    content = TextAreaField('Contenido', validators=[DataRequired()])
+    submit = SubmitField('Publicar')
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
+
+# Rutas
+@app.route('/')
+def index():
+    posts = Post.query.order_by(Post.date_posted.desc()).all()
+    return render_template('index.html', posts=posts)
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    form = LoginForm()
+    if form.validate_on_submit():
+        user = User.query.filter_by(username=form.username.data).first()
+        if user and user.check_password(form.password.data):
+            login_user(user)
+            flash('Inicio de sesión exitoso', 'success')
+            return redirect(url_for('dashboard'))
+        flash('Usuario o contraseña incorrectos', 'error')
+    return render_template('login.html', form=form)
+
+@app.route('/dashboard')
+@login_required
+def dashboard():
+    user_posts = Post.query.filter_by(user_id=current_user.id).all()
+    return render_template('dashboard.html', posts=user_posts)
+
+@app.route('/create_post', methods=['GET', 'POST'])
+@login_required
+def create_post():
+    form = PostForm()
+    if form.validate_on_submit():
+        post = Post(
+            title=form.title.data,
+            content=form.content.data,
+            user_id=current_user.id
+        )
+        db.session.add(post)
+        db.session.commit()
+        flash('Post creado exitosamente', 'success')
+        return redirect(url_for('dashboard'))
+    return render_template('create_post.html', form=form)
+
+@app.route('/api/posts')
+def api_posts():
+    posts = Post.query.all()
+    return jsonify([{
+        'id': post.id,
+        'title': post.title,
+        'content': post.content,
+        'author': post.author.username,
+        'date_posted': post.date_posted.isoformat()
+    } for post in posts])
+
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    flash('Sesión cerrada exitosamente', 'info')
+    return redirect(url_for('index'))
+
+if __name__ == '__main__':
+    with app.app_context():
+        db.create_all()
+    app.run(debug=True)</code></pre>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>Ejemplos Prácticos y Capturas</h3>
+        <p>A continuación se muestran ejemplos prácticos de las tecnologías y conceptos aprendidos:</p>
+        
+        <div class="capturas-container">
+          <div class="captura-placeholder">
+            <p>📸 <strong>Captura 1:</strong> Configuración de Apache con MOD_WSGI</p>
+            <img src="imagenes/semana14-captura1.png" alt="Configuración de Apache con MOD_WSGI" class="captura-img">
+          </div>
+          
+          <div class="captura-placeholder">
+            <p>📸 <strong>Captura 2:</strong> Aplicación Flask en funcionamiento</p>
+            <img src="imagenes/semana14-captura2.png" alt="Aplicación Flask en funcionamiento" class="captura-img">
+          </div>
+          
+          <div class="captura-placeholder">
+            <p>📸 <strong>Captura 3:</strong> Templates Jinja2 renderizados</p>
+            <img src="imagenes/semana14-captura3.png" alt="Templates Jinja2 renderizados" class="captura-img">
+          </div>
+          
+          <div class="captura-placeholder">
+            <p>📸 <strong>Captura 4:</strong> Gestión de paquetes con PIP</p>
+            <img src="imagenes/semana14-captura4.png" alt="Gestión de paquetes con PIP" class="captura-img">
+          </div>
+        </div>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>Tecnologías Aprendidas</h3>
+        
+        <div class="tecnologias-grid">
+          <div class="tech-category">
+            <h4>Lenguajes/Frameworks:</h4>
+            <ul>
+              <li><strong>Python</strong></li>
+              <li><strong>Flask</strong></li>
+              <li><strong>Django</strong></li>
+            </ul>
+          </div>
+          
+          <div class="tech-category">
+            <h4>Servidores Web/Módulos:</h4>
+            <ul>
+              <li><strong>Apache HTTP Server</strong></li>
+              <li><strong>MOD_WSGI</strong></li>
+            </ul>
+          </div>
+          
+          <div class="tech-category">
+            <h4>Gestores de Paquetes:</h4>
+            <ul>
+              <li><strong>PIP</strong></li>
+            </ul>
+          </div>
+          
+          <div class="tech-category">
+            <h4>Motores de Plantillas:</h4>
+            <ul>
+              <li><strong>Jinja2</strong></li>
+            </ul>
+          </div>
+          
+          <div class="tech-category">
+            <h4>Bases de Datos:</h4>
+            <ul>
+              <li><strong>MySQL</strong></li>
+              <li><strong>pymysql</strong></li>
+            </ul>
+          </div>
+          
+          <div class="tech-category">
+            <h4>Extensiones de Flask:</h4>
+            <ul>
+              <li><strong>Flask-SQLAlchemy</strong></li>
+              <li><strong>Flask-Login</strong></li>
+              <li><strong>Flask-WTF</strong></li>
+              <li><strong>Flask-Migrate</strong></li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="python-concepts">
+          <h4>Conceptos de Programación Python:</h4>
+          <ul>
+            <li><strong>Programación Orientada a Objetos (POO)</strong></li>
+            <li><strong>Manejo de excepciones</strong></li>
+            <li><strong>Funciones lambda</strong></li>
+            <li><strong>Diccionarios, listas y tuplas</strong></li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>Código Fuente y Recursos</h3>
+        <div class="codigo-fuente-container">
+          <div class="github-link-card">
+            <div class="github-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+              </svg>
+            </div>
+            <div class="github-content">
+              <h4>Ver Código Fuente Completo</h4>
+              <p>Accede al repositorio completo con la aplicación Python Flask desarrollada en la Semana 14.</p>
+              <div class="github-features">
+                <span class="feature-tag">🐍 Python</span>
+                <span class="feature-tag">🌶️ Flask</span>
+                <span class="feature-tag">🎨 Jinja2</span>
+                <span class="feature-tag">🗄️ SQLAlchemy</span>
+              </div>
+              <a href="https://github.com/GomezHuamanlazoIvan/GomezHuamanlazoIvan" target="_blank" rel="noopener noreferrer" class="btn-github">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.30.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                </svg>
+                Ver en GitHub
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+          
+          <div class="recursos-adicionales">
+            <h4>📁 Contenido del Repositorio</h4>
+            <ul class="recursos-lista">
+              <li>
+                <span class="recurso-icon">🐍</span>
+                <div>
+                  <strong>Aplicación Python Completa</strong>
+                  <p>Proyecto web desarrollado con Python y mejores prácticas</p>
+                </div>
+              </li>
+              <li>
+                <span class="recurso-icon">🌶️</span>
+                <div>
+                  <strong>Microframework Flask</strong>
+                  <p>Aplicación web ligera y eficiente con Flask</p>
+                </div>
+              </li>
+              <li>
+                <span class="recurso-icon">🎨</span>
+                <div>
+                  <strong>Templates Jinja2</strong>
+                  <p>Sistema de plantillas dinámicas con Jinja2</p>
+                </div>
+              </li>
+              <li>
+                <span class="recurso-icon">🗄️</span>
+                <div>
+                  <strong>ORM SQLAlchemy</strong>
+                  <p>Manejo de base de datos con SQLAlchemy</p>
+                </div>
+              </li>
+              <li>
+                <span class="recurso-icon">📚</span>
+                <div>
+                  <strong>Documentación Python</strong>
+                  <p>Guías de desarrollo y configuración del entorno</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="seccion-contenido">
+        <h3>Reflexión Personal</h3>
+        <p>Esta semana me introdujo al ecosistema Python para desarrollo web, una experiencia reveladora que me mostró la elegancia y simplicidad que caracterizan a este lenguaje. Flask, como microframework, me enseñó los fundamentos del desarrollo web sin la complejidad de frameworks más pesados.</p>
+        
+        <p>La filosofía de Python, expresada en PEP-8, me hizo valorar la importancia de escribir código limpio y legible. La sintaxis clara y la estructura lógica del lenguaje aceleraron significativamente mi curva de aprendizaje comparado con otros lenguajes backend que había usado.</p>
+        
+        <p>Jinja2 como motor de plantillas me impresionó por su flexibilidad y poder. La capacidad de crear templates reutilizables con herencia, macros y filtros me permitió construir interfaces dinámicas de manera eficiente. La separación clara entre lógica y presentación mejoró la organización de mis proyectos.</p>
+        
+        <p>El sistema de decoradores de Flask (@app.route) me pareció intuitivo y elegante para definir rutas. La integración con extensiones como Flask-SQLAlchemy y Flask-Login demostró la modularidad del ecosistema Python, donde cada componente tiene una responsabilidad específica.</p>
+        
+        <p>MOD_WSGI me enseñó cómo desplegar aplicaciones Python en servidores de producción como Apache, conocimiento crucial para llevar mis aplicaciones del desarrollo a la producción. La configuración, aunque inicialmente compleja, me dio una comprensión profunda de cómo funcionan los servidores web.</p>
+        
+        <p>PIP como gestor de paquetes simplificó enormemente la gestión de dependencias, similar a npm o Composer, pero con la particularidad de los entornos virtuales de Python que me ayudaron a mantener proyectos aislados y organizados.</p>
+        
+        <p>Esta semana consolidó mi comprensión del desarrollo backend con Python, proporcionándome una alternativa poderosa y elegante a los otros stacks que había aprendido, especialmente valorando la legibilidad y simplicidad del código Python.</p>
+      </section>
+    </div>
+
+    <div class="navegacion-semana">
+      <a href="semana13.html" class="nav-btn">
+        ← Semana 13
+      </a>
+      <a href="proyectos.html" class="volver-proyectos">Índice de Proyectos</a>
+      <a href="semana15.html" class="nav-btn">
+        Semana 15 →
+      </a>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Gomez Huamanlazo - Semana 14</p>
+  </footer>
+  
+  <script src="script.js"></script>
+</body>
+</html>
