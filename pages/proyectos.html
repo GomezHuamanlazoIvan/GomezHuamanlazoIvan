@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proyectos Semanales</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+  <!-- Toggle de tema -->
+  <div class="theme-toggle" onclick="toggleTheme()">
+    <div class="theme-toggle-inner">
+      <span class="theme-icon sun-icon">☀️</span>
+      <span class="theme-text">Tema</span>
+      <span class="theme-icon moon-icon">🌙</span>
+    </div>
+  </div>
+
+  <header>
+    <img src="../assets/img/perfil.png" alt="Foto de perfil" class="perfil">
+    <h1>Proyectos por Semana</h1>
+    <p>Recorrido de aprendizaje en desarrollo web</p>
+  </header>
+
+  <nav>
+    <a href="../index.html">Inicio</a>
+    <a href="proyectos.html">Proyectos</a>
+    <a href="blog.html">Blog</a>
+    <a href="../index.html#contacto">Contacto</a>
+  </nav>
+
+  <main>
+    <section id="intro">
+      <h2>Recorrido de Aprendizaje</h2>
+      <p>Explora mi progreso semanal en el desarrollo web. Cada semana representa un hito importante en mi formación como desarrollador, desde los fundamentos hasta tecnologías avanzadas.</p>
+    </section>
+
+    <!-- Filtros de proyectos -->
+    <div class="project-filters">
+      <input type="text" id="search-projects" class="input-busqueda-proyectos" placeholder="🔍 Buscar proyectos por nombre o tecnología...">
+      <div class="filter-tags">
+        <button class="filter-btn active" data-filter="all">Todos</button>
+        <button class="filter-btn" data-filter="frontend">Frontend</button>
+        <button class="filter-btn" data-filter="backend">Backend</button>
+        <button class="filter-btn" data-filter="fullstack">Full Stack</button>
+        <button class="filter-btn" data-filter="frameworks">Frameworks</button>
+        <button class="filter-btn" data-filter="ai">IA/ML</button>
+      </div>
+    </div>
+
+    <section class="proyectos-grid">
+      <div class="proyecto-card" data-categories="frontend fundamentos">
+        <img src="../assets/img/semana1.png" alt="Semana 1">
+        <div class="proyecto-content">
+          <h3>Semana 1</h3>
+          <h4>Fundamentos de las Tecnologías Web</h4>
+          <p>Pilares básicos de la web: HTML, CSS, protocolos HTTP, DNS y arquitectura web.</p>
+          <a href="semana1.html" class="btn-proyecto">Ver Detalles</a>
+        </div>
+      </div>
+
+      <div class="proyecto-card" data-categories="frontend frameworks">
+        <img src="../assets/img/semana2.png" alt="Semana 2">
+        <div class="proyecto-content">
+          <h3>Semana 2</h3>
+          <h4>HTML y CSS Avanzado</h4>
+          <p>Estructuración semántica, estilos avanzados, Flexbox, Grid y herramientas como Emmet.</p>
+          <a href="semana2.html" class="btn-proyecto">Ver Detalles</a>
+        </div>
+      </div>
+
+      <div class="proyecto-card" data-categories="frontend frameworks">
+        <img src="../assets/img/semana3.png" alt="Semana 3">
+        <div class="proyecto-content">
+          <h3>Semana 3</h3>
+          <h4>CSS Frameworks</h4>
+          <p>Bootstrap y Tailwind CSS para desarrollo rápido y diseños consistentes.</p>
+          <a href="semana3.html" class="btn-proyecto">Ver Detalles</a>
+        </div>
+      </div>
+
+      <div class="proyecto-card" data-categories="frontend fullstack">
+        <img src="../assets/img/semana4.png" alt="Semana 4">
+        <div class="proyecto-content">
+          <h3>Semana 4</h3>
+          <h4>JavaScript y TypeScript</h4>
+          <p>Programación dinámica, manipulación del DOM, Canvas y tipos estáticos.</p>
+          <a href="semana4.html" class="btn-proyecto">Ver Detalles</a>
+        </div>
+      </div>
+
+      <div class="proyecto-card" data-categories="frontend frameworks">
+        <img src="../assets/img/semana5.png" alt="Semana 5">
+        <div class="proyecto-content">
+          <h3>Semana 5</h3>
+          <h4>React Framework</h4>
+          <p>Componentes, JSX, props y estado para interfaces de usuario modernas.</p>
+          <a href="semana5.html" class="btn-proyecto">Ver Detalles</a>
+        </div>
+      </div>
+
+      <div class="proyecto-card" data-categories="frontend fullstack">
+        <img src="../assets/img/semana6.png" alt="Semana 6">
+        <div class="proyecto-content">
+          <h3>Semana 6</h3>
+          <h4>Eventos y APIs en React</h4>
+          <p>Interacciones de usuario, consumo de APIs y programación asincrónica.</p>
+          <a href="semana6.html" class="btn-proyecto">Ver Detalles</a>
+        </div>
+      </div>
+
+      <div class="proyecto-card" data-categories="frontend frameworks">
+        <img src="../assets/img/semana7.png" alt="Semana 7">
+        <div class="proyecto-content">
+          <h3>Semana 7</h3>
+          <h4>React Hooks</h4>
+          <p>useState, useEffect y hooks avanzados para componentes funcionales.</p>
+          <a href="semana7.html" class="btn-proyecto">Ver Detalles</a>
+        </div>
+      </div>
+
+      <div class="proyecto-card" data-categories="backend fullstack">
+        <img src="../assets/img/semana9.png" alt="Semana 9">
+        <div class="proyecto-content">
+          <h3>Semana 9</h3>
+          <h4>Desarrollo Backend - Arquitectura y Principios</h4>
+          <p>Arquitecturas web, autenticación JWT, patrones MVC y sistemas distribuidos.</p>
+          <a href="semana9.html" class="btn-proyecto">Ver Detalles</a>
+        </div>
+      </div>
+
+      <div class="proyecto-card" data-categories="backend frameworks">
+        <img src="../assets/img/semana10.png" alt="Semana 10">
+        <div class="proyecto-content">
+          <h3>Semana 10</h3>
+          <h4>Java Spring Framework</h4>
+          <p>Spring Boot, JSP, Maven, Tomcat y desarrollo empresarial con Java.</p>
+          <a href="semana10.html" class="btn-proyecto">Ver Detalles</a>
+        </div>
+      </div>
+
+      <div class="proyecto-card" data-categories="ai research">
+        <img src="../assets/img/semana11.png" alt="Semana 11">
+        <div class="proyecto-content">
+          <h3>Semana 11</h3>
+          <h4>Exposición de Artículo Científico</h4>
+          <p>Presentación de artículo sobre sistemas de detección de intrusiones con IA y gestión de datos faltantes usando DMDI.</p>
+          <a href="semana11.html" class="btn-proyecto">Ver Detalles</a>
+        </div>
+      </div>
+
+      <div class="proyecto-card" data-categories="backend api">
+        <img src="../assets/img/semana12.png" alt="Semana 12">
+        <div class="proyecto-content">
+          <h3>Semana 12</h3>
+          <h4>API RESTful con Jakarta EE y Spring</h4>
+          <p>Sistema de gestión de docentes con CRUD completo, validaciones, paginación y documentación Swagger.</p>
+          <a href="semana12.html" class="btn-proyecto">Ver Detalles</a>
+        </div>
+      </div>
+
+      <div class="proyecto-card" data-categories="backend frameworks">
+        <img src="../assets/img/semana13.png" alt="Semana 13">
+        <div class="proyecto-content">
+          <h3>Semana 13</h3>
+          <h4>PHP Laravel Framework</h4>
+          <p>Eloquent ORM, Blade templates, Artisan y desarrollo web con PHP.</p>
+          <a href="semana13.html" class="btn-proyecto">Ver Detalles</a>
+        </div>
+      </div>
+
+      <div class="proyecto-card" data-categories="backend frameworks">
+        <img src="../assets/img/semana14.png" alt="Semana 14">
+        <div class="proyecto-content">
+          <h3>Semana 14</h3>
+          <h4>Python Flask Framework</h4>
+          <p>Flask, Jinja2, SQLAlchemy y desarrollo web con Python.</p>
+          <a href="semana14.html" class="btn-proyecto">Ver Detalles</a>
+        </div>
+      </div>
+
+      <div class="proyecto-card" data-categories="ai fullstack">
+        <img src="../assets/img/semana15.png" alt="Semana 15">
+        <div class="proyecto-content">
+          <h3>Semana 15</h3>
+          <h4>Sistemas Inteligentes con IA</h4>
+          <p>Machine Learning, Deep Learning, LLM y sistemas inteligentes con Python.</p>
+          <a href="semana15.html" class="btn-proyecto">Ver Detalles</a>
+        </div>
+      </div>
+      <div class="proyecto-card" data-categories="ai fullstack">
+        <img src="../assets/img/semana16.png" alt="Semana 16">
+        <div class="proyecto-content">
+          <h3>Semana 16</h3>
+          <h4>Sistema Inteligente de Análisis de Datos con IA</h4>
+          <p>Aplicación web completa con IA para análisis y gestión de datos faltantes, replicando el método DMDI y técnicas avanzadas de Machine Learning.</p>
+          <a href="semana16.html" class="btn-proyecto">Ver Detalles</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Gomez Huamanlazo - Proyectos Semanales</p>
+  </footer>
+
+  <script src="../assets/js/script.js"></script>
+</body>
+</html>

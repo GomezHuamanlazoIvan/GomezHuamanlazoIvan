@@ -176,7 +176,7 @@ function createInteractiveTimeline() {
         <div class="timeline-content">
           <h4>${item.title}</h4>
           <p>${item.tech}</p>
-          <a href="semana${item.week}.html" class="timeline-link">Ver detalles</a>
+          <a href="pages/semana${item.week}.html" class="timeline-link">Ver detalles</a>
         </div>
       </div>
     `;
